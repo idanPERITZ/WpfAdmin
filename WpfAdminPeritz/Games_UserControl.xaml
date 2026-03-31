@@ -1,0 +1,239 @@
+﻿<UserControl x:Class="WpfAdminPeritz.Games_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F4F6F8">
+
+    <UserControl.Resources>
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8" Padding="10,8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="0">
+
+        <!-- ===================== GAMES LIST VIEW ===================== -->
+        <Grid x:Name="GamesListView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="420"/>
+                <ColumnDefinition Width="520"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- HEADER -->
+            <TextBlock Text="Games Management"
+                       Grid.Row="0" Grid.ColumnSpan="3"
+                       FontSize="28" FontWeight="Bold"
+                       Margin="10,0,0,20"/>
+
+            <!-- BUTTONS -->
+            <StackPanel Grid.Row="1" Grid.Column="1"
+                        Orientation="Horizontal"
+                        Margin="0,0,0,20">
+                <Button Content="New Game ➕"
+                        Style="{StaticResource ActionButtonStyle}"
+                        Click="BtnNewGame_Click"/>
+                <Button Content="Delete 🗑"
+                        Style="{StaticResource ActionButtonStyle}"
+                        Click="BtnDeleteGame_Click"/>
+            </StackPanel>
+
+            <!-- LEFT SIDE -->
+            <Border Grid.Row="2" Grid.Column="0"
+                    Background="White" CornerRadius="10"
+                    Padding="10" Margin="10,0,10,0">
+                <ListBox x:Name="ListBoxGames"
+                         HorizontalContentAlignment="Stretch"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         SelectionChanged="ListBoxGames_SelectionChanged">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Padding" Value="0"/>
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border x:Name="ItemBorder"
+                                                Background="{TemplateBinding Background}"
+                                                BorderThickness="0"
+                                                CornerRadius="8"
+                                                Margin="4,2">
+                                            <ContentPresenter/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="ItemBorder" Property="Background" Value="#E8E8E8"/>
+                                                <Setter TargetName="ItemBorder" Property="BorderBrush" Value="#111"/>
+                                                <Setter TargetName="ItemBorder" Property="BorderThickness" Value="2"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="ItemBorder" Property="Background" Value="#F0F0F0"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Border>
+
+            <!-- RIGHT SIDE -->
+            <Border Grid.Row="2" Grid.Column="1"
+                    Background="White" CornerRadius="10" Padding="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="TextPlayers"
+                               Grid.Row="0"
+                               FontSize="22" FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+
+                    <TextBlock x:Name="TextDate"
+                               Grid.Row="1"
+                               FontSize="16" Margin="0,0,0,10"/>
+
+                    <TextBlock x:Name="TextResult"
+                               Grid.Row="2"
+                               FontSize="16" Margin="0,0,0,20"/>
+
+                    <Separator Grid.Row="3" Margin="0,0,0,15"/>
+
+                    <TextBlock Grid.Row="4"
+                               Text="Move History"
+                               FontSize="16" FontWeight="SemiBold"
+                               Foreground="#555" Margin="0,0,0,10"/>
+
+                    <ListView x:Name="ListViewMoves" Grid.Row="5">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="#" Width="50"
+                                                DisplayMemberBinding="{Binding MoveNumber}"/>
+                                <GridViewColumn Header="White" Width="200"
+                                                DisplayMemberBinding="{Binding WhiteMove}"/>
+                                <GridViewColumn Header="Black" Width="200"
+                                                DisplayMemberBinding="{Binding BlackMove}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- ===================== NEW GAME VIEW ===================== -->
+        <Grid x:Name="NewGameView" Visibility="Collapsed" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="1" Text="Create New Game"
+                           FontSize="28" FontWeight="Bold" Foreground="#2C3E50"
+                           Margin="20,0,0,0" VerticalAlignment="Center"/>
+            </Grid>
+
+            <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="40"
+                    MaxWidth="600" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="⬜ White Player" Grid.Row="0" Grid.Column="0"
+                               FontSize="15" Foreground="#555" VerticalAlignment="Center"
+                               Margin="0,0,0,20"/>
+                    <ComboBox x:Name="ComboWhite" Grid.Row="0" Grid.Column="1"
+                              Height="42" FontSize="15" Padding="10,8"
+                              Margin="0,0,0,20" DisplayMemberPath="UserName"/>
+
+                    <TextBlock Text="⬛ Black Player" Grid.Row="1" Grid.Column="0"
+                               FontSize="15" Foreground="#555" VerticalAlignment="Center"
+                               Margin="0,0,0,20"/>
+                    <ComboBox x:Name="ComboBlack" Grid.Row="1" Grid.Column="1"
+                              Height="42" FontSize="15" Padding="10,8"
+                              Margin="0,0,0,20" DisplayMemberPath="UserName"/>
+
+                    <TextBlock Text="📅 Game Date" Grid.Row="2" Grid.Column="0"
+                               FontSize="15" Foreground="#555" VerticalAlignment="Center"
+                               Margin="0,0,0,30"/>
+                    <DatePicker x:Name="DateGame" Grid.Row="2" Grid.Column="1"
+                                Height="42" FontSize="15" Padding="10,8"
+                                Margin="0,0,0,30"/>
+
+                    <Button Grid.Row="3" Grid.Column="1"
+                            Content="Create Game" Height="44" FontSize="15"
+                            FontWeight="Bold" Background="Black" Foreground="White"
+                            Click="BtnCreateGame_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- ===================== CHESS GAME VIEW ===================== -->
+        <Grid x:Name="ChessGameView" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="10">
+                <ContentControl x:Name="ChessContainer"/>
+            </Border>
+        </Grid>
+
+    </Grid>
+</UserControl>

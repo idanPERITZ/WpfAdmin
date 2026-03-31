@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="ChessUI.PromotionMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChessUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Border Width="300"
+            Height="150"
+            CornerRadius="15"
+            Background="#FF2D2D30"
+            BorderBrush="#FF007ACC"
+            BorderThickness="2"
+            Padding="15">
+
+        <Grid RenderOptions.BitmapScalingMode="HighQuality">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <!-- Title -->
+                <RowDefinition Height="1.5*"/>
+                <!-- Images -->
+            </Grid.RowDefinitions>
+
+            <!-- Title Text -->
+            <TextBlock Grid.Row="0"
+                       Text="Select A Piece"
+                       Foreground="White"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"/>
+
+            <!-- Piece Options -->
+            <UniformGrid Grid.Row="1"
+                         Rows="1"
+                         Columns="4"
+                         Cursor="Hand"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Margin="0,10,0,0">
+
+                <!-- Queen -->
+                <Image x:Name="QueenImage"
+                       MouseDown="QueenImage_MouseDown"
+                       Source="/Assets/White Queen.png"
+                       Stretch="Uniform"
+                       Width="50" Height="50">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.8"/>
+                                    <Setter Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+                <!-- Rook -->
+                <Image x:Name="RookImage"
+                       MouseDown="RookImage_MouseDown"
+                       Source="/Assets/White Rook.png"
+                       Stretch="Uniform"
+                       Width="50" Height="50">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.8"/>
+                                    <Setter Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+                <!-- Bishop -->
+                <Image x:Name="BishopImage"
+                       MouseDown="BishopImage_MouseDown"
+                       Source="/Assets/White Bishop.png"
+                       Stretch="Uniform"
+                       Width="50" Height="50">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.8"/>
+                                    <Setter Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+                <!-- Knight -->
+                <Image x:Name="KnightImage"
+                       MouseDown="KnightImage_MouseDown"
+                       Source="/Assets/White Knight.png"
+                       Stretch="Uniform"
+                       Width="50" Height="50">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.8"/>
+                                    <Setter Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+            </UniformGrid>
+        </Grid>
+    </Border>
+</UserControl>
