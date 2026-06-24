@@ -120,13 +120,22 @@ namespace WpfAdminPeritz
 
         public void StopPolling()
         {
-            if (pollTimer != null)
+            try
             {
-                pollTimer.Stop();
-                pollTimer.Tick -= PollForOpponentMove;
-                pollTimer = null;
+                System.Diagnostics.Debug.WriteLine("StopPolling called");
+                if (pollTimer != null)
+                {
+                    pollTimer.Stop();
+                    pollTimer.Tick -= PollForOpponentMove;
+                    pollTimer = null;
+                }
+                UnhookKeyboard();
             }
-            UnhookKeyboard();
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"StopPolling failed: {ex.Message}");
+                // Don't let StopPolling failure cause a crash
+            }
         }
 
         private void OnLoadedHookKeyboard(object sender, RoutedEventArgs e)
@@ -275,105 +284,142 @@ namespace WpfAdminPeritz
 
         private void ProcessPendingDbMoves(List<ServiceMoveRecord> pending)
         {
-            foreach (var dbMove in pending)
+            try
             {
-                // Try to apply this DB move. Prefer exact coordinate match when available.
-                bool applied = false;
+                System.Diagnostics.Debug.WriteLine($"ProcessPendingDbMoves: processing {pending.Count} moves, current moveIndex={moveIndex}");
 
-                string coordinates = dbMove.To;
-                if (!string.IsNullOrEmpty(coordinates) && coordinates.Length == 4)
+                foreach (var dbMove in pending)
                 {
-                    int fromColumn = coordinates[0] - 'a';
-                    int fromRow = 8 - (coordinates[1] - '0');
-                    int toColumn = coordinates[2] - 'a';
-                    int toRow = 8 - (coordinates[3] - '0');
+                    System.Diagnostics.Debug.WriteLine($"ProcessPendingDbMoves: dbMove MoveIndex={dbMove.MoveIndex}, From={dbMove.From}, To={dbMove.To}");
 
-                    Position fromPos = new Position(fromRow, fromColumn);
-                    Position toPos = new Position(toRow, toColumn);
+                    // Try to apply this DB move. Prefer exact coordinate match when available.
+                    bool applied = false;
 
+                    string coordinates = dbMove.To;
+                    if (!string.IsNullOrEmpty(coordinates) && coordinates.Length == 4)
+                    {
+                        int fromColumn = coordinates[0] - 'a';
+                        int fromRow = 8 - (coordinates[1] - '0');
+                        int toColumn = coordinates[2] - 'a';
+                        int toRow = 8 - (coordinates[3] - '0');
+
+                        Position fromPos = new Position(fromRow, fromColumn);
+                        Position toPos = new Position(toRow, toColumn);
+
+                        foreach (Move move in gameState.AllLegalMovesFor(gameState.CurrentPlayer))
+                        {
+                            if (move.FromPosition.Row == fromPos.Row &&
+                                move.FromPosition.Column == fromPos.Column &&
+                                move.ToPosition.Row == toPos.Row &&
+                                move.ToPosition.Column == toPos.Column)
+                            {
+                                // For promotions, we must also match the promoted piece type from the SAN notation
+                                if (move.Type == MoveType.PawnPromotion && !string.IsNullOrEmpty(dbMove.From))
+                                {
+                                    // Extract promotion piece from SAN notation (e.g., "e8=Q", "d1=N")
+                                    PawnPromotion promotion = move as PawnPromotion;
+                                    string expectedSAN = CreateSAN(move);
+                                    if (expectedSAN != dbMove.From)
+                                    {
+                                        // This promotion has the wrong piece type, skip it
+                                        continue;
+                                    }
+                                }
+
+                                ApplyOpponentMove(move, dbMove.From, dbMove.MoveIndex);
+                                applied = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (applied) continue;
+
+                    // Fallback to SAN match
                     foreach (Move move in gameState.AllLegalMovesFor(gameState.CurrentPlayer))
                     {
-                        if (move.FromPosition.Row == fromPos.Row &&
-                            move.FromPosition.Column == fromPos.Column &&
-                            move.ToPosition.Row == toPos.Row &&
-                            move.ToPosition.Column == toPos.Column)
+                        if (CreateSAN(move) == dbMove.From)
                         {
-                            // For promotions, we must also match the promoted piece type from the SAN notation
-                            if (move.Type == MoveType.PawnPromotion && !string.IsNullOrEmpty(dbMove.From))
-                            {
-                                // Extract promotion piece from SAN notation (e.g., "e8=Q", "d1=N")
-                                PawnPromotion promotion = move as PawnPromotion;
-                                string expectedSAN = CreateSAN(move);
-                                if (expectedSAN != dbMove.From)
-                                {
-                                    // This promotion has the wrong piece type, skip it
-                                    continue;
-                                }
-                            }
-
                             ApplyOpponentMove(move, dbMove.From, dbMove.MoveIndex);
                             applied = true;
                             break;
                         }
                     }
-                }
 
-                if (applied) continue;
-
-                // Fallback to SAN match
-                foreach (Move move in gameState.AllLegalMovesFor(gameState.CurrentPlayer))
-                {
-                    if (CreateSAN(move) == dbMove.From)
+                    // If we couldn't apply a move, stop processing further to avoid corrupting state.
+                    if (!applied)
                     {
-                        ApplyOpponentMove(move, dbMove.From, dbMove.MoveIndex);
-                        applied = true;
+                        // Log and stop; the next poll may succeed once DB or local state aligns.
+                        System.Diagnostics.Debug.WriteLine($"Failed to apply DB move index {dbMove.MoveIndex} ({dbMove.From} / {dbMove.To})");
                         break;
                     }
                 }
-
-                // If we couldn't apply a move, stop processing further to avoid corrupting state.
-                if (!applied)
-                {
-                    // Log and stop; the next poll may succeed once DB or local state aligns.
-                    System.Diagnostics.Debug.WriteLine($"Failed to apply DB move index {dbMove.MoveIndex} ({dbMove.From} / {dbMove.To})");
-                    break;
-                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"ProcessPendingDbMoves: Critical exception: {ex.Message}\n{ex.StackTrace}");
+                MessageBox.Show("Error processing opponent moves: " + ex.Message,
+                    "Move Processing Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void ApplyOpponentMove(Move move, string notation, int dbMoveIndex)
         {
-            // Safety check: don't apply moves if game is already over
-            if (gameState == null || gameState.IsGameOver())
-                return;
-
-            bool wasWhiteMove = gameState.CurrentPlayer == ChessLogic.Player.White;
-
             try
             {
-                gameState.MakeMove(move);
+                System.Diagnostics.Debug.WriteLine($"ApplyOpponentMove: moveIndex={moveIndex}, dbMoveIndex={dbMoveIndex}, notation={notation}");
+
+                // Safety check: don't apply moves if game is already over
+                if (gameState == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("ApplyOpponentMove: gameState is null!");
+                    return;
+                }
+
+                if (gameState.IsGameOver())
+                {
+                    System.Diagnostics.Debug.WriteLine("ApplyOpponentMove: game is already over");
+                    return;
+                }
+
+                bool wasWhiteMove = gameState.CurrentPlayer == ChessLogic.Player.White;
+
+                try
+                {
+                    gameState.MakeMove(move);
+                    System.Diagnostics.Debug.WriteLine($"ApplyOpponentMove: move applied successfully, new moveIndex will be {moveIndex + 1}");
+                }
+                catch (Exception ex)
+                {
+                    // Surface the exception and prevent the app from crashing so we can
+                    // diagnose the underlying issue causing crashes after captures.
+                    System.Diagnostics.Debug.WriteLine($"ApplyOpponentMove: MakeMove failed: {ex.Message}\n{ex.StackTrace}");
+                    MessageBox.Show("Error while applying opponent move: " + ex.Message + "\n" + ex.StackTrace,
+                        "Move Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                moveIndex++;
+                // Remember that we've applied this DB move so we don't apply it again.
+                lastAppliedMoveIndex = dbMoveIndex;
+                AddBoardSnapshot(gameState.Board);
+                AddMoveToHistory(notation, wasWhiteMove);
+                DrawBoard(gameState.Board);
+                SetCursor(gameState.CurrentPlayer);
+
+                if (gameState.IsGameOver())
+                {
+                    System.Diagnostics.Debug.WriteLine("ApplyOpponentMove: game is now over");
+                    // Stop polling immediately when game ends to prevent race conditions
+                    StopPolling();
+                    ShowGameOverMenu();
+                }
             }
             catch (Exception ex)
             {
-                // Surface the exception and prevent the app from crashing so we can
-                // diagnose the underlying issue causing crashes after captures.
-                MessageBox.Show("Error while applying opponent move: " + ex.Message + "\n" + ex.StackTrace,
-                    "Move Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            moveIndex++;
-            // Remember that we've applied this DB move so we don't apply it again.
-            lastAppliedMoveIndex = dbMoveIndex;
-            AddBoardSnapshot(gameState.Board);
-            AddMoveToHistory(notation, wasWhiteMove);
-            DrawBoard(gameState.Board);
-            SetCursor(gameState.CurrentPlayer);
-
-            if (gameState.IsGameOver())
-            {
-                // Stop polling immediately when game ends to prevent race conditions
-                StopPolling();
-                ShowGameOverMenu();
+                System.Diagnostics.Debug.WriteLine($"ApplyOpponentMove: Outer exception: {ex.Message}\n{ex.StackTrace}");
+                MessageBox.Show("Critical error applying opponent move: " + ex.Message,
+                    "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -396,14 +442,34 @@ namespace WpfAdminPeritz
 
         private void DrawBoard(Board board)
         {
-            for (int row = 0; row < 8; row++)
+            try
             {
-                for (int col = 0; col < 8; col++)
+                if (board == null)
                 {
-                    pieceImages[row, col].Source = Images.GetImage(board[row, col]);
-                    if (myColor == ChessLogic.Player.Black)
-                        pieceImages[row, col].LayoutTransform = new ScaleTransform(1, -1);
+                    System.Diagnostics.Debug.WriteLine("DrawBoard: board is null!");
+                    return;
                 }
+
+                for (int row = 0; row < 8; row++)
+                {
+                    for (int col = 0; col < 8; col++)
+                    {
+                        if (pieceImages[row, col] == null)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"DrawBoard: pieceImages[{row},{col}] is null!");
+                            continue;
+                        }
+
+                        pieceImages[row, col].Source = Images.GetImage(board[row, col]);
+                        if (myColor == ChessLogic.Player.Black)
+                            pieceImages[row, col].LayoutTransform = new ScaleTransform(1, -1);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"DrawBoard failed: {ex.Message}");
+                // Don't crash the game if drawing fails
             }
         }
 
@@ -496,37 +562,60 @@ namespace WpfAdminPeritz
 
         private void HandleMove(Move move)
         {
-            bool wasWhiteMove = gameState.CurrentPlayer == ChessLogic.Player.White;
-            string notation = CreateSAN(move);
-
-            // Save to DB BEFORE making the move on the local board.
-            // We pass moveIndex (current half-move count) to the callback.
-            SaveMoveToDb(move, notation);
-
             try
             {
-                gameState.MakeMove(move);
+                System.Diagnostics.Debug.WriteLine($"HandleMove: moveIndex={moveIndex}, player={gameState.CurrentPlayer}");
+
+                if (gameState == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("HandleMove: gameState is null!");
+                    return;
+                }
+
+                bool wasWhiteMove = gameState.CurrentPlayer == ChessLogic.Player.White;
+                string notation = CreateSAN(move);
+
+                System.Diagnostics.Debug.WriteLine($"HandleMove: notation={notation}");
+
+                // Save to DB BEFORE making the move on the local board.
+                // We pass moveIndex (current half-move count) to the callback.
+                SaveMoveToDb(move, notation);
+
+                try
+                {
+                    gameState.MakeMove(move);
+                    System.Diagnostics.Debug.WriteLine($"HandleMove: move applied, new moveIndex will be {moveIndex + 1}");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"HandleMove: MakeMove failed: {ex.Message}");
+                    MessageBox.Show("Error while making move: " + ex.Message + "\n" + ex.StackTrace,
+                        "Move Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    // Revert UI changes we optimistically applied
+                    DrawBoard(gameState.Board);
+                    return;
+                }
+
+                AddBoardSnapshot(gameState.Board);
+                moveIndex++;
+
+                AddMoveToHistory(notation, wasWhiteMove);
+                DrawBoard(gameState.Board);
+                SetCursor(gameState.CurrentPlayer);
+
+                if (gameState.IsGameOver())
+                {
+                    System.Diagnostics.Debug.WriteLine("HandleMove: game is now over");
+                    // Stop polling immediately when game ends to prevent race conditions
+                    StopPolling();
+                    ShowGameOverMenu();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error while making move: " + ex.Message + "\n" + ex.StackTrace,
-                    "Move Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                // Revert UI changes we optimistically applied
-                DrawBoard(gameState.Board);
-                return;
-            }
-            AddBoardSnapshot(gameState.Board);
-            moveIndex++;
-
-            AddMoveToHistory(notation, wasWhiteMove);
-            DrawBoard(gameState.Board);
-            SetCursor(gameState.CurrentPlayer);
-
-            if (gameState.IsGameOver())
-            {
-                // Stop polling immediately when game ends to prevent race conditions
-                StopPolling();
-                ShowGameOverMenu();
+                System.Diagnostics.Debug.WriteLine($"HandleMove: Outer exception: {ex.Message}\n{ex.StackTrace}");
+                MessageBox.Show("Critical error in HandleMove: " + ex.Message,
+                    "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -609,21 +698,35 @@ namespace WpfAdminPeritz
         // Add a board snapshot with memory management
         private void AddBoardSnapshot(Board board)
         {
-            boardSnapshots.Add(board.Copy());
-
-            // Keep only the most recent snapshots to prevent memory issues in long games
-            // Keep some history for move navigation, but not unlimited
-            if (boardSnapshots.Count > MAX_SNAPSHOT_HISTORY)
+            try
             {
-                // Remove the oldest snapshots, keeping the most recent MAX_SNAPSHOT_HISTORY
-                int toRemove = boardSnapshots.Count - MAX_SNAPSHOT_HISTORY;
-                boardSnapshots.RemoveRange(0, toRemove);
-
-                // Adjust viewingSnapshot index if needed
-                if (viewingSnapshot >= 0)
+                if (board == null)
                 {
-                    viewingSnapshot = Math.Max(0, viewingSnapshot - toRemove);
+                    System.Diagnostics.Debug.WriteLine("AddBoardSnapshot: board is null!");
+                    return;
                 }
+
+                boardSnapshots.Add(board.Copy());
+
+                // Keep only the most recent snapshots to prevent memory issues in long games
+                // Keep some history for move navigation, but not unlimited
+                if (boardSnapshots.Count > MAX_SNAPSHOT_HISTORY)
+                {
+                    // Remove the oldest snapshots, keeping the most recent MAX_SNAPSHOT_HISTORY
+                    int toRemove = boardSnapshots.Count - MAX_SNAPSHOT_HISTORY;
+                    boardSnapshots.RemoveRange(0, toRemove);
+
+                    // Adjust viewingSnapshot index if needed
+                    if (viewingSnapshot >= 0)
+                    {
+                        viewingSnapshot = Math.Max(0, viewingSnapshot - toRemove);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"AddBoardSnapshot failed: {ex.Message}");
+                // Don't crash the game if snapshot fails
             }
         }
 
