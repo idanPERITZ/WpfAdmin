@@ -96,7 +96,12 @@ namespace WpfAdminPeritz
             // Initialize WCF client helper with factory to recreate service
             serviceHelper = new WcfClientHelper<ChessServiceUserClient>(() => service);
 
-            OpponentNameText.Content = "Playing against: " + opponentName;
+            OpponentNameText.Text = "Playing against: " + opponentName;
+
+            // Set opponent statistics
+            TxtOpponentWins.Text = opponent.Wins.ToString();
+            TxtOpponentDraws.Text = opponent.Draws.ToString();
+            TxtOpponentLosses.Text = opponent.Losses.ToString();
 
             if (myColor == ChessLogic.Player.Black)
             {
@@ -151,11 +156,6 @@ namespace WpfAdminPeritz
             Window parentWindow = Window.GetWindow(this);
             if (parentWindow != null)
                 parentWindow.KeyDown -= ChessWindow_KeyDown;
-        }
-
-        private void OpponentName_Click(object sender, RoutedEventArgs e)
-        {
-            // Reserved for future use (e.g. show opponent stats)
         }
 
         private void PollForOpponentMove(object sender, EventArgs e)

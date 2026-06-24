@@ -16,21 +16,75 @@
 
         <!-- OPPONENT NAME HEADER -->
         <Border Grid.Row="0" Background="#111" Padding="15,10">
-            <Button x:Name="OpponentNameText"
-                        Foreground="White"
-                        FontSize="18"
-                        FontWeight="Bold"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Cursor="Hand"
-                        HorizontalAlignment="Center"
-                        Click="OpponentName_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <StackPanel HorizontalAlignment="Center">
+                <!-- Opponent Name -->
+                <TextBlock x:Name="OpponentNameText"
+                          Foreground="White"
+                          FontSize="18"
+                          FontWeight="Bold"
+                          HorizontalAlignment="Center"
+                          Text="Playing against: "/>
+
+                <!-- Statistics -->
+                <StackPanel Orientation="Horizontal"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,0">
+
+                    <!-- Wins -->
+                    <Border Background="#E8F5E9"
+                           CornerRadius="6"
+                           Padding="8,3"
+                           Margin="0,0,8,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="W: "
+                                      FontSize="12"
+                                      Foreground="#2E7D32"
+                                      FontWeight="Bold"/>
+                            <TextBlock x:Name="TxtOpponentWins"
+                                      Text="0"
+                                      FontSize="12"
+                                      Foreground="#2E7D32"
+                                      FontWeight="Bold"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Draws -->
+                    <Border Background="#F5F5F5"
+                           CornerRadius="6"
+                           Padding="8,3"
+                           Margin="0,0,8,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="D: "
+                                      FontSize="12"
+                                      Foreground="#616161"
+                                      FontWeight="Bold"/>
+                            <TextBlock x:Name="TxtOpponentDraws"
+                                      Text="0"
+                                      FontSize="12"
+                                      Foreground="#616161"
+                                      FontWeight="Bold"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Losses -->
+                    <Border Background="#FFEBEE"
+                           CornerRadius="6"
+                           Padding="8,3">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="L: "
+                                      FontSize="12"
+                                      Foreground="#C62828"
+                                      FontWeight="Bold"/>
+                            <TextBlock x:Name="TxtOpponentLosses"
+                                      Text="0"
+                                      FontSize="12"
+                                      Foreground="#C62828"
+                                      FontWeight="Bold"/>
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </StackPanel>
         </Border>
 
         <Grid Grid.Row="1">
