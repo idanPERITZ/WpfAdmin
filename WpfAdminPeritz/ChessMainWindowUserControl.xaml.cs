@@ -56,6 +56,10 @@ namespace WpfAdminPeritz
         private bool gameOverMenuShown;
         private bool suppressSelectionChanged;
 
+        // Track consecutive empty polls to detect game deletion
+        private int consecutiveEmptyPolls = 0;
+        private const int MAX_EMPTY_POLLS_BEFORE_CLOSE = 3;
+
         private ChessLogic.Player myColor;
         private ServiceGame currentGame;
         private ChessServiceUserClient service;
@@ -210,6 +214,47 @@ namespace WpfAdminPeritz
                     );
 
                     GameLogger.Log($"POLL: Received {moves?.Count ?? 0} total moves from DB");
+
+                    // DETECT GAME DELETION: If we previously had moves but now get 0, the game was deleted
+                    if (moveIndex > 0 && (moves == null || moves.Count == 0))
+                    {
+                        consecutiveEmptyPolls++;
+                        GameLogger.Log($"POLL: Empty result detected! consecutiveEmptyPolls={consecutiveEmptyPolls}, moveIndex={moveIndex}");
+
+                        if (consecutiveEmptyPolls >= MAX_EMPTY_POLLS_BEFORE_CLOSE)
+                        {
+                            GameLogger.Log("POLL: Game appears to be deleted from server. Closing game window.");
+
+                            try
+                            {
+                                Dispatcher.BeginInvoke(new Action(() =>
+                                {
+                                    StopPolling();
+                                    MessageBox.Show(
+                                        "The game has been closed. Your opponent may have disconnected.",
+                                        "Game Ended",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Information);
+
+                                    // Close the game window
+                                    Window parentWindow = Window.GetWindow(this);
+                                    if (parentWindow != null)
+                                        parentWindow.Close();
+                                }));
+                            }
+                            catch { }
+
+                            return;
+                        }
+
+                        return; // Skip this poll
+                    }
+
+                    // Reset counter if we got valid moves
+                    if (moves != null && moves.Count > 0)
+                    {
+                        consecutiveEmptyPolls = 0;
+                    }
 
                     if (moves == null || moves.Count == 0)
                         return;
