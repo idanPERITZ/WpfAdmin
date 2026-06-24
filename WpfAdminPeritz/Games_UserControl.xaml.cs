@@ -14,6 +14,8 @@ namespace WpfAdminPeritz
     // Acts as the central hub for all game-related admin operations
     public partial class Games_UserControl : UserControl
     {
+        // Cached moves for the currently shown game so the Copy PGN button can use them
+        private MoveList currentDbMoves;
         // Field: WCF service client used to communicate with the chess server
         private ChessServiceAdminClient service;
         // Field: The game currently selected in the list for viewing details
@@ -147,6 +149,8 @@ namespace WpfAdminPeritz
 
                 // Fetch the move list for this game from the server
                 MoveList dbMoves = service.GetMovesByGameID(game);
+                // Cache for use by Copy PGN button
+                currentDbMoves = dbMoves;
 
                 // Primary source: moves fetched from the database
                 if (dbMoves != null && dbMoves.Count > 0)
@@ -174,6 +178,7 @@ namespace WpfAdminPeritz
                 else
                 {
                     ListViewMoves.ItemsSource = null;
+                    currentDbMoves = null;
                 }
             }
             catch (Exception ex)
@@ -181,6 +186,58 @@ namespace WpfAdminPeritz
                 // Show any unexpected errors to the admin
                 MessageBox.Show("Error: " + ex.Message, "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Build a simple PGN string from the currentDbMoves and copy it to clipboard
+        private void BtnCopyPgn_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedGame == null)
+            {
+                MessageBox.Show("Please select a game first.", "No Game Selected",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (currentDbMoves == null || currentDbMoves.Count == 0)
+            {
+                MessageBox.Show("No moves available for this game.", "No Moves",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            try
+            {
+                var sb = new System.Text.StringBuilder();
+                // Add basic PGN headers
+                sb.AppendLine($"[Event \"Admin Export\"]");
+                sb.AppendLine($"[White \"{selectedGame.WhitePlayer.UserName}\"]");
+                sb.AppendLine($"[Black \"{selectedGame.BlackPlayer.UserName}\"]");
+                string resultTag = selectedGame.Result == null ? "1/2-1/2" : (selectedGame.Result.Id == selectedGame.WhitePlayer.Id ? "1-0" : "0-1");
+                sb.AppendLine($"[Result \"{resultTag}\"]");
+                sb.AppendLine();
+
+                // Build move text: "1. e4 e5 2. Nf3 Nc6 ..."
+                for (int i = 0; i < currentDbMoves.Count; i += 2)
+                {
+                    int moveNumber = (i / 2) + 1;
+                    string whiteMove = currentDbMoves[i].From ?? "";
+                    string blackMove = (i + 1 < currentDbMoves.Count) ? (currentDbMoves[i + 1].From ?? "") : "";
+                    if (string.IsNullOrWhiteSpace(blackMove))
+                        sb.Append($"{moveNumber}. {whiteMove} ");
+                    else
+                        sb.Append($"{moveNumber}. {whiteMove} {blackMove} ");
+                }
+
+                sb.AppendLine();
+                sb.AppendLine(resultTag);
+
+                System.Windows.Clipboard.SetText(sb.ToString());
+                MessageBox.Show("PGN copied to clipboard.", "Copied", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to copy PGN: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

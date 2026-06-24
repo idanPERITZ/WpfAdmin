@@ -99,6 +99,15 @@
                                Grid.Row="2"
                                FontSize="16" Margin="0,0,0,20"/>
 
+                    <!-- Copy PGN button placed to the right of the result line -->
+                    <Button Grid.Row="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0,0,0,20"
+                            Content="Copy PGN 📋"
+                            Click="BtnCopyPgn_Click"
+                            Style="{StaticResource ActionButtonStyle}"/>
+
                     <Separator Grid.Row="3" Margin="0,0,0,15"/>
 
                     <TextBlock Grid.Row="4"
