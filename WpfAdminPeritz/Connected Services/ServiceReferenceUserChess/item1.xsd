@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="GameList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameList" nillable="true" type="tns:GameList" />
   <xs:complexType name="Game">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="BlackPlayer" nillable="true" type="tns:Player" />
+          <xs:element minOccurs="0" name="BlackPlayerUserID" nillable="true" type="tns:Player" />
           <xs:element minOccurs="0" name="GameDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="GameID" type="xs:int" />
           <xs:element minOccurs="0" name="Result" nillable="true" type="tns:Player" />
-          <xs:element minOccurs="0" name="WhitePlayer" nillable="true" type="tns:Player" />
+          <xs:element minOccurs="0" name="WhitePlayerUserID" nillable="true" type="tns:Player" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -27,7 +34,6 @@
           <xs:element minOccurs="0" name="Draws" type="xs:int" />
           <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="GamesPlayed" type="xs:int" />
-          <xs:element minOccurs="0" name="GoogleId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Losses" type="xs:int" />
           <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
@@ -37,12 +43,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Player" nillable="true" type="tns:Player" />
-  <xs:complexType name="GameList">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GameList" nillable="true" type="tns:GameList" />
   <xs:complexType name="PlayerList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Player" nillable="true" type="tns:Player" />
@@ -54,7 +54,7 @@
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Game" nillable="true" type="tns:Game" />
+          <xs:element minOccurs="0" name="GameID" type="xs:int" />
           <xs:element minOccurs="0" name="MoveIndex" type="xs:int" />
           <xs:element minOccurs="0" name="MoveType" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Promotion" nillable="true" type="xs:string" />
@@ -82,8 +82,8 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="FriendshipDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="IsAccepted" type="xs:boolean" />
-          <xs:element minOccurs="0" name="ReceiverID" nillable="true" type="tns:Player" />
-          <xs:element minOccurs="0" name="RequesterID" nillable="true" type="tns:Player" />
+          <xs:element minOccurs="0" name="ReceiverID" type="xs:int" />
+          <xs:element minOccurs="0" name="RequesterID" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

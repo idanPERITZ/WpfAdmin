@@ -103,6 +103,98 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAllGames_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAllGames_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetActiveGames_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetActiveGames_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetGameByID_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -149,6 +241,236 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetGameByIDWithGame_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetGameByIDWithGame_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertGame_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertGame_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertGameAndReturn_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertGameAndReturn_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UpdateGame_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UpdateGame_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteGame_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteGame_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetGamesByPlayer_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -173,6 +495,52 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetGamesByPlayer_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetGamesByPlayerWithPlayer_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetGamesByPlayerWithPlayer_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -287,7 +655,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertGameAndReturn_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAllUsers_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -310,7 +678,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertGameAndReturn_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAllUsers_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -333,7 +701,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UpdateGameResult_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetUserByID_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -356,7 +724,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UpdateGameResult_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetUserByID_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -379,7 +747,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteOpen_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertUser_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -402,7 +770,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteOpen_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertUser_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -425,7 +793,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAllplayers_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UpdateUser_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -448,7 +816,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAllplayers_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UpdateUser_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -471,7 +839,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetPlayerByID_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteUser_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -494,145 +862,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetPlayerByID_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertPlayer_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_InsertPlayer_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UpdatePlayer_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UpdatePlayer_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeletePlayer_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeletePlayer_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteUser_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -885,6 +1115,98 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetMoveByID_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetMoveByID_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetLastMoveByGameID_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetLastMoveByGameID_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_ReturnLastMoveByGameID_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -955,6 +1277,52 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_UndoLastMove_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_IsPlayerTurn_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_IsPlayerTurn_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1161,7 +1529,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayer_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_PlayerJoin_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1184,237 +1552,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayer_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayer_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayer_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendFriendRequest_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendFriendRequest_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_AcceptFriendRequest_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_AcceptFriendRequest_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteFriendship_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteFriendship_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeclineFriendRequest_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeclineFriendRequest_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_PlayerJoin_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1461,52 +1599,6 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_PlayerLeave_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendMove_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
-          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendMove_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1667,6 +1759,52 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendMove_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendMove_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_LeaveGame_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -1691,6 +1829,604 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_LeaveGame_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayer_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayer_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayerWithPlayer_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayerWithPlayer_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayer_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayer_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayerWithPlayer_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayerWithPlayer_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_FriendshipExists_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_FriendshipExists_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendFriendRequest_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendFriendRequest_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendFriendRequestWithObject_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_SendFriendRequestWithObject_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_AcceptFriendRequest_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_AcceptFriendRequest_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_AcceptFriendRequestWithObject_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_AcceptFriendRequestWithObject_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteFriendship_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteFriendship_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteFriendshipWithObject_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeleteFriendshipWithObject_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeclineFriendRequest_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeclineFriendRequest_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeclineFriendRequestWithObject_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IChessServiceUser_DeclineFriendRequestWithObject_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1858,17 +2594,65 @@
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/ChessServiceUser/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Model" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IChessServiceUser_GetAllGames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGames" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetAllGames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetActiveGames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveGames" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetActiveGames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveGamesResponse" />
+  </wsdl:message>
   <wsdl:message name="IChessServiceUser_GetGameByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGameByID" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_GetGameByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetGameByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetGameByIDWithGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameByIDWithGame" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetGameByIDWithGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameByIDWithGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_InsertGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGame" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_InsertGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_InsertGameAndReturn_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGameAndReturn" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_InsertGameAndReturn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGameAndReturnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_UpdateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGame" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_UpdateGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeleteGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGame" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeleteGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGameResponse" />
+  </wsdl:message>
   <wsdl:message name="IChessServiceUser_GetGamesByPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGamesByPlayer" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_GetGamesByPlayer_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetGamesByPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetGamesByPlayerWithPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGamesByPlayerWithPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetGamesByPlayerWithPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGamesByPlayerWithPlayerResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_GetLatestGameForPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLatestGameForPlayer" />
@@ -1882,53 +2666,35 @@
   <wsdl:message name="IChessServiceUser_IsGameFinished_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsGameFinishedResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_InsertGameAndReturn_InputMessage">
-    <wsdl:part name="parameters" element="tns:InsertGameAndReturn" />
+  <wsdl:message name="IChessServiceUser_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_InsertGameAndReturn_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InsertGameAndReturnResponse" />
+  <wsdl:message name="IChessServiceUser_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_UpdateGameResult_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateGameResult" />
+  <wsdl:message name="IChessServiceUser_GetUserByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByID" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_UpdateGameResult_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateGameResultResponse" />
+  <wsdl:message name="IChessServiceUser_GetUserByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIDResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_DeleteOpen_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteOpen" />
+  <wsdl:message name="IChessServiceUser_InsertUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUser" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_DeleteOpen_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteOpenResponse" />
+  <wsdl:message name="IChessServiceUser_InsertUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_GetAllplayers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllplayers" />
+  <wsdl:message name="IChessServiceUser_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_GetAllplayers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllplayersResponse" />
+  <wsdl:message name="IChessServiceUser_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_GetPlayerByID_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayerByID" />
+  <wsdl:message name="IChessServiceUser_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_GetPlayerByID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayerByIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_InsertPlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:InsertPlayer" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_InsertPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InsertPlayerResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_UpdatePlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePlayer" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_UpdatePlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePlayerResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_DeletePlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeletePlayer" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_DeletePlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeletePlayerResponse" />
+  <wsdl:message name="IChessServiceUser_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_InsertMove_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertMove" />
@@ -1960,6 +2726,18 @@
   <wsdl:message name="IChessServiceUser_GetMovesByPlayerID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMovesByPlayerIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetMoveByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMoveByID" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetMoveByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMoveByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetLastMoveByGameID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastMoveByGameID" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetLastMoveByGameID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastMoveByGameIDResponse" />
+  </wsdl:message>
   <wsdl:message name="IChessServiceUser_ReturnLastMoveByGameID_InputMessage">
     <wsdl:part name="parameters" element="tns:ReturnLastMoveByGameID" />
   </wsdl:message>
@@ -1971,6 +2749,12 @@
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_UndoLastMove_OutputMessage">
     <wsdl:part name="parameters" element="tns:UndoLastMoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_IsPlayerTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsPlayerTurn" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_IsPlayerTurn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsPlayerTurnResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_UpdatePlayerStats_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePlayerStats" />
@@ -1996,53 +2780,17 @@
   <wsdl:message name="IChessServiceUser_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_GetAcceptedFriendsByPlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByPlayer" />
+  <wsdl:message name="IChessServiceUser_PlayerJoin_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerJoin" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceUser_GetAcceptedFriendsByPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByPlayerResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_GetPendingFriendRequestsForPlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForPlayer" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_GetPendingFriendRequestsForPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForPlayerResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_SendFriendRequest_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendFriendRequest" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_SendFriendRequest_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SendFriendRequestResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_AcceptFriendRequest_InputMessage">
-    <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_AcceptFriendRequest_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AcceptFriendRequestResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_DeleteFriendship_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteFriendship" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_DeleteFriendship_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteFriendshipResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_DeclineFriendRequest_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeclineFriendRequest" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_DeclineFriendRequest_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeclineFriendRequestResponse" />
+  <wsdl:message name="IChessServiceUser_PlayerJoin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerJoinResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_PlayerLeave_InputMessage">
     <wsdl:part name="parameters" element="tns:PlayerLeave" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_PlayerLeave_OutputMessage">
     <wsdl:part name="parameters" element="tns:PlayerLeaveResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_SendMove_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendMove" />
-  </wsdl:message>
-  <wsdl:message name="IChessServiceUser_SendMove_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SendMoveResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_GetOnlinePlayers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetOnlinePlayers" />
@@ -2062,11 +2810,95 @@
   <wsdl:message name="IChessServiceUser_RespondToInvitation_OutputMessage">
     <wsdl:part name="parameters" element="tns:RespondToInvitationResponse" />
   </wsdl:message>
+  <wsdl:message name="IChessServiceUser_SendMove_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMove" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_SendMove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMoveResponse" />
+  </wsdl:message>
   <wsdl:message name="IChessServiceUser_LeaveGame_InputMessage">
     <wsdl:part name="parameters" element="tns:LeaveGame" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_LeaveGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeaveGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetAcceptedFriendsByPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetAcceptedFriendsByPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetAcceptedFriendsByPlayerWithPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByPlayerWithPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetAcceptedFriendsByPlayerWithPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByPlayerWithPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetPendingFriendRequestsForPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetPendingFriendRequestsForPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetPendingFriendRequestsForPlayerWithPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForPlayerWithPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_GetPendingFriendRequestsForPlayerWithPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForPlayerWithPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_FriendshipExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:FriendshipExists" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_FriendshipExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FriendshipExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_SendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_SendFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_SendFriendRequestWithObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequestWithObject" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_SendFriendRequestWithObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequestWithObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_AcceptFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_AcceptFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_AcceptFriendRequestWithObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequestWithObject" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_AcceptFriendRequestWithObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequestWithObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeleteFriendship_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFriendship" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeleteFriendship_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFriendshipResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeleteFriendshipWithObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFriendshipWithObject" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeleteFriendshipWithObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFriendshipWithObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeclineFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeclineFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeclineFriendRequestWithObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineFriendRequestWithObject" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceUser_DeclineFriendRequestWithObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineFriendRequestWithObjectResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceUser_PlayerJoined_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:PlayerJoined" />
@@ -2087,13 +2919,45 @@
     <wsdl:part name="parameters" element="tns:OpponentLeftGame" />
   </wsdl:message>
   <wsdl:portType name="IChessServiceUser">
+    <wsdl:operation name="GetAllGames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetAllGames" message="tns:IChessServiceUser_GetAllGames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetAllGamesResponse" message="tns:IChessServiceUser_GetAllGames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetActiveGames" message="tns:IChessServiceUser_GetActiveGames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetActiveGamesResponse" message="tns:IChessServiceUser_GetActiveGames_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetGameByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetGameByID" message="tns:IChessServiceUser_GetGameByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetGameByIDResponse" message="tns:IChessServiceUser_GetGameByID_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetGameByIDWithGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetGameByIDWithGame" message="tns:IChessServiceUser_GetGameByIDWithGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetGameByIDWithGameResponse" message="tns:IChessServiceUser_GetGameByIDWithGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/InsertGame" message="tns:IChessServiceUser_InsertGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/InsertGameResponse" message="tns:IChessServiceUser_InsertGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertGameAndReturn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/InsertGameAndReturn" message="tns:IChessServiceUser_InsertGameAndReturn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/InsertGameAndReturnResponse" message="tns:IChessServiceUser_InsertGameAndReturn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/UpdateGame" message="tns:IChessServiceUser_UpdateGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/UpdateGameResponse" message="tns:IChessServiceUser_UpdateGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteGame" message="tns:IChessServiceUser_DeleteGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteGameResponse" message="tns:IChessServiceUser_DeleteGame_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetGamesByPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetGamesByPlayer" message="tns:IChessServiceUser_GetGamesByPlayer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetGamesByPlayerResponse" message="tns:IChessServiceUser_GetGamesByPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGamesByPlayerWithPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetGamesByPlayerWithPlayer" message="tns:IChessServiceUser_GetGamesByPlayerWithPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetGamesByPlayerWithPlayerResponse" message="tns:IChessServiceUser_GetGamesByPlayerWithPlayer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetLatestGameForPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetLatestGameForPlayer" message="tns:IChessServiceUser_GetLatestGameForPlayer_InputMessage" />
@@ -2103,37 +2967,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/IsGameFinished" message="tns:IChessServiceUser_IsGameFinished_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/IsGameFinishedResponse" message="tns:IChessServiceUser_IsGameFinished_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="InsertGameAndReturn">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/InsertGameAndReturn" message="tns:IChessServiceUser_InsertGameAndReturn_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/InsertGameAndReturnResponse" message="tns:IChessServiceUser_InsertGameAndReturn_OutputMessage" />
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetAllUsers" message="tns:IChessServiceUser_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetAllUsersResponse" message="tns:IChessServiceUser_GetAllUsers_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateGameResult">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/UpdateGameResult" message="tns:IChessServiceUser_UpdateGameResult_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/UpdateGameResultResponse" message="tns:IChessServiceUser_UpdateGameResult_OutputMessage" />
+    <wsdl:operation name="GetUserByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetUserByID" message="tns:IChessServiceUser_GetUserByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetUserByIDResponse" message="tns:IChessServiceUser_GetUserByID_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="DeleteOpen">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteOpen" message="tns:IChessServiceUser_DeleteOpen_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteOpenResponse" message="tns:IChessServiceUser_DeleteOpen_OutputMessage" />
+    <wsdl:operation name="InsertUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/InsertUser" message="tns:IChessServiceUser_InsertUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/InsertUserResponse" message="tns:IChessServiceUser_InsertUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllplayers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetAllplayers" message="tns:IChessServiceUser_GetAllplayers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetAllplayersResponse" message="tns:IChessServiceUser_GetAllplayers_OutputMessage" />
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/UpdateUser" message="tns:IChessServiceUser_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/UpdateUserResponse" message="tns:IChessServiceUser_UpdateUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPlayerByID">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetPlayerByID" message="tns:IChessServiceUser_GetPlayerByID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetPlayerByIDResponse" message="tns:IChessServiceUser_GetPlayerByID_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="InsertPlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/InsertPlayer" message="tns:IChessServiceUser_InsertPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/InsertPlayerResponse" message="tns:IChessServiceUser_InsertPlayer_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdatePlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/UpdatePlayer" message="tns:IChessServiceUser_UpdatePlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/UpdatePlayerResponse" message="tns:IChessServiceUser_UpdatePlayer_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeletePlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeletePlayer" message="tns:IChessServiceUser_DeletePlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeletePlayerResponse" message="tns:IChessServiceUser_DeletePlayer_OutputMessage" />
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteUser" message="tns:IChessServiceUser_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteUserResponse" message="tns:IChessServiceUser_DeleteUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertMove">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/InsertMove" message="tns:IChessServiceUser_InsertMove_InputMessage" />
@@ -2155,6 +3007,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetMovesByPlayerID" message="tns:IChessServiceUser_GetMovesByPlayerID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetMovesByPlayerIDResponse" message="tns:IChessServiceUser_GetMovesByPlayerID_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetMoveByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetMoveByID" message="tns:IChessServiceUser_GetMoveByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetMoveByIDResponse" message="tns:IChessServiceUser_GetMoveByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastMoveByGameID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetLastMoveByGameID" message="tns:IChessServiceUser_GetLastMoveByGameID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetLastMoveByGameIDResponse" message="tns:IChessServiceUser_GetLastMoveByGameID_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReturnLastMoveByGameID">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/ReturnLastMoveByGameID" message="tns:IChessServiceUser_ReturnLastMoveByGameID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/ReturnLastMoveByGameIDResponse" message="tns:IChessServiceUser_ReturnLastMoveByGameID_OutputMessage" />
@@ -2162,6 +3022,10 @@
     <wsdl:operation name="UndoLastMove">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/UndoLastMove" message="tns:IChessServiceUser_UndoLastMove_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/UndoLastMoveResponse" message="tns:IChessServiceUser_UndoLastMove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPlayerTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/IsPlayerTurn" message="tns:IChessServiceUser_IsPlayerTurn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/IsPlayerTurnResponse" message="tns:IChessServiceUser_IsPlayerTurn_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdatePlayerStats">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/UpdatePlayerStats" message="tns:IChessServiceUser_UpdatePlayerStats_InputMessage" />
@@ -2179,37 +3043,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/Login" message="tns:IChessServiceUser_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/LoginResponse" message="tns:IChessServiceUser_Login_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAcceptedFriendsByPlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayer" message="tns:IChessServiceUser_GetAcceptedFriendsByPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayerResponse" message="tns:IChessServiceUser_GetAcceptedFriendsByPlayer_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetPendingFriendRequestsForPlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayer" message="tns:IChessServiceUser_GetPendingFriendRequestsForPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayerResponse" message="tns:IChessServiceUser_GetPendingFriendRequestsForPlayer_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendFriendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/SendFriendRequest" message="tns:IChessServiceUser_SendFriendRequest_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/SendFriendRequestResponse" message="tns:IChessServiceUser_SendFriendRequest_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AcceptFriendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/AcceptFriendRequest" message="tns:IChessServiceUser_AcceptFriendRequest_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/AcceptFriendRequestResponse" message="tns:IChessServiceUser_AcceptFriendRequest_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteFriendship">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteFriendship" message="tns:IChessServiceUser_DeleteFriendship_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteFriendshipResponse" message="tns:IChessServiceUser_DeleteFriendship_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeclineFriendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeclineFriendRequest" message="tns:IChessServiceUser_DeclineFriendRequest_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeclineFriendRequestResponse" message="tns:IChessServiceUser_DeclineFriendRequest_OutputMessage" />
+    <wsdl:operation name="PlayerJoin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/PlayerJoin" message="tns:IChessServiceUser_PlayerJoin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/PlayerJoinResponse" message="tns:IChessServiceUser_PlayerJoin_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PlayerLeave">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/PlayerLeave" message="tns:IChessServiceUser_PlayerLeave_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/PlayerLeaveResponse" message="tns:IChessServiceUser_PlayerLeave_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SendMove">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/SendMove" message="tns:IChessServiceUser_SendMove_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/SendMoveResponse" message="tns:IChessServiceUser_SendMove_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetOnlinePlayers">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetOnlinePlayers" message="tns:IChessServiceUser_GetOnlinePlayers_InputMessage" />
@@ -2223,9 +3063,65 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/RespondToInvitation" message="tns:IChessServiceUser_RespondToInvitation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/RespondToInvitationResponse" message="tns:IChessServiceUser_RespondToInvitation_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SendMove">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/SendMove" message="tns:IChessServiceUser_SendMove_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/SendMoveResponse" message="tns:IChessServiceUser_SendMove_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="LeaveGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/LeaveGame" message="tns:IChessServiceUser_LeaveGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/LeaveGameResponse" message="tns:IChessServiceUser_LeaveGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAcceptedFriendsByPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayer" message="tns:IChessServiceUser_GetAcceptedFriendsByPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayerResponse" message="tns:IChessServiceUser_GetAcceptedFriendsByPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAcceptedFriendsByPlayerWithPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayerWithPlayer" message="tns:IChessServiceUser_GetAcceptedFriendsByPlayerWithPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayerWithPlayerResponse" message="tns:IChessServiceUser_GetAcceptedFriendsByPlayerWithPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingFriendRequestsForPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayer" message="tns:IChessServiceUser_GetPendingFriendRequestsForPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayerResponse" message="tns:IChessServiceUser_GetPendingFriendRequestsForPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingFriendRequestsForPlayerWithPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayerWithPlayer" message="tns:IChessServiceUser_GetPendingFriendRequestsForPlayerWithPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayerWithPlayerResponse" message="tns:IChessServiceUser_GetPendingFriendRequestsForPlayerWithPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FriendshipExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/FriendshipExists" message="tns:IChessServiceUser_FriendshipExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/FriendshipExistsResponse" message="tns:IChessServiceUser_FriendshipExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/SendFriendRequest" message="tns:IChessServiceUser_SendFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/SendFriendRequestResponse" message="tns:IChessServiceUser_SendFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequestWithObject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/SendFriendRequestWithObject" message="tns:IChessServiceUser_SendFriendRequestWithObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/SendFriendRequestWithObjectResponse" message="tns:IChessServiceUser_SendFriendRequestWithObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/AcceptFriendRequest" message="tns:IChessServiceUser_AcceptFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/AcceptFriendRequestResponse" message="tns:IChessServiceUser_AcceptFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequestWithObject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/AcceptFriendRequestWithObject" message="tns:IChessServiceUser_AcceptFriendRequestWithObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/AcceptFriendRequestWithObjectResponse" message="tns:IChessServiceUser_AcceptFriendRequestWithObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFriendship">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteFriendship" message="tns:IChessServiceUser_DeleteFriendship_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteFriendshipResponse" message="tns:IChessServiceUser_DeleteFriendship_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFriendshipWithObject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteFriendshipWithObject" message="tns:IChessServiceUser_DeleteFriendshipWithObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeleteFriendshipWithObjectResponse" message="tns:IChessServiceUser_DeleteFriendshipWithObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeclineFriendRequest" message="tns:IChessServiceUser_DeclineFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeclineFriendRequestResponse" message="tns:IChessServiceUser_DeclineFriendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequestWithObject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceUser/DeclineFriendRequestWithObject" message="tns:IChessServiceUser_DeclineFriendRequestWithObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/DeclineFriendRequestWithObjectResponse" message="tns:IChessServiceUser_DeclineFriendRequestWithObject_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PlayerJoined">
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceUser/PlayerJoined" message="tns:IChessServiceUser_PlayerJoined_OutputCallbackMessage" />
@@ -2249,6 +3145,28 @@
   <wsdl:binding name="WSDualHttpBinding_IChessServiceUser" type="tns:IChessServiceUser">
     <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllGames">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetAllGames" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAllGames_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAllGames_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGames">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetActiveGames" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetActiveGames_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetActiveGames_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetGameByID">
       <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetGameByID" style="document" />
       <wsdl:input>
@@ -2260,6 +3178,61 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetGameByIDWithGame">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetGameByIDWithGame" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetGameByIDWithGame_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetGameByIDWithGame_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertGame">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/InsertGame" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertGame_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertGame_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertGameAndReturn">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/InsertGameAndReturn" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertGameAndReturn_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertGameAndReturn_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGame">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/UpdateGame" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UpdateGame_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UpdateGame_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGame">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeleteGame" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteGame_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteGame_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetGamesByPlayer">
       <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetGamesByPlayer" style="document" />
       <wsdl:input>
@@ -2268,6 +3241,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetGamesByPlayer_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGamesByPlayerWithPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetGamesByPlayerWithPlayer" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetGamesByPlayerWithPlayer_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetGamesByPlayerWithPlayer_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -2293,91 +3277,58 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertGameAndReturn">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/InsertGameAndReturn" style="document" />
+    <wsdl:operation name="GetAllUsers">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetAllUsers" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertGameAndReturn_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAllUsers_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertGameAndReturn_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAllUsers_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateGameResult">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/UpdateGameResult" style="document" />
+    <wsdl:operation name="GetUserByID">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetUserByID" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UpdateGameResult_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetUserByID_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UpdateGameResult_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetUserByID_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteOpen">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeleteOpen" style="document" />
+    <wsdl:operation name="InsertUser">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/InsertUser" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteOpen_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertUser_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteOpen_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertUser_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllplayers">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetAllplayers" style="document" />
+    <wsdl:operation name="UpdateUser">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/UpdateUser" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAllplayers_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UpdateUser_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAllplayers_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UpdateUser_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPlayerByID">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetPlayerByID" style="document" />
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeleteUser" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetPlayerByID_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteUser_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetPlayerByID_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="InsertPlayer">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/InsertPlayer" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertPlayer_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_InsertPlayer_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdatePlayer">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/UpdatePlayer" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UpdatePlayer_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UpdatePlayer_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeletePlayer">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeletePlayer" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeletePlayer_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeletePlayer_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteUser_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -2436,6 +3387,28 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMoveByID">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetMoveByID" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetMoveByID_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetMoveByID_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastMoveByGameID">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetLastMoveByGameID" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetLastMoveByGameID_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetLastMoveByGameID_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ReturnLastMoveByGameID">
       <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/ReturnLastMoveByGameID" style="document" />
       <wsdl:input>
@@ -2455,6 +3428,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_UndoLastMove_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPlayerTurn">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/IsPlayerTurn" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_IsPlayerTurn_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_IsPlayerTurn_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -2502,69 +3486,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAcceptedFriendsByPlayer">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayer" style="document" />
+    <wsdl:operation name="PlayerJoin">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/PlayerJoin" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayer_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_PlayerJoin_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayer_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPendingFriendRequestsForPlayer">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayer" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayer_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayer_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SendFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/SendFriendRequest" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendFriendRequest_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendFriendRequest_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AcceptFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/AcceptFriendRequest" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_AcceptFriendRequest_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_AcceptFriendRequest_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteFriendship">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeleteFriendship" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteFriendship_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteFriendship_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeclineFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeclineFriendRequest" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeclineFriendRequest_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeclineFriendRequest_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_PlayerJoin_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -2576,17 +3505,6 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_PlayerLeave_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SendMove">
-      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/SendMove" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendMove_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendMove_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -2623,6 +3541,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendMove">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/SendMove" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendMove_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendMove_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="LeaveGame">
       <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/LeaveGame" style="document" />
       <wsdl:input>
@@ -2631,6 +3560,149 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_LeaveGame_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcceptedFriendsByPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayer" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayer_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayer_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcceptedFriendsByPlayerWithPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetAcceptedFriendsByPlayerWithPlayer" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayerWithPlayer_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetAcceptedFriendsByPlayerWithPlayer_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingFriendRequestsForPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayer" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayer_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayer_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingFriendRequestsForPlayerWithPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/GetPendingFriendRequestsForPlayerWithPlayer" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayerWithPlayer_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_GetPendingFriendRequestsForPlayerWithPlayer_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FriendshipExists">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/FriendshipExists" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_FriendshipExists_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_FriendshipExists_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/SendFriendRequest" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendFriendRequest_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendFriendRequest_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequestWithObject">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/SendFriendRequestWithObject" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendFriendRequestWithObject_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_SendFriendRequestWithObject_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/AcceptFriendRequest" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_AcceptFriendRequest_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_AcceptFriendRequest_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequestWithObject">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/AcceptFriendRequestWithObject" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_AcceptFriendRequestWithObject_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_AcceptFriendRequestWithObject_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFriendship">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeleteFriendship" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteFriendship_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteFriendship_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFriendshipWithObject">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeleteFriendshipWithObject" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteFriendshipWithObject_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeleteFriendshipWithObject_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeclineFriendRequest" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeclineFriendRequest_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeclineFriendRequest_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequestWithObject">
+      <soap12:operation soapAction="http://tempuri.org/IChessServiceUser/DeclineFriendRequestWithObject" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeclineFriendRequestWithObject_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IChessServiceUser_DeclineFriendRequestWithObject_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

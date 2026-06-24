@@ -25,11 +25,23 @@
   <wsdl:message name="IChessServiceAdmin_InsertGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_InsertGameAndReturn_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGameAndReturn" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_InsertGameAndReturn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGameAndReturnResponse" />
+  </wsdl:message>
   <wsdl:message name="IChessServiceAdmin_UpdateGame_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateGame" />
   </wsdl:message>
   <wsdl:message name="IChessServiceAdmin_UpdateGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_UpdateGameResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGameResult" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_UpdateGameResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGameResultResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceAdmin_DeleteGame_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteGame" />
@@ -55,6 +67,12 @@
   <wsdl:message name="IChessServiceAdmin_IsGameFinished_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsGameFinishedResponse" />
   </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_GetActiveGames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveGames" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_GetActiveGames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveGamesResponse" />
+  </wsdl:message>
   <wsdl:message name="IChessServiceAdmin_InsertMove_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertMove" />
   </wsdl:message>
@@ -78,6 +96,12 @@
   </wsdl:message>
   <wsdl:message name="IChessServiceAdmin_DeleteMovesByGameID_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteMovesByGameIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_GetAllMoves_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMoves" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_GetAllMoves_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMovesResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceAdmin_GetMovesByGameID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMovesByGameID" />
@@ -103,47 +127,47 @@
   <wsdl:message name="IChessServiceAdmin_UndoLastMove_OutputMessage">
     <wsdl:part name="parameters" element="tns:UndoLastMoveResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetAllplayers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllplayers" />
+  <wsdl:message name="IChessServiceAdmin_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetAllplayers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllplayersResponse" />
+  <wsdl:message name="IChessServiceAdmin_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetPlayerByID_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayerByID" />
+  <wsdl:message name="IChessServiceAdmin_GetUserByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByID" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetPlayerByID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayerByIDResponse" />
+  <wsdl:message name="IChessServiceAdmin_GetUserByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIDResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetPlayerByName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayerByName" />
+  <wsdl:message name="IChessServiceAdmin_GetUserByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByName" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetPlayerByName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayerByNameResponse" />
+  <wsdl:message name="IChessServiceAdmin_GetUserByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_SearchplayersByName_InputMessage">
-    <wsdl:part name="parameters" element="tns:SearchplayersByName" />
+  <wsdl:message name="IChessServiceAdmin_SearchUsersByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchUsersByName" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_SearchplayersByName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SearchplayersByNameResponse" />
+  <wsdl:message name="IChessServiceAdmin_SearchUsersByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchUsersByNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_InsertPlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:InsertPlayer" />
+  <wsdl:message name="IChessServiceAdmin_InsertUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUser" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_InsertPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InsertPlayerResponse" />
+  <wsdl:message name="IChessServiceAdmin_InsertUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_UpdatePlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePlayer" />
+  <wsdl:message name="IChessServiceAdmin_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_UpdatePlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePlayerResponse" />
+  <wsdl:message name="IChessServiceAdmin_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_DeletePlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeletePlayer" />
+  <wsdl:message name="IChessServiceAdmin_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_DeletePlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeletePlayerResponse" />
+  <wsdl:message name="IChessServiceAdmin_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceAdmin_UpdatePlayerStats_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePlayerStats" />
@@ -187,17 +211,23 @@
   <wsdl:message name="IChessServiceAdmin_GetAllFriendships_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFriendshipsResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetAcceptedFriendsByPlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByPlayer" />
+  <wsdl:message name="IChessServiceAdmin_GetAcceptedFriendsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByUser" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetAcceptedFriendsByPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByPlayerResponse" />
+  <wsdl:message name="IChessServiceAdmin_GetAcceptedFriendsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcceptedFriendsByUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetPendingFriendRequestsForPlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForPlayer" />
+  <wsdl:message name="IChessServiceAdmin_GetPendingFriendRequestsForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForUser" />
   </wsdl:message>
-  <wsdl:message name="IChessServiceAdmin_GetPendingFriendRequestsForPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForPlayerResponse" />
+  <wsdl:message name="IChessServiceAdmin_GetPendingFriendRequestsForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPendingFriendRequestsForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_FriendshipExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:FriendshipExists" />
+  </wsdl:message>
+  <wsdl:message name="IChessServiceAdmin_FriendshipExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FriendshipExistsResponse" />
   </wsdl:message>
   <wsdl:message name="IChessServiceAdmin_SendFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:SendFriendRequest" />
@@ -236,9 +266,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertGame" message="tns:IChessServiceAdmin_InsertGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertGameResponse" message="tns:IChessServiceAdmin_InsertGame_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="InsertGameAndReturn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertGameAndReturn" message="tns:IChessServiceAdmin_InsertGameAndReturn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertGameAndReturnResponse" message="tns:IChessServiceAdmin_InsertGameAndReturn_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdateGame" message="tns:IChessServiceAdmin_UpdateGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdateGameResponse" message="tns:IChessServiceAdmin_UpdateGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGameResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdateGameResult" message="tns:IChessServiceAdmin_UpdateGameResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdateGameResultResponse" message="tns:IChessServiceAdmin_UpdateGameResult_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/DeleteGame" message="tns:IChessServiceAdmin_DeleteGame_InputMessage" />
@@ -256,6 +294,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/IsGameFinished" message="tns:IChessServiceAdmin_IsGameFinished_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/IsGameFinishedResponse" message="tns:IChessServiceAdmin_IsGameFinished_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetActiveGames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetActiveGames" message="tns:IChessServiceAdmin_GetActiveGames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetActiveGamesResponse" message="tns:IChessServiceAdmin_GetActiveGames_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="InsertMove">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertMove" message="tns:IChessServiceAdmin_InsertMove_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertMoveResponse" message="tns:IChessServiceAdmin_InsertMove_OutputMessage" />
@@ -271,6 +313,10 @@
     <wsdl:operation name="DeleteMovesByGameID">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/DeleteMovesByGameID" message="tns:IChessServiceAdmin_DeleteMovesByGameID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/DeleteMovesByGameIDResponse" message="tns:IChessServiceAdmin_DeleteMovesByGameID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoves">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAllMoves" message="tns:IChessServiceAdmin_GetAllMoves_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAllMovesResponse" message="tns:IChessServiceAdmin_GetAllMoves_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMovesByGameID">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetMovesByGameID" message="tns:IChessServiceAdmin_GetMovesByGameID_InputMessage" />
@@ -288,33 +334,33 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/UndoLastMove" message="tns:IChessServiceAdmin_UndoLastMove_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/UndoLastMoveResponse" message="tns:IChessServiceAdmin_UndoLastMove_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllplayers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAllplayers" message="tns:IChessServiceAdmin_GetAllplayers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAllplayersResponse" message="tns:IChessServiceAdmin_GetAllplayers_OutputMessage" />
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAllUsers" message="tns:IChessServiceAdmin_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAllUsersResponse" message="tns:IChessServiceAdmin_GetAllUsers_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPlayerByID">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetPlayerByID" message="tns:IChessServiceAdmin_GetPlayerByID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetPlayerByIDResponse" message="tns:IChessServiceAdmin_GetPlayerByID_OutputMessage" />
+    <wsdl:operation name="GetUserByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetUserByID" message="tns:IChessServiceAdmin_GetUserByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetUserByIDResponse" message="tns:IChessServiceAdmin_GetUserByID_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPlayerByName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetPlayerByName" message="tns:IChessServiceAdmin_GetPlayerByName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetPlayerByNameResponse" message="tns:IChessServiceAdmin_GetPlayerByName_OutputMessage" />
+    <wsdl:operation name="GetUserByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetUserByName" message="tns:IChessServiceAdmin_GetUserByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetUserByNameResponse" message="tns:IChessServiceAdmin_GetUserByName_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SearchplayersByName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/SearchplayersByName" message="tns:IChessServiceAdmin_SearchplayersByName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/SearchplayersByNameResponse" message="tns:IChessServiceAdmin_SearchplayersByName_OutputMessage" />
+    <wsdl:operation name="SearchUsersByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/SearchUsersByName" message="tns:IChessServiceAdmin_SearchUsersByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/SearchUsersByNameResponse" message="tns:IChessServiceAdmin_SearchUsersByName_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="InsertPlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertPlayer" message="tns:IChessServiceAdmin_InsertPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertPlayerResponse" message="tns:IChessServiceAdmin_InsertPlayer_OutputMessage" />
+    <wsdl:operation name="InsertUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertUser" message="tns:IChessServiceAdmin_InsertUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/InsertUserResponse" message="tns:IChessServiceAdmin_InsertUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UpdatePlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayer" message="tns:IChessServiceAdmin_UpdatePlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayerResponse" message="tns:IChessServiceAdmin_UpdatePlayer_OutputMessage" />
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdateUser" message="tns:IChessServiceAdmin_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdateUserResponse" message="tns:IChessServiceAdmin_UpdateUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="DeletePlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/DeletePlayer" message="tns:IChessServiceAdmin_DeletePlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/DeletePlayerResponse" message="tns:IChessServiceAdmin_DeletePlayer_OutputMessage" />
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/DeleteUser" message="tns:IChessServiceAdmin_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/DeleteUserResponse" message="tns:IChessServiceAdmin_DeleteUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdatePlayerStats">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayerStats" message="tns:IChessServiceAdmin_UpdatePlayerStats_InputMessage" />
@@ -344,13 +390,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAllFriendships" message="tns:IChessServiceAdmin_GetAllFriendships_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAllFriendshipsResponse" message="tns:IChessServiceAdmin_GetAllFriendships_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAcceptedFriendsByPlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByPlayer" message="tns:IChessServiceAdmin_GetAcceptedFriendsByPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByPlayerResponse" message="tns:IChessServiceAdmin_GetAcceptedFriendsByPlayer_OutputMessage" />
+    <wsdl:operation name="GetAcceptedFriendsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByUser" message="tns:IChessServiceAdmin_GetAcceptedFriendsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByUserResponse" message="tns:IChessServiceAdmin_GetAcceptedFriendsByUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPendingFriendRequestsForPlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForPlayer" message="tns:IChessServiceAdmin_GetPendingFriendRequestsForPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForPlayerResponse" message="tns:IChessServiceAdmin_GetPendingFriendRequestsForPlayer_OutputMessage" />
+    <wsdl:operation name="GetPendingFriendRequestsForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForUser" message="tns:IChessServiceAdmin_GetPendingFriendRequestsForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForUserResponse" message="tns:IChessServiceAdmin_GetPendingFriendRequestsForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FriendshipExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/FriendshipExists" message="tns:IChessServiceAdmin_FriendshipExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChessServiceAdmin/FriendshipExistsResponse" message="tns:IChessServiceAdmin_FriendshipExists_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IChessServiceAdmin/SendFriendRequest" message="tns:IChessServiceAdmin_SendFriendRequest_InputMessage" />
@@ -398,8 +448,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertGameAndReturn">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/InsertGameAndReturn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateGame">
       <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/UpdateGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGameResult">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/UpdateGameResult" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -443,6 +511,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetActiveGames">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetActiveGames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertMove">
       <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/InsertMove" style="document" />
       <wsdl:input>
@@ -472,6 +549,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteMovesByGameID">
       <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/DeleteMovesByGameID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMoves">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetAllMoves" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -515,8 +601,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllplayers">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetAllplayers" style="document" />
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetAllUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -524,8 +610,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPlayerByID">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetPlayerByID" style="document" />
+    <wsdl:operation name="GetUserByID">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetUserByID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -533,8 +619,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPlayerByName">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetPlayerByName" style="document" />
+    <wsdl:operation name="GetUserByName">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetUserByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -542,8 +628,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SearchplayersByName">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/SearchplayersByName" style="document" />
+    <wsdl:operation name="SearchUsersByName">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/SearchUsersByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -551,8 +637,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertPlayer">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/InsertPlayer" style="document" />
+    <wsdl:operation name="InsertUser">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/InsertUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -560,8 +646,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdatePlayer">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/UpdatePlayer" style="document" />
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/UpdateUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -569,8 +655,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeletePlayer">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/DeletePlayer" style="document" />
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/DeleteUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -641,8 +727,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAcceptedFriendsByPlayer">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByPlayer" style="document" />
+    <wsdl:operation name="GetAcceptedFriendsByUser">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -650,8 +736,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPendingFriendRequestsForPlayer">
-      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForPlayer" style="document" />
+    <wsdl:operation name="GetPendingFriendRequestsForUser">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FriendshipExists">
+      <soap:operation soapAction="http://tempuri.org/IChessServiceAdmin/FriendshipExists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
