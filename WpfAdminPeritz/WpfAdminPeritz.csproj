@@ -80,6 +80,7 @@
     <Compile Include="Friendship_UserControl.xaml.cs">
       <DependentUpon>Friendship_UserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameLogger.cs" />
     <Compile Include="Games_UserControl.xaml.cs">
       <DependentUpon>Games_UserControl.xaml</DependentUpon>
     </Compile>
