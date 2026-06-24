@@ -371,6 +371,12 @@ namespace WpfAdminPeritz
             PromotionMenu promotionMenu = new PromotionMenu(gameState.CurrentPlayer);
             MenuContainer.Content = promotionMenu;
 
+            // Flip the promotion menu if playing as Black (same as board and pieces)
+            if (myColor == ChessLogic.Player.Black)
+            {
+                promotionMenu.LayoutTransform = new ScaleTransform(1, -1);
+            }
+
             promotionMenu.PieceSelected += pieceType =>
             {
                 MenuContainer.Content = null;
