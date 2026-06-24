@@ -200,9 +200,11 @@ namespace WpfAdminPeritz
 
             foreach (Game game in games)
             {
+                // Show who played and who won (or indicate a draw)
+                string resultText = game.Result != null ? $" ({game.Result.UserName} Won)" : " (Draw)";
                 ListBoxFriends.Items.Add(new TextBlock
                 {
-                    Text = $"{game.WhitePlayer.UserName} vs {game.BlackPlayer.UserName}",
+                    Text = $"{game.WhitePlayer.UserName} vs {game.BlackPlayer.UserName}{resultText}",
                     FontSize = 14,
                     Padding = new Thickness(8),
                     Foreground = Brushes.Black
