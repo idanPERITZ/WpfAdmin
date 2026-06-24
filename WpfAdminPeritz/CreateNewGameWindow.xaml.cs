@@ -267,11 +267,30 @@ namespace WpfAdminPeritz
                 try
                 {
                     gameMoves[localGame.Id] = moves;
+
+                    // DEBUG: Show what winner value we received
+                    MessageBox.Show(
+                        $"Game Over!\nWinner enum value: {winner}\nReason: {reason}\n\n" +
+                        $"Is White? {winner == ChessLogic.Player.White}\n" +
+                        $"Is Black? {winner == ChessLogic.Player.Black}\n" +
+                        $"Is None? {winner == ChessLogic.Player.None}",
+                        "Debug Info",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+
+                    // winner is ChessLogic.Player enum (White/Black/None)
+                    // We need to map it to the service Player object
                     Player winnerPlayer = null;
+
                     if (winner == ChessLogic.Player.White)
+                    {
                         winnerPlayer = localGame.WhitePlayer;
+                    }
                     else if (winner == ChessLogic.Player.Black)
+                    {
                         winnerPlayer = localGame.BlackPlayer;
+                    }
+                    // If winner == ChessLogic.Player.None, winnerPlayer stays null (draw)
 
                     Game completedGame = localGame;
                     localGame = null;
