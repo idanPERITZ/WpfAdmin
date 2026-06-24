@@ -292,6 +292,16 @@ namespace WpfAdminPeritz
                     }
                     // If winner == ChessLogic.Player.None, winnerPlayer stays null (draw)
 
+                    // DEBUG: Show the mapped winner
+                    MessageBox.Show(
+                        $"Mapped Winner:\n" +
+                        $"winnerPlayer: {winnerPlayer?.UserName ?? "NULL (Draw)"}\n" +
+                        $"White Player: {localGame.WhitePlayer?.UserName}\n" +
+                        $"Black Player: {localGame.BlackPlayer?.UserName}",
+                        "Debug - Mapped Winner",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+
                     Game completedGame = localGame;
                     localGame = null;
                     currentlyPlayingGame = null;
