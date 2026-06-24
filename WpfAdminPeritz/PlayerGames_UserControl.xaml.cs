@@ -74,6 +74,14 @@ namespace WpfAdminPeritz
 
         private void ShowGameDetails(Game game)
         {
+            // Re-fetch the game from the server to get the latest Result data
+            // (in case it was updated after the game list was initially loaded)
+            Game freshGame = service.GetGameByID(game);
+            if (freshGame != null)
+            {
+                game = freshGame;
+            }
+
             Player white = game.WhitePlayer;
             Player black = game.BlackPlayer;
 
