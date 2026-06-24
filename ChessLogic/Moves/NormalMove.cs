@@ -31,6 +31,10 @@ namespace ChessLogic
             // Get the piece that is moving
             Piece piece = board[FromPosition];
 
+            // If there is no piece at the source, nothing to do.
+            if (piece == null)
+                return false;
+
             // Check if there's a piece at the destination (capture)
             bool capture = !board.IsEmpty(ToPosition);
 

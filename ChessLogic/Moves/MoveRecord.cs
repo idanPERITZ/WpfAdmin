@@ -21,8 +21,13 @@ namespace ChessLogic
         // Virtual method: Checks if the move is legal (can be overridden by child classes)
         public virtual bool IsLegal(Board board)
         {
+            // If there's no piece at the source position this move is invalid
+            Piece fromPiece = board[FromPosition];
+            if (fromPiece == null)
+                return false;
+
             // Get the color of the player making the move
-            Player player = board[FromPosition].Color;
+            Player player = fromPiece.Color;
 
             // Create a copy of the board to test the move
             Board boardCopy = board.Copy();

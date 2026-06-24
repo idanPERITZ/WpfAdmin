@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="GameList">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GameList" nillable="true" type="tns:GameList" />
   <xs:complexType name="Game">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
@@ -43,6 +37,18 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:complexType name="GameList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameList" nillable="true" type="tns:GameList" />
+  <xs:complexType name="PlayerList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Player" nillable="true" type="tns:Player" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerList" nillable="true" type="tns:PlayerList" />
   <xs:complexType name="MoveRecord">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
@@ -64,12 +70,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MoveList" nillable="true" type="tns:MoveList" />
-  <xs:complexType name="PlayerList">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Player" nillable="true" type="tns:Player" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PlayerList" nillable="true" type="tns:PlayerList" />
   <xs:complexType name="FriendshipList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Friendship" nillable="true" type="tns:Friendship" />

@@ -1,132 +1,209 @@
-﻿using System.Windows;
+﻿using System;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using WpfAdminPeritz.ServiceReferenceChess;
-using ChessUI;
 
 namespace WpfAdminPeritz
 {
-    // UserControl for managing registered players in the admin panel
-    // Displays a list of all users and allows adding, updating, and deleting them
     public partial class Users_UserControl : UserControl
     {
-        // Field: WCF service client for database operations
         private ChessServiceAdminClient ChessService;
-        // Field: Full list of players loaded from the database
-        private PlayerList players;
-        // Field: The currently selected player in the list
-        private Player selectedPlayer;
-        // Field: The logged-in admin player
         private Player admin;
+        private Player selectedPlayer;
+        private DispatcherTimer onlineTimer;
 
-        // Constructor: Initializes the UserControl and loads all users
         public Users_UserControl(Player loggedInAdmin)
         {
-            // Initialize WPF components
             InitializeComponent();
-            // Store the logged-in admin
+
             admin = loggedInAdmin;
-            // Create WCF service client
+
             ChessService = new ChessServiceAdminClient();
-            // Load all users into the list
+
+            LoadUsers();
+
+            onlineTimer = new DispatcherTimer();
+
+            onlineTimer.Interval = TimeSpan.FromSeconds(2);
+
+            onlineTimer.Tick += OnlineTimer_Tick;
+
+            onlineTimer.Start();
+
+            // Fix 4: Subscribe to real-time player online/offline events
+            CallbackServiceManager.Instance.OnPlayerJoined += OnOnlineStatusChanged;
+            CallbackServiceManager.Instance.OnPlayerLeft += OnOnlineStatusChanged;
+
+            Unloaded += Users_UserControl_Unloaded;
+        }
+
+        private void OnlineTimer_Tick(object sender, EventArgs e)
+        {
             LoadUsers();
         }
 
-        // Private method: Loads all users from the database and displays them as UserUC cards
         private void LoadUsers()
         {
-            // Clear existing items
+            Player currentSelected = selectedPlayer;
+
             ListBoxUsers.Items.Clear();
-            // Get all users from database
-            players = ChessService.GetAllUsers();
-            // Create a UserUC card for each player and add to the list
+
+            PlayerList players = ChessService.GetAllplayers();
+
+            var onlinePlayers = CallbackServiceManager.Instance.GetOnlinePlayers();
+
             foreach (Player player in players)
             {
-                UserUC userUC = new UserUC(this, player);
+                // Only consider a player online if they have a valid Id and appear in the online list
+                bool isOnline = player != null &&
+                                player.Id > 0 &&
+                                onlinePlayers != null &&
+                                onlinePlayers.Any(x => x.Id == player.Id);
+
+                UserUC userUC = new UserUC(this, player, isOnline);
+
                 ListBoxUsers.Items.Add(userUC);
+
+                if (currentSelected != null &&
+                    currentSelected.Id == player.Id)
+                {
+                    ListBoxUsers.SelectedItem = userUC;
+                }
             }
         }
 
-        // Event handler: Updates the details panel when a user is selected in the list
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ListBoxUsers.SelectedItem is UserUC selected)
-            {
-                selectedPlayer = selected.GetPlayer();
-                StackPanelUserView.DataContext = selectedPlayer;
-            }
-        }
-
-        // Event handler: Deletes the selected player from the database
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
-        {
-            // Do nothing if no player is selected
-            if (selectedPlayer == null)
-                return;
-
-            // Prevent deletion of admin users
-            if (selectedPlayer.UserType == "Admin")
-            {
-                MessageBox.Show("Cannot delete an admin user.");
-                return;
-            }
-
-            // Ask for confirmation before deleting
-            MessageBoxResult result = MessageBox.Show(
-                $"Are you sure you want to delete '{selectedPlayer.UserName}'?",
-                "Confirm",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                // Delete the user from the database
-                ChessService.DeleteUser(selectedPlayer);
-                // Refresh the users list
-                LoadUsers();
-            }
-        }
-
-        // Event handler: Opens the update window for the selected player
-        private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            // Do nothing if no player is selected
-            if (selectedPlayer == null)
-                return;
-
-            // Open the update window as a dialog and wait for it to close
-            User_UpdateWindow window = new User_UpdateWindow(selectedPlayer);
-            window.ShowDialog();
-            // Refresh the users list to show updated data
-            LoadUsers();
-        }
-
-        // Event handler: Opens the add user window to create a new player
-        private void ButtonNew_Click(object sender, RoutedEventArgs e)
-        {
-            // Open the add user window as a dialog and wait for it to close
-            User_AddUserWindow window = new User_AddUserWindow();
-            window.ShowDialog();
-            // Refresh the users list to show the new player
-            LoadUsers();
-        }
-
-        // Public method: Sets the selected player and displays their details
-        // Called by UserUC when the View button is clicked
         public void Set(Player player)
         {
-            this.selectedPlayer = player;
-            StackPanelUserView.DataContext = selectedPlayer;
+            selectedPlayer = player;
 
-            // Find and select the matching UserUC in the list
+            StackPanelUserView.DataContext = player;
+
+            // Immediately select the corresponding item in the list so the selection
+            // visual (CardListBoxItemStyle IsSelected trigger) appears without delay.
             foreach (object item in ListBoxUsers.Items)
             {
                 UserUC userUC = item as UserUC;
-                if (userUC != null && userUC.GetPlayer().Id == player.Id)
+                if (userUC != null && userUC.GetPlayer() != null && userUC.GetPlayer().Id == player.Id)
                 {
-                    ListBoxUsers.SelectedItem = item;
+                    ListBoxUsers.SelectedItem = userUC;
+                    ListBoxUsers.ScrollIntoView(userUC);
                     break;
                 }
             }
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedPlayer == null)
+                return;
+
+            // Prevent deleting admin users
+            if (!string.IsNullOrEmpty(selectedPlayer.UserType) &&
+                selectedPlayer.UserType.IndexOf("Admin", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                MessageBox.Show(
+                    "You cannot delete an admin user.",
+                    "Delete User",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
+            // Prevent deleting the currently logged-in admin (self-delete)
+            if (admin != null && selectedPlayer.Id == admin.Id)
+            {
+                MessageBox.Show(
+                    "You cannot delete your own admin account.",
+                    "Delete User",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show(
+                "Are you sure you want to delete this user?",
+                "Delete User",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            ChessService.DeletePlayer(selectedPlayer);
+
+            MessageBox.Show(
+                "User deleted successfully.",
+                "Success",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+
+            selectedPlayer = null;
+
+            StackPanelUserView.DataContext = null;
+
+            LoadUsers();
+        }
+
+        private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedPlayer == null)
+                return;
+
+            User_UpdateWindow updateWindow =
+                new User_UpdateWindow(selectedPlayer);
+
+            updateWindow.ShowDialog();
+
+            LoadUsers();
+        }
+
+        private void ButtonNew_Click(object sender, RoutedEventArgs e)
+        {
+            User_AddUserWindow addWindow =
+                new User_AddUserWindow();
+
+            addWindow.ShowDialog();
+
+            LoadUsers();
+        }
+
+        // Force offline action removed per user request. Server-side PlayerLeave will be
+        // invoked automatically for the current logged-in users when the application closes
+        // (see App.xaml.cs or window OnClosed implementations where appropriate).
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UserUC selected =
+                ListBoxUsers.SelectedItem as UserUC;
+
+            if (selected == null)
+                return;
+
+            Set(selected.GetPlayer());
+        }
+
+        // Prevent the ListBox from automatically scrolling items into view
+        // because selection and programmatic scrolling are handled explicitly
+        // in the Set(...) method (ScrollIntoView is used there).
+        private void ListBoxUsers_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+        {
+            // Mark the event handled to avoid default scrolling behavior
+            e.Handled = true;
+        }
+
+        private void OnOnlineStatusChanged(WpfAdminPeritz.ServiceReferenceUserChess.Player changedPlayer)
+        {
+            Dispatcher.BeginInvoke(new Action(() => LoadUsers()));
+        }
+
+        private void Users_UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (onlineTimer != null)
+                onlineTimer.Stop();
+            CallbackServiceManager.Instance.OnPlayerJoined -= OnOnlineStatusChanged;
+            CallbackServiceManager.Instance.OnPlayerLeft -= OnOnlineStatusChanged;
         }
     }
 }

@@ -27,29 +27,26 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
     public partial class Game : WpfAdminPeritz.ServiceReferenceChess.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WpfAdminPeritz.ServiceReferenceChess.Player BlackPlayerUserIDField;
+        private WpfAdminPeritz.ServiceReferenceChess.Player BlackPlayerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime GameDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int GameIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WpfAdminPeritz.ServiceReferenceChess.Player ResultField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WpfAdminPeritz.ServiceReferenceChess.Player WhitePlayerUserIDField;
+        private WpfAdminPeritz.ServiceReferenceChess.Player WhitePlayerField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public WpfAdminPeritz.ServiceReferenceChess.Player BlackPlayerUserID {
+        public WpfAdminPeritz.ServiceReferenceChess.Player BlackPlayer {
             get {
-                return this.BlackPlayerUserIDField;
+                return this.BlackPlayerField;
             }
             set {
-                if ((object.ReferenceEquals(this.BlackPlayerUserIDField, value) != true)) {
-                    this.BlackPlayerUserIDField = value;
-                    this.RaisePropertyChanged("BlackPlayerUserID");
+                if ((object.ReferenceEquals(this.BlackPlayerField, value) != true)) {
+                    this.BlackPlayerField = value;
+                    this.RaisePropertyChanged("BlackPlayer");
                 }
             }
         }
@@ -68,19 +65,6 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int GameID {
-            get {
-                return this.GameIDField;
-            }
-            set {
-                if ((this.GameIDField.Equals(value) != true)) {
-                    this.GameIDField = value;
-                    this.RaisePropertyChanged("GameID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public WpfAdminPeritz.ServiceReferenceChess.Player Result {
             get {
                 return this.ResultField;
@@ -94,14 +78,14 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public WpfAdminPeritz.ServiceReferenceChess.Player WhitePlayerUserID {
+        public WpfAdminPeritz.ServiceReferenceChess.Player WhitePlayer {
             get {
-                return this.WhitePlayerUserIDField;
+                return this.WhitePlayerField;
             }
             set {
-                if ((object.ReferenceEquals(this.WhitePlayerUserIDField, value) != true)) {
-                    this.WhitePlayerUserIDField = value;
-                    this.RaisePropertyChanged("WhitePlayerUserID");
+                if ((object.ReferenceEquals(this.WhitePlayerField, value) != true)) {
+                    this.WhitePlayerField = value;
+                    this.RaisePropertyChanged("WhitePlayer");
                 }
             }
         }
@@ -175,6 +159,9 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         private int GamesPlayedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GoogleIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LossesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -234,6 +221,19 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
                 if ((this.GamesPlayedField.Equals(value) != true)) {
                     this.GamesPlayedField = value;
                     this.RaisePropertyChanged("GamesPlayed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GoogleId {
+            get {
+                return this.GoogleIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GoogleIdField, value) != true)) {
+                    this.GoogleIdField = value;
+                    this.RaisePropertyChanged("GoogleId");
                 }
             }
         }
@@ -301,7 +301,7 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         private string FromField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int GameIDField;
+        private WpfAdminPeritz.ServiceReferenceChess.Game GameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int MoveIndexField;
@@ -329,14 +329,14 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int GameID {
+        public WpfAdminPeritz.ServiceReferenceChess.Game Game {
             get {
-                return this.GameIDField;
+                return this.GameField;
             }
             set {
-                if ((this.GameIDField.Equals(value) != true)) {
-                    this.GameIDField = value;
-                    this.RaisePropertyChanged("GameID");
+                if ((object.ReferenceEquals(this.GameField, value) != true)) {
+                    this.GameField = value;
+                    this.RaisePropertyChanged("Game");
                 }
             }
         }
@@ -407,10 +407,10 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         private bool IsAcceptedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ReceiverIDField;
+        private WpfAdminPeritz.ServiceReferenceChess.Player ReceiverIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int RequesterIDField;
+        private WpfAdminPeritz.ServiceReferenceChess.Player RequesterIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<System.DateTime> FriendshipDate {
@@ -439,12 +439,12 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ReceiverID {
+        public WpfAdminPeritz.ServiceReferenceChess.Player ReceiverID {
             get {
                 return this.ReceiverIDField;
             }
             set {
-                if ((this.ReceiverIDField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.ReceiverIDField, value) != true)) {
                     this.ReceiverIDField = value;
                     this.RaisePropertyChanged("ReceiverID");
                 }
@@ -452,12 +452,12 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int RequesterID {
+        public WpfAdminPeritz.ServiceReferenceChess.Player RequesterID {
             get {
                 return this.RequesterIDField;
             }
             set {
-                if ((this.RequesterIDField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.RequesterIDField, value) != true)) {
                     this.RequesterIDField = value;
                     this.RaisePropertyChanged("RequesterID");
                 }
@@ -497,10 +497,10 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.GameList> GetAllGamesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetGameByID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetGameByIDResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.Game GetGameByID(int gameID);
+        WpfAdminPeritz.ServiceReferenceChess.Game GetGameByID(WpfAdminPeritz.ServiceReferenceChess.Game gameI);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetGameByID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetGameByIDResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> GetGameByIDAsync(int gameID);
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> GetGameByIDAsync(WpfAdminPeritz.ServiceReferenceChess.Game gameI);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertGame", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertGameResponse")]
         WpfAdminPeritz.ServiceReferenceChess.Game InsertGame(WpfAdminPeritz.ServiceReferenceChess.Game game);
@@ -508,23 +508,11 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertGame", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertGameResponse")]
         System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> InsertGameAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertGameAndReturn", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertGameAndReturnResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.Game InsertGameAndReturn(WpfAdminPeritz.ServiceReferenceChess.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertGameAndReturn", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertGameAndReturnResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> InsertGameAndReturnAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdateGame", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdateGameResponse")]
         void UpdateGame(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdateGame", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdateGameResponse")]
         System.Threading.Tasks.Task UpdateGameAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdateGameResult", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdateGameResultResponse")]
-        void UpdateGameResult(WpfAdminPeritz.ServiceReferenceChess.Game game);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdateGameResult", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdateGameResultResponse")]
-        System.Threading.Tasks.Task UpdateGameResultAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeleteGame", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeleteGameResponse")]
         void DeleteGame(WpfAdminPeritz.ServiceReferenceChess.Game game);
@@ -533,28 +521,22 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         System.Threading.Tasks.Task DeleteGameAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetGamesByPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetGamesByPlayerResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.GameList GetGamesByPlayer(int playerID);
+        WpfAdminPeritz.ServiceReferenceChess.GameList GetGamesByPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetGamesByPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetGamesByPlayerResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.GameList> GetGamesByPlayerAsync(int playerID);
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.GameList> GetGamesByPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetLatestGameForPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetLatestGameForPlayerResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.Game GetLatestGameForPlayer(int playerID);
+        WpfAdminPeritz.ServiceReferenceChess.Game GetLatestGameForPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetLatestGameForPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetLatestGameForPlayerResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> GetLatestGameForPlayerAsync(int playerID);
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> GetLatestGameForPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/IsGameFinished", ReplyAction="http://tempuri.org/IChessServiceAdmin/IsGameFinishedResponse")]
-        bool IsGameFinished(int gameID);
+        bool IsGameFinished(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/IsGameFinished", ReplyAction="http://tempuri.org/IChessServiceAdmin/IsGameFinishedResponse")]
-        System.Threading.Tasks.Task<bool> IsGameFinishedAsync(int gameID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetActiveGames", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetActiveGamesResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.GameList GetActiveGames();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetActiveGames", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetActiveGamesResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.GameList> GetActiveGamesAsync();
+        System.Threading.Tasks.Task<bool> IsGameFinishedAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertMove", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertMoveResponse")]
         void InsertMove(WpfAdminPeritz.ServiceReferenceChess.MoveRecord move);
@@ -575,112 +557,106 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         System.Threading.Tasks.Task DeleteMoveAsync(WpfAdminPeritz.ServiceReferenceChess.MoveRecord move);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeleteMovesByGameID", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeleteMovesByGameIDResponse")]
-        void DeleteMovesByGameID(int gameID);
+        void DeleteMovesByGameID(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeleteMovesByGameID", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeleteMovesByGameIDResponse")]
-        System.Threading.Tasks.Task DeleteMovesByGameIDAsync(int gameID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAllMoves", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAllMovesResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.MoveList GetAllMoves();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAllMoves", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAllMovesResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetAllMovesAsync();
+        System.Threading.Tasks.Task DeleteMovesByGameIDAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetMovesByGameID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetMovesByGameIDResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.MoveList GetMovesByGameID(int gameID);
+        WpfAdminPeritz.ServiceReferenceChess.MoveList GetMovesByGameID(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetMovesByGameID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetMovesByGameIDResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetMovesByGameIDAsync(int gameID);
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetMovesByGameIDAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetMovesByPlayerID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetMovesByPlayerIDResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.MoveList GetMovesByPlayerID(int playerID);
+        WpfAdminPeritz.ServiceReferenceChess.MoveList GetMovesByPlayerID(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetMovesByPlayerID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetMovesByPlayerIDResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetMovesByPlayerIDAsync(int playerID);
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetMovesByPlayerIDAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/ReturnLastMoveByGameID", ReplyAction="http://tempuri.org/IChessServiceAdmin/ReturnLastMoveByGameIDResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.MoveRecord ReturnLastMoveByGameID(int gameID);
+        WpfAdminPeritz.ServiceReferenceChess.MoveRecord ReturnLastMoveByGameID(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/ReturnLastMoveByGameID", ReplyAction="http://tempuri.org/IChessServiceAdmin/ReturnLastMoveByGameIDResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveRecord> ReturnLastMoveByGameIDAsync(int gameID);
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveRecord> ReturnLastMoveByGameIDAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UndoLastMove", ReplyAction="http://tempuri.org/IChessServiceAdmin/UndoLastMoveResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.MoveRecord UndoLastMove(int gameID);
+        WpfAdminPeritz.ServiceReferenceChess.MoveRecord UndoLastMove(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UndoLastMove", ReplyAction="http://tempuri.org/IChessServiceAdmin/UndoLastMoveResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveRecord> UndoLastMoveAsync(int gameID);
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveRecord> UndoLastMoveAsync(WpfAdminPeritz.ServiceReferenceChess.Game game);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAllUsers", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAllUsersResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.PlayerList GetAllUsers();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAllplayers", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAllplayersResponse")]
+        WpfAdminPeritz.ServiceReferenceChess.PlayerList GetAllplayers();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAllUsers", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAllUsersResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.PlayerList> GetAllUsersAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAllplayers", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAllplayersResponse")]
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.PlayerList> GetAllplayersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetUserByID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetUserByIDResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.Player GetUserByID(int userID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetPlayerByID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetPlayerByIDResponse")]
+        WpfAdminPeritz.ServiceReferenceChess.Player GetPlayerByID(int playerID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetUserByID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetUserByIDResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Player> GetUserByIDAsync(int userID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetPlayerByID", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetPlayerByIDResponse")]
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Player> GetPlayerByIDAsync(int playerID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetUserByName", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetUserByNameResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.Player GetUserByName(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetPlayerByName", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetPlayerByNameResponse")]
+        WpfAdminPeritz.ServiceReferenceChess.Player GetPlayerByName(string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetUserByName", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetUserByNameResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Player> GetUserByNameAsync(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetPlayerByName", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetPlayerByNameResponse")]
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Player> GetPlayerByNameAsync(string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/SearchUsersByName", ReplyAction="http://tempuri.org/IChessServiceAdmin/SearchUsersByNameResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.PlayerList SearchUsersByName(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/SearchplayersByName", ReplyAction="http://tempuri.org/IChessServiceAdmin/SearchplayersByNameResponse")]
+        WpfAdminPeritz.ServiceReferenceChess.PlayerList SearchplayersByName(string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/SearchUsersByName", ReplyAction="http://tempuri.org/IChessServiceAdmin/SearchUsersByNameResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.PlayerList> SearchUsersByNameAsync(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/SearchplayersByName", ReplyAction="http://tempuri.org/IChessServiceAdmin/SearchplayersByNameResponse")]
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.PlayerList> SearchplayersByNameAsync(string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertUserResponse")]
-        void InsertUser(WpfAdminPeritz.ServiceReferenceChess.Player user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertPlayerResponse")]
+        void InsertPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertUserResponse")]
-        System.Threading.Tasks.Task InsertUserAsync(WpfAdminPeritz.ServiceReferenceChess.Player user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/InsertPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/InsertPlayerResponse")]
+        System.Threading.Tasks.Task InsertPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdateUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdateUserResponse")]
-        void UpdateUser(WpfAdminPeritz.ServiceReferenceChess.Player user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdatePlayerResponse")]
+        void UpdatePlayer(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdateUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdateUserResponse")]
-        System.Threading.Tasks.Task UpdateUserAsync(WpfAdminPeritz.ServiceReferenceChess.Player user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdatePlayerResponse")]
+        System.Threading.Tasks.Task UpdatePlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeleteUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeleteUserResponse")]
-        void DeleteUser(WpfAdminPeritz.ServiceReferenceChess.Player user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeletePlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeletePlayerResponse")]
+        void DeletePlayer(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeleteUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeleteUserResponse")]
-        System.Threading.Tasks.Task DeleteUserAsync(WpfAdminPeritz.ServiceReferenceChess.Player user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayerStats", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdatePlayerStatsResponse")]
-        void UpdatePlayerStats(int playerID, bool won);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeletePlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeletePlayerResponse")]
+        System.Threading.Tasks.Task DeletePlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayerStats", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdatePlayerStatsResponse")]
-        System.Threading.Tasks.Task UpdatePlayerStatsAsync(int playerID, bool won);
+        void UpdatePlayerStats(WpfAdminPeritz.ServiceReferenceChess.Player player, bool won);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayerStats", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdatePlayerStatsResponse")]
+        System.Threading.Tasks.Task UpdatePlayerStatsAsync(WpfAdminPeritz.ServiceReferenceChess.Player player, bool won);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayerDraw", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdatePlayerDrawResponse")]
-        void UpdatePlayerDraw(int playerID);
+        void UpdatePlayerDraw(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/UpdatePlayerDraw", ReplyAction="http://tempuri.org/IChessServiceAdmin/UpdatePlayerDrawResponse")]
-        System.Threading.Tasks.Task UpdatePlayerDrawAsync(int playerID);
+        System.Threading.Tasks.Task UpdatePlayerDrawAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/RevertPlayerStats", ReplyAction="http://tempuri.org/IChessServiceAdmin/RevertPlayerStatsResponse")]
-        void RevertPlayerStats(int playerID, bool won);
+        void RevertPlayerStats(WpfAdminPeritz.ServiceReferenceChess.Player player, bool won);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/RevertPlayerStats", ReplyAction="http://tempuri.org/IChessServiceAdmin/RevertPlayerStatsResponse")]
-        System.Threading.Tasks.Task RevertPlayerStatsAsync(int playerID, bool won);
+        System.Threading.Tasks.Task RevertPlayerStatsAsync(WpfAdminPeritz.ServiceReferenceChess.Player player, bool won);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/RevertPlayerDraw", ReplyAction="http://tempuri.org/IChessServiceAdmin/RevertPlayerDrawResponse")]
-        void RevertPlayerDraw(int playerID);
+        void RevertPlayerDraw(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/RevertPlayerDraw", ReplyAction="http://tempuri.org/IChessServiceAdmin/RevertPlayerDrawResponse")]
-        System.Threading.Tasks.Task RevertPlayerDrawAsync(int playerID);
+        System.Threading.Tasks.Task RevertPlayerDrawAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/IsPlayerTurn", ReplyAction="http://tempuri.org/IChessServiceAdmin/IsPlayerTurnResponse")]
-        bool IsPlayerTurn(int gameID, int playerID);
+        bool IsPlayerTurn(WpfAdminPeritz.ServiceReferenceChess.Game game, WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/IsPlayerTurn", ReplyAction="http://tempuri.org/IChessServiceAdmin/IsPlayerTurnResponse")]
-        System.Threading.Tasks.Task<bool> IsPlayerTurnAsync(int gameID, int playerID);
+        System.Threading.Tasks.Task<bool> IsPlayerTurnAsync(WpfAdminPeritz.ServiceReferenceChess.Game game, WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/SignIn", ReplyAction="http://tempuri.org/IChessServiceAdmin/SignInResponse")]
         WpfAdminPeritz.ServiceReferenceChess.Player SignIn(string email, string password);
@@ -694,47 +670,41 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAllFriendships", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAllFriendshipsResponse")]
         System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetAllFriendshipsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByUserResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.FriendshipList GetAcceptedFriendsByUser(int userID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByPlayerResponse")]
+        WpfAdminPeritz.ServiceReferenceChess.FriendshipList GetAcceptedFriendsByPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByUserResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetAcceptedFriendsByUserAsync(int userID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetAcceptedFriendsByPlayerResponse")]
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetAcceptedFriendsByPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForUserResponse")]
-        WpfAdminPeritz.ServiceReferenceChess.FriendshipList GetPendingFriendRequestsForUser(int userID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForPlayerResponse")]
+        WpfAdminPeritz.ServiceReferenceChess.FriendshipList GetPendingFriendRequestsForPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForUser", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForUserResponse")]
-        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetPendingFriendRequestsForUserAsync(int userID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/FriendshipExists", ReplyAction="http://tempuri.org/IChessServiceAdmin/FriendshipExistsResponse")]
-        bool FriendshipExists(int userA, int userB);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/FriendshipExists", ReplyAction="http://tempuri.org/IChessServiceAdmin/FriendshipExistsResponse")]
-        System.Threading.Tasks.Task<bool> FriendshipExistsAsync(int userA, int userB);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForPlayer", ReplyAction="http://tempuri.org/IChessServiceAdmin/GetPendingFriendRequestsForPlayerResponse")]
+        System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetPendingFriendRequestsForPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/SendFriendRequest", ReplyAction="http://tempuri.org/IChessServiceAdmin/SendFriendRequestResponse")]
-        int SendFriendRequest(int requesterID, int receiverID);
+        int SendFriendRequest(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/SendFriendRequest", ReplyAction="http://tempuri.org/IChessServiceAdmin/SendFriendRequestResponse")]
-        System.Threading.Tasks.Task<int> SendFriendRequestAsync(int requesterID, int receiverID);
+        System.Threading.Tasks.Task<int> SendFriendRequestAsync(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/AcceptFriendRequest", ReplyAction="http://tempuri.org/IChessServiceAdmin/AcceptFriendRequestResponse")]
-        void AcceptFriendRequest(int friendshipID);
+        void AcceptFriendRequest(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/AcceptFriendRequest", ReplyAction="http://tempuri.org/IChessServiceAdmin/AcceptFriendRequestResponse")]
-        System.Threading.Tasks.Task AcceptFriendRequestAsync(int friendshipID);
+        System.Threading.Tasks.Task AcceptFriendRequestAsync(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeleteFriendship", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeleteFriendshipResponse")]
-        void DeleteFriendship(int friendshipID);
+        void DeleteFriendship(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeleteFriendship", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeleteFriendshipResponse")]
-        System.Threading.Tasks.Task DeleteFriendshipAsync(int friendshipID);
+        System.Threading.Tasks.Task DeleteFriendshipAsync(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeclineFriendRequest", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeclineFriendRequestResponse")]
-        void DeclineFriendRequest(int friendshipID);
+        void DeclineFriendRequest(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessServiceAdmin/DeclineFriendRequest", ReplyAction="http://tempuri.org/IChessServiceAdmin/DeclineFriendRequestResponse")]
-        System.Threading.Tasks.Task DeclineFriendRequestAsync(int friendshipID);
+        System.Threading.Tasks.Task DeclineFriendRequestAsync(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -772,12 +742,12 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
             return base.Channel.GetAllGamesAsync();
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.Game GetGameByID(int gameID) {
-            return base.Channel.GetGameByID(gameID);
+        public WpfAdminPeritz.ServiceReferenceChess.Game GetGameByID(WpfAdminPeritz.ServiceReferenceChess.Game gameI) {
+            return base.Channel.GetGameByID(gameI);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> GetGameByIDAsync(int gameID) {
-            return base.Channel.GetGameByIDAsync(gameID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> GetGameByIDAsync(WpfAdminPeritz.ServiceReferenceChess.Game gameI) {
+            return base.Channel.GetGameByIDAsync(gameI);
         }
         
         public WpfAdminPeritz.ServiceReferenceChess.Game InsertGame(WpfAdminPeritz.ServiceReferenceChess.Game game) {
@@ -788,28 +758,12 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
             return base.Channel.InsertGameAsync(game);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.Game InsertGameAndReturn(WpfAdminPeritz.ServiceReferenceChess.Game game) {
-            return base.Channel.InsertGameAndReturn(game);
-        }
-        
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> InsertGameAndReturnAsync(WpfAdminPeritz.ServiceReferenceChess.Game game) {
-            return base.Channel.InsertGameAndReturnAsync(game);
-        }
-        
         public void UpdateGame(WpfAdminPeritz.ServiceReferenceChess.Game game) {
             base.Channel.UpdateGame(game);
         }
         
         public System.Threading.Tasks.Task UpdateGameAsync(WpfAdminPeritz.ServiceReferenceChess.Game game) {
             return base.Channel.UpdateGameAsync(game);
-        }
-        
-        public void UpdateGameResult(WpfAdminPeritz.ServiceReferenceChess.Game game) {
-            base.Channel.UpdateGameResult(game);
-        }
-        
-        public System.Threading.Tasks.Task UpdateGameResultAsync(WpfAdminPeritz.ServiceReferenceChess.Game game) {
-            return base.Channel.UpdateGameResultAsync(game);
         }
         
         public void DeleteGame(WpfAdminPeritz.ServiceReferenceChess.Game game) {
@@ -820,36 +774,28 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
             return base.Channel.DeleteGameAsync(game);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.GameList GetGamesByPlayer(int playerID) {
-            return base.Channel.GetGamesByPlayer(playerID);
+        public WpfAdminPeritz.ServiceReferenceChess.GameList GetGamesByPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetGamesByPlayer(player);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.GameList> GetGamesByPlayerAsync(int playerID) {
-            return base.Channel.GetGamesByPlayerAsync(playerID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.GameList> GetGamesByPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetGamesByPlayerAsync(player);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.Game GetLatestGameForPlayer(int playerID) {
-            return base.Channel.GetLatestGameForPlayer(playerID);
+        public WpfAdminPeritz.ServiceReferenceChess.Game GetLatestGameForPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetLatestGameForPlayer(player);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> GetLatestGameForPlayerAsync(int playerID) {
-            return base.Channel.GetLatestGameForPlayerAsync(playerID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Game> GetLatestGameForPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetLatestGameForPlayerAsync(player);
         }
         
-        public bool IsGameFinished(int gameID) {
-            return base.Channel.IsGameFinished(gameID);
+        public bool IsGameFinished(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.IsGameFinished(game);
         }
         
-        public System.Threading.Tasks.Task<bool> IsGameFinishedAsync(int gameID) {
-            return base.Channel.IsGameFinishedAsync(gameID);
-        }
-        
-        public WpfAdminPeritz.ServiceReferenceChess.GameList GetActiveGames() {
-            return base.Channel.GetActiveGames();
-        }
-        
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.GameList> GetActiveGamesAsync() {
-            return base.Channel.GetActiveGamesAsync();
+        public System.Threading.Tasks.Task<bool> IsGameFinishedAsync(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.IsGameFinishedAsync(game);
         }
         
         public void InsertMove(WpfAdminPeritz.ServiceReferenceChess.MoveRecord move) {
@@ -876,148 +822,140 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
             return base.Channel.DeleteMoveAsync(move);
         }
         
-        public void DeleteMovesByGameID(int gameID) {
-            base.Channel.DeleteMovesByGameID(gameID);
+        public void DeleteMovesByGameID(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            base.Channel.DeleteMovesByGameID(game);
         }
         
-        public System.Threading.Tasks.Task DeleteMovesByGameIDAsync(int gameID) {
-            return base.Channel.DeleteMovesByGameIDAsync(gameID);
+        public System.Threading.Tasks.Task DeleteMovesByGameIDAsync(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.DeleteMovesByGameIDAsync(game);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.MoveList GetAllMoves() {
-            return base.Channel.GetAllMoves();
+        public WpfAdminPeritz.ServiceReferenceChess.MoveList GetMovesByGameID(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.GetMovesByGameID(game);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetAllMovesAsync() {
-            return base.Channel.GetAllMovesAsync();
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetMovesByGameIDAsync(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.GetMovesByGameIDAsync(game);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.MoveList GetMovesByGameID(int gameID) {
-            return base.Channel.GetMovesByGameID(gameID);
+        public WpfAdminPeritz.ServiceReferenceChess.MoveList GetMovesByPlayerID(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetMovesByPlayerID(player);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetMovesByGameIDAsync(int gameID) {
-            return base.Channel.GetMovesByGameIDAsync(gameID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetMovesByPlayerIDAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetMovesByPlayerIDAsync(player);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.MoveList GetMovesByPlayerID(int playerID) {
-            return base.Channel.GetMovesByPlayerID(playerID);
+        public WpfAdminPeritz.ServiceReferenceChess.MoveRecord ReturnLastMoveByGameID(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.ReturnLastMoveByGameID(game);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveList> GetMovesByPlayerIDAsync(int playerID) {
-            return base.Channel.GetMovesByPlayerIDAsync(playerID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveRecord> ReturnLastMoveByGameIDAsync(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.ReturnLastMoveByGameIDAsync(game);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.MoveRecord ReturnLastMoveByGameID(int gameID) {
-            return base.Channel.ReturnLastMoveByGameID(gameID);
+        public WpfAdminPeritz.ServiceReferenceChess.MoveRecord UndoLastMove(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.UndoLastMove(game);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveRecord> ReturnLastMoveByGameIDAsync(int gameID) {
-            return base.Channel.ReturnLastMoveByGameIDAsync(gameID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveRecord> UndoLastMoveAsync(WpfAdminPeritz.ServiceReferenceChess.Game game) {
+            return base.Channel.UndoLastMoveAsync(game);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.MoveRecord UndoLastMove(int gameID) {
-            return base.Channel.UndoLastMove(gameID);
+        public WpfAdminPeritz.ServiceReferenceChess.PlayerList GetAllplayers() {
+            return base.Channel.GetAllplayers();
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.MoveRecord> UndoLastMoveAsync(int gameID) {
-            return base.Channel.UndoLastMoveAsync(gameID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.PlayerList> GetAllplayersAsync() {
+            return base.Channel.GetAllplayersAsync();
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.PlayerList GetAllUsers() {
-            return base.Channel.GetAllUsers();
+        public WpfAdminPeritz.ServiceReferenceChess.Player GetPlayerByID(int playerID) {
+            return base.Channel.GetPlayerByID(playerID);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.PlayerList> GetAllUsersAsync() {
-            return base.Channel.GetAllUsersAsync();
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Player> GetPlayerByIDAsync(int playerID) {
+            return base.Channel.GetPlayerByIDAsync(playerID);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.Player GetUserByID(int userID) {
-            return base.Channel.GetUserByID(userID);
+        public WpfAdminPeritz.ServiceReferenceChess.Player GetPlayerByName(string name) {
+            return base.Channel.GetPlayerByName(name);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Player> GetUserByIDAsync(int userID) {
-            return base.Channel.GetUserByIDAsync(userID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Player> GetPlayerByNameAsync(string name) {
+            return base.Channel.GetPlayerByNameAsync(name);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.Player GetUserByName(string name) {
-            return base.Channel.GetUserByName(name);
+        public WpfAdminPeritz.ServiceReferenceChess.PlayerList SearchplayersByName(string name) {
+            return base.Channel.SearchplayersByName(name);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.Player> GetUserByNameAsync(string name) {
-            return base.Channel.GetUserByNameAsync(name);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.PlayerList> SearchplayersByNameAsync(string name) {
+            return base.Channel.SearchplayersByNameAsync(name);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.PlayerList SearchUsersByName(string name) {
-            return base.Channel.SearchUsersByName(name);
+        public void InsertPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            base.Channel.InsertPlayer(player);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.PlayerList> SearchUsersByNameAsync(string name) {
-            return base.Channel.SearchUsersByNameAsync(name);
+        public System.Threading.Tasks.Task InsertPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.InsertPlayerAsync(player);
         }
         
-        public void InsertUser(WpfAdminPeritz.ServiceReferenceChess.Player user) {
-            base.Channel.InsertUser(user);
+        public void UpdatePlayer(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            base.Channel.UpdatePlayer(player);
         }
         
-        public System.Threading.Tasks.Task InsertUserAsync(WpfAdminPeritz.ServiceReferenceChess.Player user) {
-            return base.Channel.InsertUserAsync(user);
+        public System.Threading.Tasks.Task UpdatePlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.UpdatePlayerAsync(player);
         }
         
-        public void UpdateUser(WpfAdminPeritz.ServiceReferenceChess.Player user) {
-            base.Channel.UpdateUser(user);
+        public void DeletePlayer(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            base.Channel.DeletePlayer(player);
         }
         
-        public System.Threading.Tasks.Task UpdateUserAsync(WpfAdminPeritz.ServiceReferenceChess.Player user) {
-            return base.Channel.UpdateUserAsync(user);
+        public System.Threading.Tasks.Task DeletePlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.DeletePlayerAsync(player);
         }
         
-        public void DeleteUser(WpfAdminPeritz.ServiceReferenceChess.Player user) {
-            base.Channel.DeleteUser(user);
+        public void UpdatePlayerStats(WpfAdminPeritz.ServiceReferenceChess.Player player, bool won) {
+            base.Channel.UpdatePlayerStats(player, won);
         }
         
-        public System.Threading.Tasks.Task DeleteUserAsync(WpfAdminPeritz.ServiceReferenceChess.Player user) {
-            return base.Channel.DeleteUserAsync(user);
+        public System.Threading.Tasks.Task UpdatePlayerStatsAsync(WpfAdminPeritz.ServiceReferenceChess.Player player, bool won) {
+            return base.Channel.UpdatePlayerStatsAsync(player, won);
         }
         
-        public void UpdatePlayerStats(int playerID, bool won) {
-            base.Channel.UpdatePlayerStats(playerID, won);
+        public void UpdatePlayerDraw(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            base.Channel.UpdatePlayerDraw(player);
         }
         
-        public System.Threading.Tasks.Task UpdatePlayerStatsAsync(int playerID, bool won) {
-            return base.Channel.UpdatePlayerStatsAsync(playerID, won);
+        public System.Threading.Tasks.Task UpdatePlayerDrawAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.UpdatePlayerDrawAsync(player);
         }
         
-        public void UpdatePlayerDraw(int playerID) {
-            base.Channel.UpdatePlayerDraw(playerID);
+        public void RevertPlayerStats(WpfAdminPeritz.ServiceReferenceChess.Player player, bool won) {
+            base.Channel.RevertPlayerStats(player, won);
         }
         
-        public System.Threading.Tasks.Task UpdatePlayerDrawAsync(int playerID) {
-            return base.Channel.UpdatePlayerDrawAsync(playerID);
+        public System.Threading.Tasks.Task RevertPlayerStatsAsync(WpfAdminPeritz.ServiceReferenceChess.Player player, bool won) {
+            return base.Channel.RevertPlayerStatsAsync(player, won);
         }
         
-        public void RevertPlayerStats(int playerID, bool won) {
-            base.Channel.RevertPlayerStats(playerID, won);
+        public void RevertPlayerDraw(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            base.Channel.RevertPlayerDraw(player);
         }
         
-        public System.Threading.Tasks.Task RevertPlayerStatsAsync(int playerID, bool won) {
-            return base.Channel.RevertPlayerStatsAsync(playerID, won);
+        public System.Threading.Tasks.Task RevertPlayerDrawAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.RevertPlayerDrawAsync(player);
         }
         
-        public void RevertPlayerDraw(int playerID) {
-            base.Channel.RevertPlayerDraw(playerID);
+        public bool IsPlayerTurn(WpfAdminPeritz.ServiceReferenceChess.Game game, WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.IsPlayerTurn(game, player);
         }
         
-        public System.Threading.Tasks.Task RevertPlayerDrawAsync(int playerID) {
-            return base.Channel.RevertPlayerDrawAsync(playerID);
-        }
-        
-        public bool IsPlayerTurn(int gameID, int playerID) {
-            return base.Channel.IsPlayerTurn(gameID, playerID);
-        }
-        
-        public System.Threading.Tasks.Task<bool> IsPlayerTurnAsync(int gameID, int playerID) {
-            return base.Channel.IsPlayerTurnAsync(gameID, playerID);
+        public System.Threading.Tasks.Task<bool> IsPlayerTurnAsync(WpfAdminPeritz.ServiceReferenceChess.Game game, WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.IsPlayerTurnAsync(game, player);
         }
         
         public WpfAdminPeritz.ServiceReferenceChess.Player SignIn(string email, string password) {
@@ -1036,60 +974,52 @@ namespace WpfAdminPeritz.ServiceReferenceChess {
             return base.Channel.GetAllFriendshipsAsync();
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.FriendshipList GetAcceptedFriendsByUser(int userID) {
-            return base.Channel.GetAcceptedFriendsByUser(userID);
+        public WpfAdminPeritz.ServiceReferenceChess.FriendshipList GetAcceptedFriendsByPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetAcceptedFriendsByPlayer(player);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetAcceptedFriendsByUserAsync(int userID) {
-            return base.Channel.GetAcceptedFriendsByUserAsync(userID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetAcceptedFriendsByPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetAcceptedFriendsByPlayerAsync(player);
         }
         
-        public WpfAdminPeritz.ServiceReferenceChess.FriendshipList GetPendingFriendRequestsForUser(int userID) {
-            return base.Channel.GetPendingFriendRequestsForUser(userID);
+        public WpfAdminPeritz.ServiceReferenceChess.FriendshipList GetPendingFriendRequestsForPlayer(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetPendingFriendRequestsForPlayer(player);
         }
         
-        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetPendingFriendRequestsForUserAsync(int userID) {
-            return base.Channel.GetPendingFriendRequestsForUserAsync(userID);
+        public System.Threading.Tasks.Task<WpfAdminPeritz.ServiceReferenceChess.FriendshipList> GetPendingFriendRequestsForPlayerAsync(WpfAdminPeritz.ServiceReferenceChess.Player player) {
+            return base.Channel.GetPendingFriendRequestsForPlayerAsync(player);
         }
         
-        public bool FriendshipExists(int userA, int userB) {
-            return base.Channel.FriendshipExists(userA, userB);
+        public int SendFriendRequest(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship) {
+            return base.Channel.SendFriendRequest(friendship);
         }
         
-        public System.Threading.Tasks.Task<bool> FriendshipExistsAsync(int userA, int userB) {
-            return base.Channel.FriendshipExistsAsync(userA, userB);
+        public System.Threading.Tasks.Task<int> SendFriendRequestAsync(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship) {
+            return base.Channel.SendFriendRequestAsync(friendship);
         }
         
-        public int SendFriendRequest(int requesterID, int receiverID) {
-            return base.Channel.SendFriendRequest(requesterID, receiverID);
+        public void AcceptFriendRequest(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship) {
+            base.Channel.AcceptFriendRequest(friendship);
         }
         
-        public System.Threading.Tasks.Task<int> SendFriendRequestAsync(int requesterID, int receiverID) {
-            return base.Channel.SendFriendRequestAsync(requesterID, receiverID);
+        public System.Threading.Tasks.Task AcceptFriendRequestAsync(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship) {
+            return base.Channel.AcceptFriendRequestAsync(friendship);
         }
         
-        public void AcceptFriendRequest(int friendshipID) {
-            base.Channel.AcceptFriendRequest(friendshipID);
+        public void DeleteFriendship(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship) {
+            base.Channel.DeleteFriendship(friendship);
         }
         
-        public System.Threading.Tasks.Task AcceptFriendRequestAsync(int friendshipID) {
-            return base.Channel.AcceptFriendRequestAsync(friendshipID);
+        public System.Threading.Tasks.Task DeleteFriendshipAsync(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship) {
+            return base.Channel.DeleteFriendshipAsync(friendship);
         }
         
-        public void DeleteFriendship(int friendshipID) {
-            base.Channel.DeleteFriendship(friendshipID);
+        public void DeclineFriendRequest(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship) {
+            base.Channel.DeclineFriendRequest(friendship);
         }
         
-        public System.Threading.Tasks.Task DeleteFriendshipAsync(int friendshipID) {
-            return base.Channel.DeleteFriendshipAsync(friendshipID);
-        }
-        
-        public void DeclineFriendRequest(int friendshipID) {
-            base.Channel.DeclineFriendRequest(friendshipID);
-        }
-        
-        public System.Threading.Tasks.Task DeclineFriendRequestAsync(int friendshipID) {
-            return base.Channel.DeclineFriendRequestAsync(friendshipID);
+        public System.Threading.Tasks.Task DeclineFriendRequestAsync(WpfAdminPeritz.ServiceReferenceChess.Friendship friendship) {
+            return base.Channel.DeclineFriendRequestAsync(friendship);
         }
     }
 }

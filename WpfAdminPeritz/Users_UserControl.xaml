@@ -65,7 +65,7 @@
         </StackPanel>
 
         <!-- LEFT SIDE USERS LIST -->
-        <Border Grid.Row="2" Grid.Column="0"
+            <Border Grid.Row="2" Grid.Column="0"
                 Background="White" CornerRadius="10"
                 Padding="0" Margin="10,0,10,0">
             <ListBox x:Name="ListBoxUsers"
@@ -73,40 +73,10 @@
                      Background="Transparent"
                      HorizontalContentAlignment="Stretch"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                     SelectionChanged="ListBox_SelectionChanged">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Padding" Value="0"/>
-                        <Setter Property="Margin" Value="0"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListBoxItem">
-                                    <Border x:Name="ItemBorder"
-                                            Background="{TemplateBinding Background}"
-                                            BorderThickness="0"
-                                            CornerRadius="8"
-                                            Margin="4,2">
-                                        <ContentPresenter/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="ItemBorder" Property="Background" Value="#E8E8E8"/>
-                                            <Setter TargetName="ItemBorder" Property="BorderBrush" Value="#111"/>
-                                            <Setter TargetName="ItemBorder" Property="BorderThickness" Value="2"/>
-                                        </Trigger>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="ItemBorder" Property="Background" Value="#F0F0F0"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-            </ListBox>
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     ItemContainerStyle="{StaticResource CardListBoxItemStyle}"
+                     SelectionChanged="ListBox_SelectionChanged"
+                     RequestBringIntoView="ListBoxUsers_RequestBringIntoView"/>
         </Border>
 
         <!-- RIGHT SIDE -->

@@ -57,8 +57,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CallbackServiceManager.cs" />
     <Compile Include="ChessMainWindowUserControl.xaml.cs">
       <DependentUpon>ChessMainWindowUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceReferenceChess\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceReferenceUserChess\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNewGameWindow.xaml.cs">
+      <DependentUpon>CreateNewGameWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="FriendshipUC.xaml.cs">
       <DependentUpon>FriendshipUC.xaml</DependentUpon>
@@ -72,8 +86,26 @@
     <Compile Include="GameUC.xaml.cs">
       <DependentUpon>GameUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OpponentStatsPopup.xaml.cs">
-      <DependentUpon>OpponentStatsPopup.xaml</DependentUpon>
+    <Compile Include="GameUC_Player.xaml.cs">
+      <DependentUpon>GameUC_Player.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerFriends_UserControl.xaml.cs">
+      <DependentUpon>PlayerFriends_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerGames_UserControl.xaml.cs">
+      <DependentUpon>PlayerGames_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerMainWindow.xaml.cs">
+      <DependentUpon>PlayerMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerPlayers_UserControl.xaml.cs">
+      <DependentUpon>PlayerPlayers_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SignUpWindow.xaml.cs">
+      <DependentUpon>SignUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserUC.xaml.cs">
+      <DependentUpon>UserUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_AddUserWindow.xaml.cs">
       <DependentUpon>User_AddUserWindow.xaml</DependentUpon>
@@ -87,10 +119,11 @@
     <Compile Include="User_UpdateWindow.xaml.cs">
       <DependentUpon>User_UpdateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserUC.xaml.cs">
-      <DependentUpon>UserUC.xaml</DependentUpon>
-    </Compile>
     <Page Include="ChessMainWindowUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateNewGameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,7 +143,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OpponentStatsPopup.xaml">
+    <Page Include="GameUC_Player.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerFriends_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerGames_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerPlayers_UserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,20 +190,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Connected Services\ServiceReferenceChess\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="User_UpdateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,6 +248,37 @@
     <None Include="Connected Services\ServiceReferenceChess\WpfAdminPeritz.ServiceReferenceChess.PlayerList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\ChessServiceUser.wsdl" />
+    <None Include="Connected Services\ServiceReferenceUserChess\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\WpfAdminPeritz.ServiceReferenceUserChess.FriendshipList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\WpfAdminPeritz.ServiceReferenceUserChess.Game.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\WpfAdminPeritz.ServiceReferenceUserChess.GameList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\WpfAdminPeritz.ServiceReferenceUserChess.MoveList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\WpfAdminPeritz.ServiceReferenceUserChess.MoveRecord.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\WpfAdminPeritz.ServiceReferenceUserChess.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceUserChess\WpfAdminPeritz.ServiceReferenceUserChess.PlayerList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -214,21 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReferenceChess\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReferenceChess\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReferenceChess\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReferenceChess\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReferenceChess\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <WCFMetadataStorage Include="Connected Services\ServiceReferenceUserChess\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChessLogic\ChessLogic.csproj">
@@ -287,6 +351,36 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\White Rook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceUserChess\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceUserChess\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceUserChess\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceUserChess\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceChess\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceChess\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceChess\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceChess\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

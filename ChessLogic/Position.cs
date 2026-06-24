@@ -35,16 +35,6 @@ namespace ChessLogic
             return Player.Black;
         }
 
-        // Override: Checks if two positions are equal
-        public override bool Equals(object obj)
-        {
-            // Check if object is a Position and has same row and column
-            return obj is Position position &&
-                   Row == position.Row &&
-                   Column == position.Column;
-        }
-
-        // Override: Generates hash code for position (used in collections)
         // Override: Generates hash code for position (used in collections)
         public override int GetHashCode()
         {
@@ -54,6 +44,16 @@ namespace ChessLogic
             hash = hash * 31 + Column;
             return hash;
         }
+
+        // Override: Checks if two positions are equal
+        public override bool Equals(object obj)
+        {
+            // Check if object is a Position and has same row and column
+            return obj is Position position &&
+                   Row == position.Row &&
+                   Column == position.Column;
+        }
+
 
         // Operator overload: Checks if two positions are equal using ==
         public static bool operator ==(Position left, Position right)

@@ -40,13 +40,23 @@ namespace ChessLogic
         // Method: Get the position where a player's pawn skipped a square
         public Position GetPawnSkipPosition(Player player)
         {
-            return pawnSkipPositions[player];
+            // Return the pawn skip position for the player if present.
+            // Some callers may pass an invalid player (e.g. Player.None), so
+            // use TryGetValue to avoid KeyNotFoundException and return null
+            // when no entry exists.
+            if (pawnSkipPositions.TryGetValue(player, out Position pos))
+                return pos;
+
+            return null;
         }
 
         // Method: Set the position where a player's pawn skipped a square
         public void SetPawnSkipPosition(Player player, Position position)
         {
-            pawnSkipPositions[player] = position;
+            // If the player key exists, update it. If an invalid player is
+            // provided (e.g. Player.None) safely ignore the request.
+            if (pawnSkipPositions.ContainsKey(player))
+                pawnSkipPositions[player] = position;
         }
 
         // Static method: Create a new board with starting chess position
@@ -58,6 +68,22 @@ namespace ChessLogic
             board.AddStartingPieces();
             // Return the initialized board
             return board;
+        }
+
+        // Method: Check if queenside castling is possible for a player
+        public bool CastleRightQueenSide(Player player)
+        {
+            switch (player)
+            {
+                case Player.White:
+                    // White: king at (7,4), rook at (7,0)
+                    return IsUnmovedKingAndRook(new Position(7, 4), new Position(7, 0));
+                case Player.Black:
+                    // Black: king at (0,4), rook at (0,0)
+                    return IsUnmovedKingAndRook(new Position(0, 4), new Position(0, 0));
+                default:
+                    return false;
+            }
         }
 
         // Private method: Place all pieces in their starting positions

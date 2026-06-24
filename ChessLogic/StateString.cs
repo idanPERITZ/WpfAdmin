@@ -138,11 +138,11 @@ namespace ChessLogic
             // Check if white can castle kingside
             bool castleWKS = board.CastleRightKingSide(Player.White);
             // Check if white can castle queenside
-            bool castleWQS = board.CastleRightKingSide(Player.White);
+            bool castleWQS = board.CastleRightQueenSide(Player.White);
             // Check if black can castle kingside
             bool castleBKS = board.CastleRightKingSide(Player.Black);
             // Check if black can castle queenside
-            bool castleBQS = board.CastleRightKingSide(Player.Black);
+            bool castleBQS = board.CastleRightQueenSide(Player.Black);
 
             // If no castling is possible for either player
             if (!(castleWKS || castleWQS || castleBKS || castleBQS))

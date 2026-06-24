@@ -1,0 +1,337 @@
+﻿<Window x:Class="WpfAdminPeritz.CreateNewGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="New Game"
+        Height="480"
+        Width="550"
+        ResizeMode="NoResize"
+        Background="#111111"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="ColorOptionStyle" TargetType="RadioButton">
+            <Setter Property="Height" Value="72" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Background" Value="#1A1A1A" />
+            <Setter Property="BorderBrush" Value="#333333" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="OptionBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12"
+                                Padding="16,12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter Grid.Column="0" VerticalAlignment="Center" />
+                                <Border x:Name="CheckCircle"
+                                        Grid.Column="1"
+                                        Width="20" Height="20"
+                                        CornerRadius="10"
+                                        BorderBrush="#555555"
+                                        BorderThickness="1.5"
+                                        Background="#222222"
+                                        Margin="12,0,0,0"
+                                        VerticalAlignment="Center">
+                                    <Ellipse x:Name="CheckDot"
+                                             Width="10" Height="10"
+                                             Fill="White"
+                                             Visibility="Collapsed" />
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="OptionBorder" Property="Background" Value="#242424" />
+                                <Setter TargetName="OptionBorder" Property="BorderBrush" Value="#555555" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="OptionBorder" Property="Background" Value="#2A2A2A" />
+                                <Setter TargetName="OptionBorder" Property="BorderBrush" Value="White" />
+                                <Setter TargetName="OptionBorder" Property="BorderThickness" Value="2" />
+                                <Setter TargetName="CheckCircle" Property="BorderBrush" Value="White" />
+                                <Setter TargetName="CheckDot" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="InviteButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="52" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="12">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#E0E0E0" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#C8C8C8" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#444444" />
+                                <Setter Property="Foreground" Value="#888888" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- SETUP GRID -->
+        <Grid x:Name="SetupGrid" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <Border Grid.Row="0" Background="#000000" Padding="30,20">
+                <StackPanel>
+                    <TextBlock Text="New Game"
+                               FontSize="26"
+                               FontWeight="Bold"
+                               Foreground="White" />
+                    <TextBlock Text="Challenge an online opponent"
+                               FontSize="13"
+                               Foreground="#888888"
+                               Margin="0,4,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- FORM BODY -->
+            <Border Grid.Row="1"
+                    Background="#1A1A1A"
+                    Padding="30,25">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="14" />
+                        <RowDefinition Height="48" />
+                        <RowDefinition Height="28" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="14" />
+                        <RowDefinition Height="72" />
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="52" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Text="Select opponent"
+                               FontSize="13"
+                               FontWeight="SemiBold"
+                               Foreground="#AAAAAA" />
+
+                    <Border Grid.Row="2"
+                            BorderBrush="#333333"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Background="#111111"
+                            Grid.RowSpan="2">
+                        <ComboBox x:Name="ComboOpponent"
+                                  DisplayMemberPath="UserName"
+                                  BorderThickness="0"
+                                  Background="Transparent"
+                                  FontSize="14"
+                                  Foreground="White"
+                                  Padding="12,7"
+                                  VerticalContentAlignment="Center">
+                            <ComboBox.Resources>
+                                <Style TargetType="ComboBoxItem">
+                                    <Setter Property="Background" Value="#111111"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Style>
+                            </ComboBox.Resources>
+                        </ComboBox>
+                    </Border>
+
+                    <TextBlock Grid.Row="4"
+                               Text="Choose your color"
+                               FontSize="13"
+                               FontWeight="SemiBold"
+                               Foreground="#AAAAAA" />
+
+                    <Grid Grid.Row="5"
+                          Grid.RowSpan="2"
+                          Margin="0,14,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="14" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <RadioButton x:Name="RadioWhite"
+                                     Grid.Column="0"
+                                     GroupName="ColorGroup"
+                                     IsChecked="True"
+                                     Style="{StaticResource ColorOptionStyle}">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Border Width="32" Height="32"
+                                        CornerRadius="16"
+                                        Background="White"
+                                        BorderBrush="#555555"
+                                        BorderThickness="1"
+                                        Margin="0,0,12,0">
+                                    <TextBlock Text="♙" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"/>
+                                </Border>
+                                <TextBlock Text="White"
+                                           FontSize="15"
+                                           FontWeight="SemiBold"
+                                           Foreground="White"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </RadioButton>
+
+                        <RadioButton x:Name="RadioBlack"
+                                     Grid.Column="2"
+                                     GroupName="ColorGroup"
+                                     Style="{StaticResource ColorOptionStyle}">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Border Width="32" Height="32"
+                                        CornerRadius="16"
+                                        Background="#222222"
+                                        BorderBrush="#555555"
+                                        BorderThickness="1"
+                                        Margin="0,0,12,0">
+                                    <TextBlock Text="♟" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                                </Border>
+                                <TextBlock Text="Black"
+                                           FontSize="15"
+                                           FontWeight="SemiBold"
+                                           Foreground="White"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </RadioButton>
+                    </Grid>
+
+                    <Button x:Name="BtnCreateGame"
+                            Grid.Row="8"
+                            Content="Send Invitation"
+                            Style="{StaticResource InviteButtonStyle}"
+                            Click="BtnCreateGame_Click" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- INVITATION RECEIVED GRID -->
+        <Grid x:Name="InvitationGrid"
+              Visibility="Collapsed"
+              Background="#111111">
+            <Border BorderBrush="#333333"
+                    BorderThickness="1"
+                    CornerRadius="16"
+                    Margin="30"
+                    Padding="30">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                        <!-- Chess board icon instead of king -->
+                        <Border Width="80" Height="80"
+                                CornerRadius="40"
+                                Background="#1A1A1A"
+                                Margin="0,0,0,20">
+                            <TextBlock Text="♞"
+                                       FontSize="42"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                        <TextBlock x:Name="TxtInvitationMessage"
+                                   Text="You have received a game invitation!"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <Grid Grid.Row="1" Margin="0,24,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="14" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Decline"
+                                Grid.Column="0"
+                                Height="48"
+                                Style="{StaticResource InviteButtonStyle}"
+                                Background="#2A2A2A"
+                                Foreground="#CCCCCC"
+                                Click="BtnDecline_Click" />
+                        <Button Content="Accept"
+                                Grid.Column="2"
+                                Height="48"
+                                Style="{StaticResource InviteButtonStyle}"
+                                Click="BtnAccept_Click" />
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- ADMIN CANNOT INVITE GRID -->
+        <Grid x:Name="AdminBlockGrid"
+              Visibility="Collapsed"
+              Background="#111111">
+            <Border BorderBrush="#333333"
+                    BorderThickness="1"
+                    CornerRadius="16"
+                    Margin="30"
+                    Padding="30">
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <Border Width="80" Height="80"
+                            CornerRadius="40"
+                            Background="#1A1A1A"
+                            Margin="0,0,0,20">
+                        <TextBlock Text="🔒"
+                                   FontSize="36"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                    <TextBlock Text="Admin cannot play games."
+                               FontSize="17"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap" />
+                    <TextBlock Text="Please log out and sign in as a regular player account to play."
+                               FontSize="13"
+                               Foreground="#AAAAAA"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,10,0,24" />
+                    <Button Content="Close"
+                            Height="46"
+                            Style="{StaticResource InviteButtonStyle}"
+                            Click="BtnAdminClose_Click" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
