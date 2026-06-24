@@ -158,29 +158,66 @@ namespace WpfAdminPeritz
             if (gameState.CurrentPlayer == myColor)
                 return;
 
-            // Periodically check service health (every 20 moves or so)
-            if (moveIndex > 0 && moveIndex % 20 == 0)
-            {
-                try
-                {
-                    CallbackServiceManager.Instance.EnsureChannelHealth();
-                }
-                catch
-                {
-                    // If we can't repair the channel, continue anyway and let the next operation fail gracefully
-                }
-            }
-
             // Run the network call off the UI thread to avoid blocking the UI.
             System.Threading.Tasks.Task.Run(() =>
             {
+                // Periodically check service health (every 20 moves or so) - do this in background thread
+                if (moveIndex > 0 && moveIndex % 20 == 0)
+                {
+                    try
+                    {
+                        CallbackServiceManager.Instance.EnsureChannelHealth();
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Failed to check channel health: {ex.Message}");
+                    }
+                }
+
                 try
                 {
                     // Check if service is still available
                     if (service == null || currentGame == null)
                         return;
 
-                    MoveList moves = service.GetMovesByGameID(currentGame);
+                    MoveList moves = null;
+                    try
+                    {
+                        // Wrap the service call to handle faulted channels
+                        if (((System.ServiceModel.ICommunicationObject)service).State == System.ServiceModel.CommunicationState.Faulted)
+                        {
+                            System.Diagnostics.Debug.WriteLine("Service channel is faulted, stopping polling");
+                            Dispatcher.BeginInvoke(new Action(() => StopPolling()));
+                            return;
+                        }
+
+                        moves = service.GetMovesByGameID(currentGame);
+                    }
+                    catch (System.ServiceModel.CommunicationException commEx)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Communication error getting moves: {commEx.Message}");
+                        // Channel is likely faulted - stop polling and show error
+                        Dispatcher.BeginInvoke(new Action(() =>
+                        {
+                            StopPolling();
+                            if (gameState != null && !gameState.IsGameOver())
+                            {
+                                MessageBox.Show(
+                                    "Lost connection to game server. The game will be saved but cannot continue.",
+                                    "Connection Lost",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Warning);
+                            }
+                        }));
+                        return;
+                    }
+                    catch (System.TimeoutException timeoutEx)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Timeout getting moves: {timeoutEx.Message}");
+                        // Just skip this poll, try again next time
+                        return;
+                    }
+
                     if (moves == null || moves.Count == 0)
                         return;
 
@@ -210,8 +247,34 @@ namespace WpfAdminPeritz
                         // Control was disposed or dispatcher shut down, ignore
                     }
                 }
+                catch (System.ServiceModel.CommunicationException commEx)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Communication exception in polling: {commEx.Message}");
+                    try
+                    {
+                        Dispatcher.BeginInvoke(new Action(() =>
+                        {
+                            StopPolling();
+                            if (gameState != null && !gameState.IsGameOver())
+                            {
+                                MessageBox.Show(
+                                    "Network error occurred. The game connection has been closed.",
+                                    "Connection Error",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+                            }
+                        }));
+                    }
+                    catch { }
+                }
+                catch (System.TimeoutException timeoutEx)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Timeout exception in polling: {timeoutEx.Message}");
+                    // Just skip this iteration, don't stop the game
+                }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine($"Unexpected exception in polling: {ex.Message}");
                     try
                     {
                         Dispatcher.BeginInvoke(new Action(() =>
@@ -683,46 +746,71 @@ namespace WpfAdminPeritz
 
         private string CreateSAN(Move move)
         {
-            if (move.Type == MoveType.CastleKingside) return "O-O";
-            if (move.Type == MoveType.CastleQueenside) return "O-O-O";
-
-            StringBuilder builder = new StringBuilder();
-            Piece movingPiece = gameState.Board[move.FromPosition];
-            builder.Append(PieceToChar(movingPiece.Type));
-
-            bool isCapture = !gameState.Board.IsEmpty(move.ToPosition) || move.Type == MoveType.EnPassant;
-
-            if (movingPiece.Type == PieceType.Pawn && isCapture)
-                builder.Append((char)('a' + move.FromPosition.Column));
-
-            if (isCapture) builder.Append('x');
-
-            builder.Append((char)('a' + move.ToPosition.Column));
-            builder.Append(8 - move.ToPosition.Row);
-
-            if (move.Type == MoveType.PawnPromotion)
-            {
-                PawnPromotion promotion = move as PawnPromotion;
-                builder.Append('=');
-                builder.Append(PieceToChar(promotion.NewType));
-            }
-
-            GameState copy = new GameState(gameState.CurrentPlayer, gameState.Board.Copy());
             try
             {
-                copy.MakeMove(move);
+                if (move == null)
+                    return "??";
 
-                if (copy.IsGameOver()) builder.Append('#');
-                else if (copy.Board.IsInCheck(copy.CurrentPlayer)) builder.Append('+');
+                if (move.Type == MoveType.CastleKingside) return "O-O";
+                if (move.Type == MoveType.CastleQueenside) return "O-O-O";
+
+                StringBuilder builder = new StringBuilder();
+
+                Piece movingPiece = gameState.Board[move.FromPosition];
+                if (movingPiece == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("CreateSAN: Moving piece is null");
+                    return "??";
+                }
+
+                builder.Append(PieceToChar(movingPiece.Type));
+
+                bool isCapture = !gameState.Board.IsEmpty(move.ToPosition) || move.Type == MoveType.EnPassant;
+
+                if (movingPiece.Type == PieceType.Pawn && isCapture)
+                    builder.Append((char)('a' + move.FromPosition.Column));
+
+                if (isCapture) builder.Append('x');
+
+                builder.Append((char)('a' + move.ToPosition.Column));
+                builder.Append(8 - move.ToPosition.Row);
+
+                if (move.Type == MoveType.PawnPromotion)
+                {
+                    PawnPromotion promotion = move as PawnPromotion;
+                    if (promotion != null)
+                    {
+                        builder.Append('=');
+                        builder.Append(PieceToChar(promotion.NewType));
+                    }
+                }
+
+                // Create a copy to check for check/checkmate without modifying the main game state
+                GameState copy = null;
+                try
+                {
+                    copy = new GameState(gameState.CurrentPlayer, gameState.Board.Copy());
+                    copy.MakeMove(move);
+
+                    if (copy.IsGameOver()) builder.Append('#');
+                    else if (copy.Board.IsInCheck(copy.CurrentPlayer)) builder.Append('+');
+                }
+                catch (Exception ex)
+                {
+                    // If we can't determine check/checkmate, just log and continue without the symbol
+                    System.Diagnostics.Debug.WriteLine($"CreateSAN: Error checking for check/mate: {ex.Message}");
+                }
+
+                return builder.ToString();
             }
             catch (Exception ex)
             {
-                // If generating SAN causes an exception, log it and continue.
-                MessageBox.Show("Error while evaluating move for SAN: " + ex.Message + "\n" + ex.StackTrace,
-                    "SAN Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                // If anything fails in SAN generation, return a fallback notation
+                System.Diagnostics.Debug.WriteLine($"CreateSAN failed: {ex.Message}");
+                MessageBox.Show("Error generating move notation: " + ex.Message + "\nThe game will continue but move history may be incomplete.",
+                    "Notation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return "??";
             }
-
-            return builder.ToString();
         }
 
         private void MoveHistoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)

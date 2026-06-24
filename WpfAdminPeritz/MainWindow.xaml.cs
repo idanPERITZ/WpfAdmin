@@ -42,9 +42,36 @@ namespace WpfAdminPeritz
                 // Ensure service channels are healthy before attempting login
                 CallbackServiceManager.Instance.EnsureChannelHealth();
 
+                // Recreate admin service if it's faulted
+                if (ChessService != null && 
+                    ((System.ServiceModel.ICommunicationObject)ChessService).State == System.ServiceModel.CommunicationState.Faulted)
+                {
+                    try
+                    {
+                        ChessService.Abort();
+                    }
+                    catch { }
+                    ChessService = new ChessServiceAdminClient();
+                }
+
                 // First: try admin login via Admin service
                 // SignIn in Admin service returns null if user is not Admin
-                AdminPlayer adminPlayer = ChessService.SignIn(email, password);
+                AdminPlayer adminPlayer = null;
+                try
+                {
+                    adminPlayer = ChessService.SignIn(email, password);
+                }
+                catch (System.ServiceModel.CommunicationException)
+                {
+                    // Admin service failed, recreate and try again
+                    try
+                    {
+                        ChessService.Abort();
+                    }
+                    catch { }
+                    ChessService = new ChessServiceAdminClient();
+                    adminPlayer = ChessService.SignIn(email, password);
+                }
                 if (adminPlayer != null)
                 {
                     AdminMainWindow main = new AdminMainWindow(adminPlayer);
