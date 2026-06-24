@@ -75,8 +75,7 @@
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                      ItemContainerStyle="{StaticResource CardListBoxItemStyle}"
-                     SelectionChanged="ListBox_SelectionChanged"
-                     RequestBringIntoView="ListBoxUsers_RequestBringIntoView"/>
+                     SelectionChanged="ListBox_SelectionChanged"/>
         </Border>
 
         <!-- RIGHT SIDE -->

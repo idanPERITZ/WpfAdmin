@@ -267,12 +267,6 @@ namespace WpfAdminPeritz
             createWindow.ShowDialog();
         }
 
-        private void ListBoxGames_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
-        {
-            // Prevent auto-scroll behavior when items are selected programmatically
-            e.Handled = true;
-        }
-
         private void BtnCopyPgn_Click(object sender, RoutedEventArgs e)
         {
             // Guard: a game must be selected before copying PGN

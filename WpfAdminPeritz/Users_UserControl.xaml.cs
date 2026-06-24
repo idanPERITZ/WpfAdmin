@@ -88,7 +88,6 @@ namespace WpfAdminPeritz
                 if (userUC != null && userUC.GetPlayer() != null && userUC.GetPlayer().Id == player.Id)
                 {
                     ListBoxUsers.SelectedItem = userUC;
-                    ListBoxUsers.ScrollIntoView(userUC);
                     break;
                 }
             }
@@ -195,12 +194,6 @@ namespace WpfAdminPeritz
                 onlineTimer.Stop();
             CallbackServiceManager.Instance.OnPlayerJoined -= OnOnlineStatusChanged;
             CallbackServiceManager.Instance.OnPlayerLeft -= OnOnlineStatusChanged;
-        }
-
-        private void ListBoxUsers_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
-        {
-            // Prevent auto-scroll behavior when items are selected programmatically
-            e.Handled = true;
         }
     }
 }
