@@ -86,7 +86,7 @@
                                 Background="Black"
                                 CornerRadius="25">
 
-                            <TextBlock Text="♟"
+                            <TextBlock Text="👤"
                                        Foreground="White"
                                        FontSize="20"
                                        VerticalAlignment="Center"
