@@ -7,10 +7,14 @@ namespace WpfAdminPeritz
 {
     public partial class PlayerGames_UserControl : UserControl
     {
+        // Service used to fetch games and moves
         private ChessServiceUserClient service;
+        // The currently selected game in the UI
         private Game selectedGame;
+        // The player who is logged in (owning this view)
         private Player loggedInPlayer;
 
+        // Constructor: show the logged-in player's games
         public PlayerGames_UserControl(Player player)
         {
             InitializeComponent();
@@ -21,6 +25,7 @@ namespace WpfAdminPeritz
             LoadGames();
         }
 
+        // Load all games for the logged-in player and populate the list
         private void LoadGames()
         {
             ListBoxGames.Items.Clear();
@@ -35,6 +40,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // When the user selects a game from the left list, show its details
         private void ListBoxGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GameUC_Player selected = ListBoxGames.SelectedItem as GameUC_Player;
@@ -47,6 +53,7 @@ namespace WpfAdminPeritz
             ShowGameDetails(selectedGame);
         }
 
+        // Select the matching GameUC_Player in the list and show details
         public void SetSelectedGame(Game game)
         {
             foreach (object item in ListBoxGames.Items)
@@ -72,6 +79,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Fill the right details panel with players, date, result and moves
         private void ShowGameDetails(Game game)
         {
             Player white = game.WhitePlayer;
@@ -132,6 +140,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Open the New Game window to challenge another player
         private void BtnNewGame_Click(object sender, RoutedEventArgs e)
         {
             CreateNewGameWindow createWindow =

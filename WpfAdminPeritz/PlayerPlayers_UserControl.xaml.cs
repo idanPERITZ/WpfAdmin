@@ -8,9 +8,12 @@ namespace WpfAdminPeritz
 {
     public partial class PlayerPlayers_UserControl : UserControl
     {
+        // Service used to talk to the server and get player data
         private ChessServiceUserClient service;
+        // The player who is currently logged in (the one using the app)
         private Player loggedInPlayer;
 
+        // Constructor: build the players list UI for the given logged-in player
         public PlayerPlayers_UserControl(Player player)
         {
             InitializeComponent();
@@ -31,11 +34,13 @@ namespace WpfAdminPeritz
             };
         }
 
+        // Called when someone goes online or offline; refresh the list
         private void OnOnlineStatusChanged(Player changedPlayer)
         {
             Dispatcher.BeginInvoke(new Action(() => LoadPlayers()));
         }
 
+        // Build the list of all players (excluding admins and self)
         private void LoadPlayers()
         {
             ListBoxPlayers.Items.Clear();
@@ -66,6 +71,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Create a visual card showing a player's name, email and online dot
         private Border CreatePlayerCard(Player player, bool isOnline)
         {
             Border card = new Border
@@ -143,6 +149,7 @@ namespace WpfAdminPeritz
             return card;
         }
 
+        // When the user clicks a player card, show that player's profile on the right
         private void ListBoxPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Border selectedCard = ListBoxPlayers.SelectedItem as Border;
@@ -154,6 +161,7 @@ namespace WpfAdminPeritz
             ShowPlayerDetails(selectedPlayer);
         }
 
+        // Fill the right panel with the chosen player's stats and recent games
         private void ShowPlayerDetails(Player player)
         {
             SelectedPlayerName.Text = player.UserName + "'s Profile";
@@ -189,6 +197,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Called when a game is selected in the right panel (kept for future use)
         private void ListBoxGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Optional: show game preview or details when a game is selected.

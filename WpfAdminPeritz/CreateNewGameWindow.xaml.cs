@@ -9,6 +9,8 @@ namespace WpfAdminPeritz
 {
     public partial class CreateNewGameWindow : Window
     {
+        // Window for creating or joining a new game with an online opponent
+        // It shows online players and handles invitations and live games.
         private readonly Player player;
         private readonly ChessServiceUserClient service;
         private Game currentlyPlayingGame;
@@ -19,6 +21,7 @@ namespace WpfAdminPeritz
         private DispatcherTimer onlineTimer;
         private bool isAdmin;
 
+        // Constructor: set up the UI and start refreshing the online players list
         public CreateNewGameWindow(Player player)
         {
             InitializeComponent();
@@ -49,6 +52,7 @@ namespace WpfAdminPeritz
             onlineTimer.Start();
         }
 
+        // Refresh the list of online players and show them in the dropdown
         private void LoadOnlinePlayers()
         {
             PlayerList onlinePlayers = CallbackServiceManager.Instance.GetOnlinePlayers();
@@ -71,6 +75,8 @@ namespace WpfAdminPeritz
             ComboOpponent.DisplayMemberPath = "UserName";
         }
 
+        // Called when the other player accepts or declines an invitation
+        // If accepted, opens the game window for play
         private void OnInvitationResponseReceived(Player otherPlayer, bool accepted, Game game)
         {
             Dispatcher.BeginInvoke(new Action(() =>
@@ -98,6 +104,7 @@ namespace WpfAdminPeritz
             }));
         }
 
+        // Send an invitation to the selected online player to start a game
         private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
         {
             Player opponent = ComboOpponent.SelectedItem as Player;
@@ -132,11 +139,13 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Close the window (used by the admin view)
         private void BtnAdminClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        // Open a game window and wire up move callbacks and game over handling
         private void PlayGame(Game localGame, Player opponent)
         {
             ChessMainWindowUserControl gameWindow = new ChessMainWindowUserControl();
@@ -275,6 +284,7 @@ namespace WpfAdminPeritz
             playerWindow.Show();
         }
 
+        // Save the final game result to the server and close this window
         private void SaveResultAndClose(Player winnerPlayer, Game gameToSave)
         {
             try
@@ -310,6 +320,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Clean up event subscriptions and timers when the window is closed
         protected override void OnClosed(EventArgs e)
         {
             if (!isAdmin)
@@ -322,6 +333,7 @@ namespace WpfAdminPeritz
             base.OnClosed(e);
         }
 
+        // If leaving while a game is active, notify the server to leave
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             if (!isAdmin && currentlyPlayingGame != null)
@@ -337,6 +349,7 @@ namespace WpfAdminPeritz
             base.OnClosing(e);
         }
 
+        // Show the invitation UI when another player invites us to a game
         public void HandleIncomingInvitation(Player inviter, bool inviterIsWhite)
         {
             this.currentInviter = inviter;
@@ -347,6 +360,7 @@ namespace WpfAdminPeritz
             InvitationGrid.Visibility = Visibility.Visible;
         }
 
+        // Accept the incoming invitation and notify the inviter
         private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
             bool invitedIsWhite = !currentInviterIsWhite;
@@ -357,6 +371,7 @@ namespace WpfAdminPeritz
             });
         }
 
+        // Decline the incoming invitation and close the window
         private void BtnDecline_Click(object sender, RoutedEventArgs e)
         {
             bool invitedIsWhite = !currentInviterIsWhite;
@@ -368,6 +383,7 @@ namespace WpfAdminPeritz
             this.Close();
         }
 
+        // Called when the opponent leaves an open game; close this window
         private void OnOpponentLeftGame()
         {
             this.Close();

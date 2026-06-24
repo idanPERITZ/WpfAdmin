@@ -9,11 +9,15 @@ namespace WpfAdminPeritz
 {
     public partial class Users_UserControl : UserControl
     {
+        // This control shows the list of users on the left and details on the right.
+        // Event handlers below respond to buttons and list events.
         private ChessServiceAdminClient ChessService;
         private Player admin;
         private Player selectedPlayer;
         private DispatcherTimer onlineTimer;
 
+        // Constructor: create control for the given logged-in admin user
+        // It starts a timer to refresh user list and subscribes to online events.
         public Users_UserControl(Player loggedInAdmin)
         {
             InitializeComponent();
@@ -39,11 +43,14 @@ namespace WpfAdminPeritz
             Unloaded += Users_UserControl_Unloaded;
         }
 
+        // Timer tick: refresh the users list periodically
         private void OnlineTimer_Tick(object sender, EventArgs e)
         {
             LoadUsers();
         }
 
+        // Load all players from the server and rebuild the left list
+        // Marks which players are currently online
         private void LoadUsers()
         {
             Player currentSelected = selectedPlayer;
@@ -74,6 +81,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Select a player in the list and show its details on the right
         public void Set(Player player)
         {
             selectedPlayer = player;
@@ -94,6 +102,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Delete the currently selected player after confirmation
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             if (selectedPlayer == null)
@@ -146,6 +155,7 @@ namespace WpfAdminPeritz
             LoadUsers();
         }
 
+        // Open the update dialog for the selected player
         private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (selectedPlayer == null)
@@ -159,6 +169,7 @@ namespace WpfAdminPeritz
             LoadUsers();
         }
 
+        // Open the Add New User dialog
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
             User_AddUserWindow addWindow =
@@ -173,6 +184,7 @@ namespace WpfAdminPeritz
         // invoked automatically for the current logged-in users when the application closes
         // (see App.xaml.cs or window OnClosed implementations where appropriate).
 
+        // When selection changes in the left list, update the right detail view
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UserUC selected =
@@ -193,11 +205,14 @@ namespace WpfAdminPeritz
             e.Handled = true;
         }
 
+        // Called when another client reports a player joined or left
+        // We refresh the UI on the UI thread.
         private void OnOnlineStatusChanged(WpfAdminPeritz.ServiceReferenceUserChess.Player changedPlayer)
         {
             Dispatcher.BeginInvoke(new Action(() => LoadUsers()));
         }
 
+        // Unsubscribe from events and stop timers when the control is unloaded
         private void Users_UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             if (onlineTimer != null)

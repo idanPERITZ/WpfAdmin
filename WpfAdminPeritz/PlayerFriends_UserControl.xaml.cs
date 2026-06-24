@@ -8,9 +8,12 @@ namespace WpfAdminPeritz
 {
     public partial class PlayerFriends_UserControl : UserControl
     {
+        // Service to contact server for player and friendship data
         private ChessServiceUserClient service;
+        // The player who is currently using this view
         private Player loggedInPlayer;
 
+        // Constructor: prepare the friends list and subscribe to online events
         public PlayerFriends_UserControl(Player player)
         {
             InitializeComponent();
@@ -30,11 +33,13 @@ namespace WpfAdminPeritz
             };
         }
 
+        // Called when someone joins or leaves online; refresh the friends list
         private void OnOnlineStatusChanged(Player changedPlayer)
         {
             Dispatcher.BeginInvoke(new Action(() => LoadUsers()));
         }
 
+        // Load accepted friends and mark which of them are online
         private void LoadUsers()
         {
             // preserve selection
@@ -78,6 +83,7 @@ namespace WpfAdminPeritz
             }
         }
 
+        // Make a small UI card representing a friend (name, email, online dot)
         private Border CreatePlayerCard(Player player, bool isOnline)
         {
             Border card = new Border
@@ -156,6 +162,7 @@ namespace WpfAdminPeritz
             return card;
         }
 
+        // When a friend card is clicked, show that friend's details on the right
         private void ListBoxPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Border selectedCard = ListBoxPlayers.SelectedItem as Border;
@@ -167,6 +174,7 @@ namespace WpfAdminPeritz
             ShowFriendDetails(selectedPlayer);
         }
 
+        // Populate the right-side panel with the selected friend's stats and games
         private void ShowFriendDetails(Player player)
         {
             SelectedPlayerName.Text = player.UserName + "'s Profile";
