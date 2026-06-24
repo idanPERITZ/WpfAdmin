@@ -268,39 +268,20 @@ namespace WpfAdminPeritz
                 {
                     gameMoves[localGame.Id] = moves;
 
-                    // DEBUG: Show what winner value we received
-                    MessageBox.Show(
-                        $"Game Over!\nWinner enum value: {winner}\nReason: {reason}\n\n" +
-                        $"Is White? {winner == ChessLogic.Player.White}\n" +
-                        $"Is Black? {winner == ChessLogic.Player.Black}\n" +
-                        $"Is None? {winner == ChessLogic.Player.None}",
-                        "Debug Info",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
-
-                    // winner is ChessLogic.Player enum (White/Black/None)
+                    // winner is ChessLogic.Player enum (White=1, Black=2, None=0)
                     // We need to map it to the service Player object
                     Player winnerPlayer = null;
 
-                    if (winner == ChessLogic.Player.White)
+                    // Use explicit enum value comparison to avoid any type issues
+                    if ((int)winner == 1) // ChessLogic.Player.White
                     {
                         winnerPlayer = localGame.WhitePlayer;
                     }
-                    else if (winner == ChessLogic.Player.Black)
+                    else if ((int)winner == 2) // ChessLogic.Player.Black
                     {
                         winnerPlayer = localGame.BlackPlayer;
                     }
-                    // If winner == ChessLogic.Player.None, winnerPlayer stays null (draw)
-
-                    // DEBUG: Show the mapped winner
-                    MessageBox.Show(
-                        $"Mapped Winner:\n" +
-                        $"winnerPlayer: {winnerPlayer?.UserName ?? "NULL (Draw)"}\n" +
-                        $"White Player: {localGame.WhitePlayer?.UserName}\n" +
-                        $"Black Player: {localGame.BlackPlayer?.UserName}",
-                        "Debug - Mapped Winner",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
+                    // If winner == 0 (None), winnerPlayer stays null (draw)
 
                     Game completedGame = localGame;
                     localGame = null;
