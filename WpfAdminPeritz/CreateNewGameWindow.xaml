@@ -278,41 +278,52 @@
 
         <!-- INVITATION RECEIVED GRID -->
         <Grid x:Name="InvitationGrid" Visibility="Collapsed" Background="#0D0D0D">
-            <Border BorderBrush="#2A2A2A" BorderThickness="1.5" CornerRadius="16" Margin="40" Padding="30">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+            <Grid Margin="40,32,40,32">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <!-- 0 header -->
+                    <RowDefinition Height="*" />
+                    <!-- 1 message card -->
+                    <RowDefinition Height="28" />
+                    <!-- 2 spacer -->
+                    <RowDefinition Height="Auto" />
+                    <!-- 3 buttons -->
+                </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Border Width="80" Height="80" CornerRadius="40" Background="#1A1A1A"
-                                BorderBrush="#2A2A2A" BorderThickness="1.5" Margin="0,0,0,20">
-                            <TextBlock Text="♞" FontSize="42" Foreground="White"
-                                       HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="Game Invitation" FontSize="28" FontWeight="Bold" Foreground="White" />
+                    <TextBlock Text="An opponent has challenged you to a match"
+                       FontSize="14" Foreground="#888888" Margin="0,4,0,0" />
+                </StackPanel>
+
+                <Border Grid.Row="1" VerticalAlignment="Center"
+                Background="#161616" BorderBrush="#2A2A2A" BorderThickness="1.5"
+                CornerRadius="14" Padding="26,30">
+                    <StackPanel>
+                        <TextBlock Text="INVITATION" Style="{StaticResource SectionLabelStyle}" />
                         <TextBlock x:Name="TxtInvitationMessage"
-                                   Text="You have received a game invitation!"
-                                   FontSize="17" FontWeight="SemiBold" Foreground="White"
-                                   TextAlignment="Center" TextWrapping="Wrap" />
+                           Text="You have received a game invitation!"
+                           FontSize="17" FontWeight="SemiBold" Foreground="White"
+                           LineHeight="28"
+                           TextWrapping="Wrap" Margin="2,12,0,0" />
                     </StackPanel>
+                </Border>
 
-                    <Grid Grid.Row="1" Margin="0,24,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="14" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Button Content="Decline" Grid.Column="0"
-                                Style="{StaticResource InviteButtonStyle}"
-                                Background="#2A2A2A" Foreground="#CCCCCC"
-                                Click="BtnDecline_Click" />
-                        <Button Content="Accept" Grid.Column="2"
-                                Style="{StaticResource InviteButtonStyle}"
-                                Click="BtnAccept_Click" />
-                    </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="14" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Decline" Grid.Column="0"
+                    Style="{StaticResource InviteButtonStyle}"
+                    Background="#2A2A2A" Foreground="#CCCCCC"
+                    Click="BtnDecline_Click" />
+                    <Button Content="Accept" Grid.Column="2"
+                    Style="{StaticResource InviteButtonStyle}"
+                    Click="BtnAccept_Click" />
                 </Grid>
-            </Border>
+            </Grid>
         </Grid>
 
         <!-- ADMIN BLOCK GRID -->

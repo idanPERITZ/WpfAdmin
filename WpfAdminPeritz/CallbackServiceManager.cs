@@ -37,9 +37,46 @@ namespace WpfAdminPeritz
 
         private void InitializeClient()
         {
-            InstanceContext context = new InstanceContext(this);
+            try
+            {
+                InstanceContext context = new InstanceContext(this);
+                _serviece = new ChessServiceUserClient(context);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to initialize service client: {ex.Message}");
+                throw;
+            }
+        }
 
-            _serviece = new ChessServiceUserClient(context);
+        // Check and repair faulted channel
+        public void EnsureChannelHealth()
+        {
+            try
+            {
+                if (_serviece == null || 
+                    _serviece.State == CommunicationState.Faulted || 
+                    _serviece.State == CommunicationState.Closed)
+                {
+                    // Close old client if possible
+                    try
+                    {
+                        if (_serviece != null && _serviece.State == CommunicationState.Faulted)
+                        {
+                            _serviece.Abort();
+                        }
+                    }
+                    catch { }
+
+                    // Reinitialize
+                    InitializeClient();
+                    OnReconnected?.Invoke();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to repair channel: {ex.Message}");
+            }
         }
 
         public void PlayerJoined(Player player)

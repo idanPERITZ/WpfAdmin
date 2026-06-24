@@ -39,6 +39,9 @@ namespace WpfAdminPeritz
 
             try
             {
+                // Ensure service channels are healthy before attempting login
+                CallbackServiceManager.Instance.EnsureChannelHealth();
+
                 // First: try admin login via Admin service
                 // SignIn in Admin service returns null if user is not Admin
                 AdminPlayer adminPlayer = ChessService.SignIn(email, password);

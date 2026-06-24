@@ -34,6 +34,9 @@ namespace WpfAdminPeritz
 
         private readonly List<Board> boardSnapshots = new List<Board>();
 
+        // Limit board snapshots to prevent memory issues in long games
+        private const int MAX_SNAPSHOT_HISTORY = 50;
+
         private Position selectedPosition;
         private GameState gameState;
 
@@ -154,6 +157,19 @@ namespace WpfAdminPeritz
             // Only poll when it is the opponent's turn
             if (gameState.CurrentPlayer == myColor)
                 return;
+
+            // Periodically check service health (every 20 moves or so)
+            if (moveIndex > 0 && moveIndex % 20 == 0)
+            {
+                try
+                {
+                    CallbackServiceManager.Instance.EnsureChannelHealth();
+                }
+                catch
+                {
+                    // If we can't repair the channel, continue anyway and let the next operation fail gracefully
+                }
+            }
 
             // Run the network call off the UI thread to avoid blocking the UI.
             System.Threading.Tasks.Task.Run(() =>
@@ -313,7 +329,7 @@ namespace WpfAdminPeritz
             moveIndex++;
             // Remember that we've applied this DB move so we don't apply it again.
             lastAppliedMoveIndex = dbMoveIndex;
-            boardSnapshots.Add(gameState.Board.Copy());
+            AddBoardSnapshot(gameState.Board);
             AddMoveToHistory(notation, wasWhiteMove);
             DrawBoard(gameState.Board);
             SetCursor(gameState.CurrentPlayer);
@@ -464,7 +480,7 @@ namespace WpfAdminPeritz
                 DrawBoard(gameState.Board);
                 return;
             }
-            boardSnapshots.Add(gameState.Board.Copy());
+            AddBoardSnapshot(gameState.Board);
             moveIndex++;
 
             AddMoveToHistory(notation, wasWhiteMove);
@@ -500,7 +516,50 @@ namespace WpfAdminPeritz
                 var capturedTo = toString;
                 var capturedIndex = moveIndex;
                 var capturedNotation = notation;
-                System.Threading.Tasks.Task.Run(() => onMoveSaved(capturedFrom, capturedTo, capturedIndex, capturedNotation));
+
+                System.Threading.Tasks.Task.Run(() =>
+                {
+                    int retries = 0;
+                    const int maxRetries = 3;
+                    bool success = false;
+
+                    while (!success && retries < maxRetries)
+                    {
+                        try
+                        {
+                            onMoveSaved(capturedFrom, capturedTo, capturedIndex, capturedNotation);
+                            success = true;
+                        }
+                        catch (Exception ex)
+                        {
+                            retries++;
+                            System.Diagnostics.Debug.WriteLine($"Move save attempt {retries} failed: {ex.Message}");
+
+                            if (retries < maxRetries)
+                            {
+                                // Wait before retrying (exponential backoff)
+                                System.Threading.Thread.Sleep(500 * retries);
+                            }
+                            else
+                            {
+                                // Final failure - log but don't crash
+                                System.Diagnostics.Debug.WriteLine($"Failed to save move after {maxRetries} attempts: {ex.Message}");
+                                Dispatcher.BeginInvoke(new Action(() =>
+                                {
+                                    // Only show error if game is still active
+                                    if (gameState != null && !gameState.IsGameOver())
+                                    {
+                                        MessageBox.Show(
+                                            "Warning: Failed to save move to server. The game may desync.",
+                                            "Network Warning",
+                                            MessageBoxButton.OK,
+                                            MessageBoxImage.Warning);
+                                    }
+                                }));
+                            }
+                        }
+                    }
+                });
             }
             catch (Exception ex)
             {
@@ -510,6 +569,27 @@ namespace WpfAdminPeritz
 
             // Mark this index as already known so our own poll skips it
             lastAppliedMoveIndex = moveIndex;
+        }
+
+        // Add a board snapshot with memory management
+        private void AddBoardSnapshot(Board board)
+        {
+            boardSnapshots.Add(board.Copy());
+
+            // Keep only the most recent snapshots to prevent memory issues in long games
+            // Keep some history for move navigation, but not unlimited
+            if (boardSnapshots.Count > MAX_SNAPSHOT_HISTORY)
+            {
+                // Remove the oldest snapshots, keeping the most recent MAX_SNAPSHOT_HISTORY
+                int toRemove = boardSnapshots.Count - MAX_SNAPSHOT_HISTORY;
+                boardSnapshots.RemoveRange(0, toRemove);
+
+                // Adjust viewingSnapshot index if needed
+                if (viewingSnapshot >= 0)
+                {
+                    viewingSnapshot = Math.Max(0, viewingSnapshot - toRemove);
+                }
+            }
         }
 
         private void CacheMoves(IEnumerable<Move> moves)
