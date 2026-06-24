@@ -210,6 +210,19 @@ namespace WpfAdminPeritz
                             move.ToPosition.Row == toPos.Row &&
                             move.ToPosition.Column == toPos.Column)
                         {
+                            // For promotions, we must also match the promoted piece type from the SAN notation
+                            if (move.Type == MoveType.PawnPromotion && !string.IsNullOrEmpty(dbMove.From))
+                            {
+                                // Extract promotion piece from SAN notation (e.g., "e8=Q", "d1=N")
+                                PawnPromotion promotion = move as PawnPromotion;
+                                string expectedSAN = CreateSAN(move);
+                                if (expectedSAN != dbMove.From)
+                                {
+                                    // This promotion has the wrong piece type, skip it
+                                    continue;
+                                }
+                            }
+
                             ApplyOpponentMove(move, dbMove.From, dbMove.MoveIndex);
                             applied = true;
                             break;
@@ -558,7 +571,12 @@ namespace WpfAdminPeritz
             builder.Append((char)('a' + move.ToPosition.Column));
             builder.Append(8 - move.ToPosition.Row);
 
-            if (move.Type == MoveType.PawnPromotion) builder.Append("=Q");
+            if (move.Type == MoveType.PawnPromotion)
+            {
+                PawnPromotion promotion = move as PawnPromotion;
+                builder.Append('=');
+                builder.Append(PieceToChar(promotion.NewType));
+            }
 
             GameState copy = new GameState(gameState.CurrentPlayer, gameState.Board.Copy());
             try

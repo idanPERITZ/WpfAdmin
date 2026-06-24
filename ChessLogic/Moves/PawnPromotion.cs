@@ -15,6 +15,9 @@
         // Field: The type of piece the pawn will be promoted to
         private readonly PieceType newType;
 
+        // Property: Public accessor for the promotion piece type
+        public PieceType NewType => newType;
+
         // Constructor: Initializes a pawn promotion move
         public PawnPromotion(Position fromPosition, Position toPosition, PieceType newType)
         {
