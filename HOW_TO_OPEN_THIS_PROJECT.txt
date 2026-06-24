@@ -1,0 +1,91 @@
+================================================================================
+			   HOW TO ALWAYS OPEN THE CORRECT PROJECT
+================================================================================
+
+✅ YOU ARE IN THE CORRECT FOLDER RIGHT NOW!
+
+This is the ONLY correct project location:
+📁 C:\Users\idanp\Downloads\WpfAdminPeritz-master (2)\WpfAdminPeritz-master\
+
+================================================================================
+					HOW TO OPEN THIS PROJECT CORRECTLY
+================================================================================
+
+METHOD 1 - Use the Desktop Shortcut (EASIEST):
+-----------------------------------------------
+1. Look on your desktop for the shortcut:
+   "WpfAdmin - CORRECT PROJECT - OPEN THIS.lnk"
+2. Double-click it
+3. Visual Studio will open the correct project
+
+METHOD 2 - Open from Visual Studio:
+------------------------------------
+1. Open Visual Studio
+2. Click "Open a project or solution"
+3. Navigate to: C:\Users\idanp\Downloads\WpfAdminPeritz-master (2)\WpfAdminPeritz-master\
+4. Select: WpfAdminPeritz.slnx
+5. Click "Open"
+
+METHOD 3 - Pin to Recent Projects:
+-----------------------------------
+1. After opening the correct project
+2. In Visual Studio, go to File → Recent Projects and Solutions
+3. Pin this project to the top (click the pin icon)
+4. Next time, just click it from the start page
+
+================================================================================
+					WHY YOU KEEP LOSING YOUR CODE
+================================================================================
+
+PROBLEM: You have 3 copies of this project on your computer!
+
+✅ CORRECT FOLDER (this one):
+   C:\Users\idanp\Downloads\WpfAdminPeritz-master (2)\WpfAdminPeritz-master\
+
+❌ OLD FOLDERS (DO NOT USE - they are outdated):
+   C:\Users\idanp\Downloads\⛔ OLD - WpfAdminPeritz-master - DO NOT USE\
+   C:\Users\idanp\Downloads\⛔ OLD BACKUP - WpfAdminPeritz-master - DO NOT USE\
+
+When you accidentally open the wrong folder, you edit old code that doesn't
+have the fixes. Then when you open the correct folder again, your changes
+are "missing" because you edited the wrong copy!
+
+================================================================================
+					HOW TO VERIFY YOU'RE IN THE RIGHT PLACE
+================================================================================
+
+Look for these files in the project root (if you see them, you're correct):
+✓ THIS_IS_THE_CORRECT_PROJECT_FOLDER.txt
+✓ HOW_TO_OPEN_THIS_PROJECT.txt (this file)
+
+OR check the folder path in Visual Studio's title bar:
+It should end with: "WpfAdminPeritz-master (2)\WpfAdminPeritz-master"
+
+================================================================================
+					YOUR CODE IS SAVED IN GITHUB
+================================================================================
+
+GitHub repository: https://github.com/idanPERITZ/WpfAdmin
+
+All your latest code is backed up there. If you ever lose it locally:
+1. Delete all the project folders
+2. Open terminal/command prompt
+3. Run: git clone https://github.com/idanPERITZ/WpfAdmin
+4. This will download the latest version
+
+================================================================================
+					WHAT TO DO IF YOU SEE BUILD ERRORS
+================================================================================
+
+If you see errors like "does not contain a definition for ListBoxUsers_RequestBringIntoView":
+
+YOU OPENED THE WRONG FOLDER!
+
+Close Visual Studio and use the desktop shortcut or Method 1 above.
+
+================================================================================
+
+Last updated: 2024
+Contact: Check GitHub issues if you need help
+
+================================================================================
