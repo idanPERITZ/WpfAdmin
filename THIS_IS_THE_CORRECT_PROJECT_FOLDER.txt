@@ -1,0 +1,22 @@
+========================================
+✅ THIS IS THE CORRECT PROJECT FOLDER
+========================================
+
+IMPORTANT: Always open this folder in Visual Studio:
+C:\Users\idanp\Downloads\WpfAdminPeritz-master (2)\WpfAdminPeritz-master\
+
+Solution file: WpfAdminPeritz.slnx
+
+DO NOT open these OLD folders:
+❌ C:\Users\idanp\Downloads\WpfAdminPeritz-master\WpfAdminPeritz-master\
+❌ C:\Users\idanp\Downloads\WpfAdminPeritz-master-backup\WpfAdminPeritz-master\
+
+This folder contains all the latest fixes including:
+- Event handlers (ListBoxUsers_RequestBringIntoView, ListBoxGames_RequestBringIntoView, BtnCopyPgn_Click)
+- ComboBox fixes for CreateNewGameWindow
+- All UI improvements and bug fixes
+
+If you see errors after opening the project, you opened the wrong folder!
+
+Last updated: {date}
+GitHub repo: https://github.com/idanPERITZ/WpfAdmin
