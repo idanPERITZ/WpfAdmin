@@ -12,6 +12,9 @@ namespace WpfAdminPeritz
         // in the user service's online list (for example, admins authenticated via the admin service).
         private readonly System.Collections.Generic.List<Player> _localOnlinePlayers =
             new System.Collections.Generic.List<Player>();
+
+        private readonly object _serviceLock = new object();
+
         private CallbackServiceManager()
         {
             InitializeClient();
@@ -52,30 +55,51 @@ namespace WpfAdminPeritz
         // Check and repair faulted channel
         public void EnsureChannelHealth()
         {
-            try
+            lock (_serviceLock)
             {
-                if (_serviece == null || 
-                    _serviece.State == CommunicationState.Faulted || 
-                    _serviece.State == CommunicationState.Closed)
+                try
                 {
-                    // Close old client if possible
+                    if (_serviece == null ||
+                        _serviece.State == CommunicationState.Faulted ||
+                        _serviece.State == CommunicationState.Closed)
+                    {
+                        // Close old client if possible
+                        try
+                        {
+                            if (_serviece != null && _serviece.State == CommunicationState.Faulted)
+                            {
+                                _serviece.Abort();
+                            }
+                        }
+                        catch { }
+
+                        // Reinitialize
+                        InitializeClient();
+
+                        // Notify that we reconnected
+                        try
+                        {
+                            Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                            {
+                                OnReconnected?.Invoke();
+                            }));
+                        }
+                        catch { }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Failed to repair channel: {ex.Message}");
+                    // Try one more time
                     try
                     {
-                        if (_serviece != null && _serviece.State == CommunicationState.Faulted)
-                        {
-                            _serviece.Abort();
-                        }
+                        InitializeClient();
                     }
-                    catch { }
-
-                    // Reinitialize
-                    InitializeClient();
-                    OnReconnected?.Invoke();
+                    catch (Exception ex2)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Failed to recreate client: {ex2.Message}");
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Failed to repair channel: {ex.Message}");
             }
         }
 

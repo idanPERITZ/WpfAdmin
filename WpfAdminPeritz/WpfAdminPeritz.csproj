@@ -100,7 +100,8 @@
     </Compile>
     <Compile Include="PlayerPlayers_UserControl.xaml.cs">
       <DependentUpon>PlayerPlayers_UserControl.xaml</DependentUpon>
-    </Compile><Compile Include="SignUpWindow.xaml.cs">
+    </Compile>
+    <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserUC.xaml.cs">
@@ -118,6 +119,7 @@
     <Compile Include="User_UpdateWindow.xaml.cs">
       <DependentUpon>User_UpdateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WcfClientHelper.cs" />
     <Page Include="ChessMainWindowUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -160,7 +162,8 @@
     </Page>
     <Page Include="PlayerPlayers_UserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page><Page Include="SignUpWindow.xaml">
+    </Page>
+    <Page Include="SignUpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -382,4 +385,3 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-

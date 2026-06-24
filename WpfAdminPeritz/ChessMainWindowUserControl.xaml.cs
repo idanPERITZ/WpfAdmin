@@ -59,6 +59,7 @@ namespace WpfAdminPeritz
         private ChessLogic.Player myColor;
         private ServiceGame currentGame;
         private ChessServiceUserClient service;
+        private WcfClientHelper<ChessServiceUserClient> serviceHelper;
         private DispatcherTimer pollTimer;
 
         private ServicePlayer opponentPlayer;
@@ -89,6 +90,9 @@ namespace WpfAdminPeritz
             service = svc;
             myPlayer = me;
             opponentPlayer = opponent;
+
+            // Initialize WCF client helper with factory to recreate service
+            serviceHelper = new WcfClientHelper<ChessServiceUserClient>(() => service);
 
             OpponentNameText.Content = "Playing against: " + opponentName;
 
@@ -177,46 +181,14 @@ namespace WpfAdminPeritz
                 try
                 {
                     // Check if service is still available
-                    if (service == null || currentGame == null)
+                    if (serviceHelper == null || currentGame == null)
                         return;
 
-                    MoveList moves = null;
-                    try
-                    {
-                        // Wrap the service call to handle faulted channels
-                        if (((System.ServiceModel.ICommunicationObject)service).State == System.ServiceModel.CommunicationState.Faulted)
-                        {
-                            System.Diagnostics.Debug.WriteLine("Service channel is faulted, stopping polling");
-                            Dispatcher.BeginInvoke(new Action(() => StopPolling()));
-                            return;
-                        }
-
-                        moves = service.GetMovesByGameID(currentGame);
-                    }
-                    catch (System.ServiceModel.CommunicationException commEx)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"Communication error getting moves: {commEx.Message}");
-                        // Channel is likely faulted - stop polling and show error
-                        Dispatcher.BeginInvoke(new Action(() =>
-                        {
-                            StopPolling();
-                            if (gameState != null && !gameState.IsGameOver())
-                            {
-                                MessageBox.Show(
-                                    "Lost connection to game server. The game will be saved but cannot continue.",
-                                    "Connection Lost",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Warning);
-                            }
-                        }));
-                        return;
-                    }
-                    catch (System.TimeoutException timeoutEx)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"Timeout getting moves: {timeoutEx.Message}");
-                        // Just skip this poll, try again next time
-                        return;
-                    }
+                    // Use the helper to execute the service call with automatic recovery
+                    MoveList moves = serviceHelper.Execute(
+                        svc => svc.GetMovesByGameID(currentGame),
+                        defaultValue: null
+                    );
 
                     if (moves == null || moves.Count == 0)
                         return;
