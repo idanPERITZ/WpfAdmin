@@ -70,7 +70,8 @@
                          BorderThickness="0"
                          Background="Transparent"
                          ItemContainerStyle="{StaticResource CardListBoxItemStyle}"
-                         SelectionChanged="ListBoxGames_SelectionChanged"/>
+                         SelectionChanged="ListBoxGames_SelectionChanged"
+                         RequestBringIntoView="ListBoxGames_RequestBringIntoView"/>
             </Border>
 
             <!-- RIGHT SIDE -->

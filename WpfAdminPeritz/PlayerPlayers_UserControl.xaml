@@ -190,6 +190,7 @@
                            Margin="5,0,0,10"/>
 
                 <ListBox x:Name="ListBoxGames"
+                         Grid.Row="2"
                          HorizontalContentAlignment="Stretch"
                          BorderThickness="0"
                          Background="Transparent"

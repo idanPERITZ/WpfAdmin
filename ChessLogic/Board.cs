@@ -41,9 +41,6 @@ namespace ChessLogic
         public Position GetPawnSkipPosition(Player player)
         {
             // Return the pawn skip position for the player if present.
-            // Some callers may pass an invalid player (e.g. Player.None), so
-            // use TryGetValue to avoid KeyNotFoundException and return null
-            // when no entry exists.
             if (pawnSkipPositions.TryGetValue(player, out Position pos))
                 return pos;
 
