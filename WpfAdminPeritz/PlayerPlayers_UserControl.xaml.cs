@@ -179,9 +179,22 @@ namespace WpfAdminPeritz
 
             foreach (Game game in games)
             {
+                // Build the game display text with winner information
+                string gameText = $"{game.WhitePlayer.UserName} vs {game.BlackPlayer.UserName}";
+
+                // Add winner information if game has a result
+                if (game.Result != null)
+                {
+                    gameText += $" ({game.Result.UserName} won)";
+                }
+                else
+                {
+                    gameText += " (Draw)";
+                }
+
                 ListBoxGames.Items.Add(new TextBlock
                 {
-                    Text = $"{game.WhitePlayer.UserName} vs {game.BlackPlayer.UserName}",
+                    Text = gameText,
                     FontSize = 14,
                     Padding = new Thickness(8),
                     Foreground = Brushes.Black
