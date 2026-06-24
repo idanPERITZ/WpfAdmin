@@ -89,6 +89,7 @@
         <!-- ===== ComboBox item template ===== -->
         <DataTemplate x:Key="ComboBoxItemTemplate">
             <TextBlock Text="{Binding UserName}" 
+                       Foreground="White"
                        VerticalAlignment="Center" />
         </DataTemplate>
 
@@ -121,13 +122,14 @@
                                 </ToggleButton.Template>
                             </ToggleButton>
 
-                            <ContentPresenter Content="{TemplateBinding SelectionBoxItem}"
-                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            <ContentPresenter x:Name="ContentSite"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{StaticResource ComboBoxItemTemplate}"
                                               Margin="18,0,42,0"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Left"
                                               IsHitTestVisible="False"
-                                              TextElement.Foreground="{TemplateBinding Foreground}" />
+                                              TextElement.Foreground="White" />
 
                             <Path x:Name="Arrow"
                                   Data="M 0 0 L 5 5 L 10 0"
