@@ -15,31 +15,6 @@ namespace WpfAdminPeritz
     {
         public App()
         {
-            // Catch all unhandled exceptions
-            DispatcherUnhandledException += App_DispatcherUnhandledException;
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-        }
-
-        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
-        {
-            string errorMessage = $"UNHANDLED EXCEPTION:\n\n{e.Exception.Message}\n\nStack Trace:\n{e.Exception.StackTrace}";
-
-            System.Diagnostics.Debug.WriteLine(errorMessage);
-
-            MessageBox.Show(errorMessage, "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
-            // Mark as handled so the app doesn't crash
-            e.Handled = true;
-        }
-
-        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
-            Exception ex = e.ExceptionObject as Exception;
-            string errorMessage = $"FATAL UNHANDLED EXCEPTION:\n\n{ex?.Message}\n\nStack Trace:\n{ex?.StackTrace}";
-
-            System.Diagnostics.Debug.WriteLine(errorMessage);
-
-            MessageBox.Show(errorMessage, "Fatal Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         protected override void OnExit(ExitEventArgs e)

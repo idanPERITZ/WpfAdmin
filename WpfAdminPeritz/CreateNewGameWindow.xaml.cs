@@ -398,7 +398,7 @@ namespace WpfAdminPeritz
                 System.Threading.Tasks.Task.Run(() =>
                 {
                     try { service.LeaveGame(gameToSend, playerLeaving); }
-                    catch (Exception ex) { System.Diagnostics.Debug.WriteLine("Error sending LeaveGame: " + ex.Message); }
+                    catch (Exception ex) { }
                 });
             }
             base.OnClosing(e);
@@ -422,7 +422,7 @@ namespace WpfAdminPeritz
             System.Threading.Tasks.Task.Run(() =>
             {
                 try { CallbackServiceManager.Instance.RespondToInvitation(currentInviter, player, true, invitedIsWhite); }
-                catch (Exception ex) { System.Diagnostics.Debug.WriteLine("WCF Error on accept: " + ex.Message); }
+                catch (Exception ex) { }
             });
         }
 
@@ -433,7 +433,7 @@ namespace WpfAdminPeritz
             System.Threading.Tasks.Task.Run(() =>
             {
                 try { CallbackServiceManager.Instance.RespondToInvitation(currentInviter, player, false, invitedIsWhite); }
-                catch (Exception ex) { System.Diagnostics.Debug.WriteLine("WCF Error on decline: " + ex.Message); }
+                catch (Exception ex) { }
             });
             this.Close();
         }

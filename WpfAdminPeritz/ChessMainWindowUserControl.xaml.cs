@@ -56,9 +56,7 @@ namespace WpfAdminPeritz
         private bool gameOverMenuShown;
         private bool suppressSelectionChanged;
 
-        // Track consecutive empty polls to detect game deletion
-        private int consecutiveEmptyPolls = 0;
-        private const int MAX_EMPTY_POLLS_BEFORE_CLOSE = 3;
+
 
         private ChessLogic.Player myColor;
         private ServiceGame currentGame;
@@ -89,10 +87,6 @@ namespace WpfAdminPeritz
             ServicePlayer me,
             ServicePlayer opponent)
         {
-            GameLogger.ClearLog();
-            GameLogger.Log("=== NEW GAME STARTED ===");
-            GameLogger.Log($"My color: {color}, Opponent: {opponentName}");
-
             myColor = color;
             currentGame = game;
             service = svc;
@@ -117,8 +111,6 @@ namespace WpfAdminPeritz
             pollTimer.Tick += PollForOpponentMove;
             pollTimer.Start();
 
-            GameLogger.Log("Poll timer started");
-
             Loaded -= OnLoadedHookKeyboard;
             Loaded += OnLoadedHookKeyboard;
         }
@@ -132,7 +124,6 @@ namespace WpfAdminPeritz
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("StopPolling called");
                 if (pollTimer != null)
                 {
                     pollTimer.Stop();
@@ -143,7 +134,6 @@ namespace WpfAdminPeritz
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"StopPolling failed: {ex.Message}");
                 // Don't let StopPolling failure cause a crash
             }
         }
@@ -181,8 +171,6 @@ namespace WpfAdminPeritz
             if (gameState.CurrentPlayer == myColor)
                 return;
 
-            GameLogger.Log($"POLL: moveIndex={moveIndex}, waiting for opponent...");
-
             // Run the network call off the UI thread to avoid blocking the UI.
             System.Threading.Tasks.Task.Run(() =>
             {
@@ -195,14 +183,12 @@ namespace WpfAdminPeritz
                     }
                     catch (Exception ex)
                     {
-                        System.Diagnostics.Debug.WriteLine($"Failed to check channel health: {ex.Message}");
+                        // Ignore channel health check failures
                     }
                 }
 
                 try
                 {
-                    GameLogger.Log($"POLL: Calling GetMovesByGameID, currentGame={currentGame?.Id}");
-
                     // Check if service is still available
                     if (serviceHelper == null || currentGame == null)
                         return;
@@ -213,49 +199,6 @@ namespace WpfAdminPeritz
                         defaultValue: null
                     );
 
-                    GameLogger.Log($"POLL: Received {moves?.Count ?? 0} total moves from DB");
-
-                    // DETECT GAME DELETION: If we previously had moves but now get 0, the game was deleted
-                    if (moveIndex > 0 && (moves == null || moves.Count == 0))
-                    {
-                        consecutiveEmptyPolls++;
-                        GameLogger.Log($"POLL: Empty result detected! consecutiveEmptyPolls={consecutiveEmptyPolls}, moveIndex={moveIndex}");
-
-                        if (consecutiveEmptyPolls >= MAX_EMPTY_POLLS_BEFORE_CLOSE)
-                        {
-                            GameLogger.Log("POLL: Game appears to be deleted from server. Closing game window.");
-
-                            try
-                            {
-                                Dispatcher.BeginInvoke(new Action(() =>
-                                {
-                                    StopPolling();
-                                    MessageBox.Show(
-                                        "The game has been closed. Your opponent may have disconnected.",
-                                        "Game Ended",
-                                        MessageBoxButton.OK,
-                                        MessageBoxImage.Information);
-
-                                    // Close the game window
-                                    Window parentWindow = Window.GetWindow(this);
-                                    if (parentWindow != null)
-                                        parentWindow.Close();
-                                }));
-                            }
-                            catch { }
-
-                            return;
-                        }
-
-                        return; // Skip this poll
-                    }
-
-                    // Reset counter if we got valid moves
-                    if (moves != null && moves.Count > 0)
-                    {
-                        consecutiveEmptyPolls = 0;
-                    }
-
                     if (moves == null || moves.Count == 0)
                         return;
 
@@ -265,8 +208,6 @@ namespace WpfAdminPeritz
                         .OrderBy(m => m.MoveIndex)
                         .ToList();
 
-                    GameLogger.Log($"POLL: {pending.Count} pending moves to apply (lastAppliedMoveIndex={lastAppliedMoveIndex})");
-
                     if (pending.Count == 0) return;
 
                     // Marshal back to UI thread to apply the moves.
@@ -275,7 +216,6 @@ namespace WpfAdminPeritz
                     {
                         Dispatcher.BeginInvoke(new Action(() =>
                         {
-                            GameLogger.Log("POLL: Dispatcher callback executing");
                             // Double-check game isn't over before processing
                             if (gameState != null && !gameState.IsGameOver())
                             {
@@ -290,8 +230,6 @@ namespace WpfAdminPeritz
                 }
                 catch (System.ServiceModel.CommunicationException commEx)
                 {
-                    GameLogger.Log($"POLL ERROR: CommunicationException - {commEx.Message}");
-                    System.Diagnostics.Debug.WriteLine($"Communication exception in polling: {commEx.Message}");
                     try
                     {
                         Dispatcher.BeginInvoke(new Action(() =>
@@ -311,14 +249,10 @@ namespace WpfAdminPeritz
                 }
                 catch (System.TimeoutException timeoutEx)
                 {
-                    GameLogger.Log($"POLL ERROR: TimeoutException - {timeoutEx.Message}");
-                    System.Diagnostics.Debug.WriteLine($"Timeout exception in polling: {timeoutEx.Message}");
                     // Just skip this iteration, don't stop the game
                 }
                 catch (Exception ex)
                 {
-                    GameLogger.Log($"POLL ERROR: Exception - {ex.Message}\n{ex.StackTrace}");
-                    System.Diagnostics.Debug.WriteLine($"Unexpected exception in polling: {ex.Message}");
                     try
                     {
                         Dispatcher.BeginInvoke(new Action(() =>
@@ -349,12 +283,8 @@ namespace WpfAdminPeritz
         {
             try
             {
-                GameLogger.Log($"ProcessPendingDbMoves: START - processing {pending.Count} moves, current moveIndex={moveIndex}");
-
                 foreach (var dbMove in pending)
                 {
-                    GameLogger.Log($"ProcessPendingDbMoves: dbMove MoveIndex={dbMove.MoveIndex}, From={dbMove.From}, To={dbMove.To}");
-
                     // Try to apply this DB move. Prefer exact coordinate match when available.
                     bool applied = false;
 
@@ -368,8 +298,6 @@ namespace WpfAdminPeritz
 
                         Position fromPos = new Position(fromRow, fromColumn);
                         Position toPos = new Position(toRow, toColumn);
-
-                        GameLogger.Log($"ProcessPendingDbMoves: Searching for move from {fromPos.Row},{fromPos.Column} to {toPos.Row},{toPos.Column}");
 
                         foreach (Move move in gameState.AllLegalMovesFor(gameState.CurrentPlayer))
                         {
@@ -391,7 +319,6 @@ namespace WpfAdminPeritz
                                     }
                                 }
 
-                                GameLogger.Log($"ProcessPendingDbMoves: FOUND matching move, applying...");
                                 ApplyOpponentMove(move, dbMove.From, dbMove.MoveIndex);
                                 applied = true;
                                 break;
@@ -401,14 +328,11 @@ namespace WpfAdminPeritz
 
                     if (applied) continue;
 
-                    GameLogger.Log($"ProcessPendingDbMoves: Coordinate match failed, trying SAN fallback");
-
                     // Fallback to SAN match
                     foreach (Move move in gameState.AllLegalMovesFor(gameState.CurrentPlayer))
                     {
                         if (CreateSAN(move) == dbMove.From)
                         {
-                            GameLogger.Log($"ProcessPendingDbMoves: FOUND SAN match, applying...");
                             ApplyOpponentMove(move, dbMove.From, dbMove.MoveIndex);
                             applied = true;
                             break;
@@ -419,18 +343,12 @@ namespace WpfAdminPeritz
                     if (!applied)
                     {
                         // Log and stop; the next poll may succeed once DB or local state aligns.
-                        GameLogger.Log($"ProcessPendingDbMoves: FAILED to apply DB move index {dbMove.MoveIndex} ({dbMove.From} / {dbMove.To})");
-                        System.Diagnostics.Debug.WriteLine($"Failed to apply DB move index {dbMove.MoveIndex} ({dbMove.From} / {dbMove.To})");
                         break;
                     }
                 }
-
-                GameLogger.Log($"ProcessPendingDbMoves: END");
             }
             catch (Exception ex)
             {
-                GameLogger.Log($"ProcessPendingDbMoves: EXCEPTION - {ex.Message}\n{ex.StackTrace}");
-                System.Diagnostics.Debug.WriteLine($"ProcessPendingDbMoves: Critical exception: {ex.Message}\n{ex.StackTrace}");
                 MessageBox.Show("Error processing opponent moves: " + ex.Message,
                     "Move Processing Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -440,20 +358,14 @@ namespace WpfAdminPeritz
         {
             try
             {
-                GameLogger.Log($"ApplyOpponentMove: START - moveIndex={moveIndex}, dbMoveIndex={dbMoveIndex}, notation={notation}");
-
                 // Safety check: don't apply moves if game is already over
                 if (gameState == null)
                 {
-                    GameLogger.Log("ApplyOpponentMove: gameState is null!");
-                    System.Diagnostics.Debug.WriteLine("ApplyOpponentMove: gameState is null!");
                     return;
                 }
 
                 if (gameState.IsGameOver())
                 {
-                    GameLogger.Log("ApplyOpponentMove: game is already over");
-                    System.Diagnostics.Debug.WriteLine("ApplyOpponentMove: game is already over");
                     return;
                 }
 
@@ -461,17 +373,12 @@ namespace WpfAdminPeritz
 
                 try
                 {
-                    GameLogger.Log($"ApplyOpponentMove: Calling gameState.MakeMove...");
                     gameState.MakeMove(move);
-                    GameLogger.Log($"ApplyOpponentMove: MakeMove SUCCESS, new moveIndex will be {moveIndex + 1}");
-                    System.Diagnostics.Debug.WriteLine($"ApplyOpponentMove: move applied successfully, new moveIndex will be {moveIndex + 1}");
                 }
                 catch (Exception ex)
                 {
                     // Surface the exception and prevent the app from crashing so we can
                     // diagnose the underlying issue causing crashes after captures.
-                    GameLogger.Log($"ApplyOpponentMove: MakeMove FAILED - {ex.Message}\n{ex.StackTrace}");
-                    System.Diagnostics.Debug.WriteLine($"ApplyOpponentMove: MakeMove failed: {ex.Message}\n{ex.StackTrace}");
                     MessageBox.Show("Error while applying opponent move: " + ex.Message + "\n" + ex.StackTrace,
                         "Move Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
@@ -481,33 +388,23 @@ namespace WpfAdminPeritz
                 // Remember that we've applied this DB move so we don't apply it again.
                 lastAppliedMoveIndex = dbMoveIndex;
 
-                GameLogger.Log($"ApplyOpponentMove: Calling AddBoardSnapshot...");
                 AddBoardSnapshot(gameState.Board);
 
-                GameLogger.Log($"ApplyOpponentMove: Calling AddMoveToHistory...");
                 AddMoveToHistory(notation, wasWhiteMove);
 
-                GameLogger.Log($"ApplyOpponentMove: Calling DrawBoard...");
                 DrawBoard(gameState.Board);
 
-                GameLogger.Log($"ApplyOpponentMove: Calling SetCursor...");
                 SetCursor(gameState.CurrentPlayer);
 
                 if (gameState.IsGameOver())
                 {
-                    GameLogger.Log("ApplyOpponentMove: game is now over, stopping polling");
-                    System.Diagnostics.Debug.WriteLine("ApplyOpponentMove: game is now over");
                     // Stop polling immediately when game ends to prevent race conditions
                     StopPolling();
                     ShowGameOverMenu();
                 }
-
-                GameLogger.Log($"ApplyOpponentMove: END - moveIndex now={moveIndex}");
             }
             catch (Exception ex)
             {
-                GameLogger.Log($"ApplyOpponentMove: OUTER EXCEPTION - {ex.Message}\n{ex.StackTrace}");
-                System.Diagnostics.Debug.WriteLine($"ApplyOpponentMove: Outer exception: {ex.Message}\n{ex.StackTrace}");
                 MessageBox.Show("Critical error applying opponent move: " + ex.Message,
                     "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -536,7 +433,6 @@ namespace WpfAdminPeritz
             {
                 if (board == null)
                 {
-                    System.Diagnostics.Debug.WriteLine("DrawBoard: board is null!");
                     return;
                 }
 
@@ -546,7 +442,6 @@ namespace WpfAdminPeritz
                     {
                         if (pieceImages[row, col] == null)
                         {
-                            System.Diagnostics.Debug.WriteLine($"DrawBoard: pieceImages[{row},{col}] is null!");
                             continue;
                         }
 
@@ -558,7 +453,6 @@ namespace WpfAdminPeritz
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"DrawBoard failed: {ex.Message}");
                 // Don't crash the game if drawing fails
             }
         }
@@ -654,19 +548,13 @@ namespace WpfAdminPeritz
         {
             try
             {
-                GameLogger.Log($"HandleMove: START - moveIndex={moveIndex}, player={gameState.CurrentPlayer}");
-
                 if (gameState == null)
                 {
-                    GameLogger.Log("HandleMove: gameState is null!");
-                    System.Diagnostics.Debug.WriteLine("HandleMove: gameState is null!");
                     return;
                 }
 
                 bool wasWhiteMove = gameState.CurrentPlayer == ChessLogic.Player.White;
                 string notation = CreateSAN(move);
-
-                GameLogger.Log($"HandleMove: notation={notation}, saving to DB...");
 
                 // Save to DB BEFORE making the move on the local board.
                 // We pass moveIndex (current half-move count) to the callback.
@@ -674,14 +562,10 @@ namespace WpfAdminPeritz
 
                 try
                 {
-                    GameLogger.Log($"HandleMove: Calling gameState.MakeMove...");
                     gameState.MakeMove(move);
-                    GameLogger.Log($"HandleMove: MakeMove SUCCESS, new moveIndex will be {moveIndex + 1}");
                 }
                 catch (Exception ex)
                 {
-                    GameLogger.Log($"HandleMove: MakeMove FAILED - {ex.Message}\n{ex.StackTrace}");
-                    System.Diagnostics.Debug.WriteLine($"HandleMove: MakeMove failed: {ex.Message}");
                     MessageBox.Show("Error while making move: " + ex.Message + "\n" + ex.StackTrace,
                         "Move Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     // Revert UI changes we optimistically applied
@@ -698,19 +582,13 @@ namespace WpfAdminPeritz
 
                 if (gameState.IsGameOver())
                 {
-                    GameLogger.Log("HandleMove: game is now over");
-                    System.Diagnostics.Debug.WriteLine("HandleMove: game is now over");
                     // Stop polling immediately when game ends to prevent race conditions
                     StopPolling();
                     ShowGameOverMenu();
                 }
-
-                GameLogger.Log($"HandleMove: END - moveIndex now={moveIndex}");
             }
             catch (Exception ex)
             {
-                GameLogger.Log($"HandleMove: OUTER EXCEPTION - {ex.Message}\n{ex.StackTrace}");
-                System.Diagnostics.Debug.WriteLine($"HandleMove: Outer exception: {ex.Message}\n{ex.StackTrace}");
                 MessageBox.Show("Critical error in HandleMove: " + ex.Message,
                     "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }

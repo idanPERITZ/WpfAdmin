@@ -89,7 +89,6 @@ namespace WpfAdminPeritz
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Failed to repair channel: {ex.Message}");
                     // Try one more time
                     try
                     {
@@ -97,7 +96,7 @@ namespace WpfAdminPeritz
                     }
                     catch (Exception ex2)
                     {
-                        System.Diagnostics.Debug.WriteLine($"Failed to recreate client: {ex2.Message}");
+                        // Client recreation also failed
                     }
                 }
             }
