@@ -114,7 +114,11 @@ namespace WpfAdminPeritz
         public void StopPolling()
         {
             if (pollTimer != null)
+            {
                 pollTimer.Stop();
+                pollTimer.Tick -= PollForOpponentMove;
+                pollTimer = null;
+            }
             UnhookKeyboard();
         }
 
@@ -141,8 +145,11 @@ namespace WpfAdminPeritz
         private void PollForOpponentMove(object sender, EventArgs e)
         {
             // If game is over or not started yet, stop polling
-            if (gameState.IsGameOver() || currentGame == null)
+            if (gameState == null || gameState.IsGameOver() || currentGame == null)
+            {
+                StopPolling();
                 return;
+            }
 
             // Only poll when it is the opponent's turn
             if (gameState.CurrentPlayer == myColor)
@@ -153,6 +160,10 @@ namespace WpfAdminPeritz
             {
                 try
                 {
+                    // Check if service is still available
+                    if (service == null || currentGame == null)
+                        return;
+
                     MoveList moves = service.GetMovesByGameID(currentGame);
                     if (moves == null || moves.Count == 0)
                         return;
@@ -166,21 +177,47 @@ namespace WpfAdminPeritz
                     if (pending.Count == 0) return;
 
                     // Marshal back to UI thread to apply the moves.
-                    Dispatcher.BeginInvoke(new Action(() => ProcessPendingDbMoves(pending)));
+                    // Use Invoke with priority to ensure we can check if control still exists
+                    try
+                    {
+                        Dispatcher.BeginInvoke(new Action(() =>
+                        {
+                            // Double-check game isn't over before processing
+                            if (gameState != null && !gameState.IsGameOver())
+                            {
+                                ProcessPendingDbMoves(pending);
+                            }
+                        }));
+                    }
+                    catch
+                    {
+                        // Control was disposed or dispatcher shut down, ignore
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Dispatcher.BeginInvoke(new Action(() =>
+                    try
                     {
-                        if (pollTimer != null)
-                            pollTimer.Stop();
+                        Dispatcher.BeginInvoke(new Action(() =>
+                        {
+                            if (pollTimer != null)
+                                pollTimer.Stop();
 
-                        MessageBox.Show(
-                            "Failed to receive opponent move: " + ex.Message,
-                            "Game Error",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Error);
-                    }));
+                            // Only show error if not already game over
+                            if (gameState != null && !gameState.IsGameOver())
+                            {
+                                MessageBox.Show(
+                                    "Failed to receive opponent move: " + ex.Message,
+                                    "Game Error",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+                            }
+                        }));
+                    }
+                    catch
+                    {
+                        // Control was disposed or dispatcher shut down, ignore
+                    }
                 }
             });
         }
@@ -255,6 +292,10 @@ namespace WpfAdminPeritz
 
         private void ApplyOpponentMove(Move move, string notation, int dbMoveIndex)
         {
+            // Safety check: don't apply moves if game is already over
+            if (gameState == null || gameState.IsGameOver())
+                return;
+
             bool wasWhiteMove = gameState.CurrentPlayer == ChessLogic.Player.White;
 
             try
@@ -278,7 +319,11 @@ namespace WpfAdminPeritz
             SetCursor(gameState.CurrentPlayer);
 
             if (gameState.IsGameOver())
+            {
+                // Stop polling immediately when game ends to prevent race conditions
+                StopPolling();
                 ShowGameOverMenu();
+            }
         }
 
         private void InitializeBoard()
@@ -427,7 +472,11 @@ namespace WpfAdminPeritz
             SetCursor(gameState.CurrentPlayer);
 
             if (gameState.IsGameOver())
+            {
+                // Stop polling immediately when game ends to prevent race conditions
+                StopPolling();
                 ShowGameOverMenu();
+            }
         }
 
         private void SaveMoveToDb(Move move, string notation)

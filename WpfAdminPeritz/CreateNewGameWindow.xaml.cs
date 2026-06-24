@@ -261,29 +261,46 @@ namespace WpfAdminPeritz
 
             gameWindow.GameOver += (winner, reason, moves) =>
             {
-                if (gameDeleted || localGame == null) return;
+                // Prevent double-processing of game over
+                if (gameDeleted || localGame == null || closingHandled) return;
 
-                gameMoves[localGame.Id] = moves;
-                Player winnerPlayer = null;
-                if (winner == ChessLogic.Player.White)
-                    winnerPlayer = localGame.WhitePlayer;
-                else if (winner == ChessLogic.Player.Black)
-                    winnerPlayer = localGame.BlackPlayer;
-
-                Game completedGame = localGame;
-                localGame = null;
-                currentlyPlayingGame = null;
-
-                DispatcherTimer closeTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(5) };
-                closeTimer.Tick += (timerSender, timerArgs) =>
+                try
                 {
-                    closeTimer.Stop();
-                    gameWindow.StopPolling();
-                    SaveResultAndClose(winnerPlayer, completedGame);
+                    gameMoves[localGame.Id] = moves;
+                    Player winnerPlayer = null;
+                    if (winner == ChessLogic.Player.White)
+                        winnerPlayer = localGame.WhitePlayer;
+                    else if (winner == ChessLogic.Player.Black)
+                        winnerPlayer = localGame.BlackPlayer;
+
+                    Game completedGame = localGame;
+                    localGame = null;
+                    currentlyPlayingGame = null;
+
+                    DispatcherTimer closeTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(5) };
+                    closeTimer.Tick += (timerSender, timerArgs) =>
+                    {
+                        closeTimer.Stop();
+                        if (!closingHandled)
+                        {
+                            gameWindow.StopPolling();
+                            SaveResultAndClose(winnerPlayer, completedGame);
+                            closingHandled = true;
+                            playerWindow.Close();
+                        }
+                    };
+                    closeTimer.Start();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        "Error handling game completion: " + ex.Message,
+                        "Error",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
                     closingHandled = true;
-                    playerWindow.Close();
-                };
-                closeTimer.Start();
+                    try { playerWindow.Close(); } catch { }
+                }
             };
 
             gameWindow.GameExited += () =>
@@ -304,6 +321,29 @@ namespace WpfAdminPeritz
         {
             try
             {
+                // Validate inputs
+                if (gameToSave == null)
+                {
+                    MessageBox.Show(
+                        "Cannot save game result: game data is missing.",
+                        "Error",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                    Close();
+                    return;
+                }
+
+                if (service == null)
+                {
+                    MessageBox.Show(
+                        "Cannot save game result: service connection lost.",
+                        "Error",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                    Close();
+                    return;
+                }
+
                 gameToSave.Result = winnerPlayer;
                 service.UpdateGameResult(gameToSave);
 
