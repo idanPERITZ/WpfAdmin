@@ -55,6 +55,10 @@ namespace WpfAdminPeritz
         // Refresh the list of online players and show them in the dropdown
         private void LoadOnlinePlayers()
         {
+            // Preserve the currently selected opponent before refreshing
+            Player currentlySelected = ComboOpponent.SelectedItem as Player;
+            int? selectedId = currentlySelected?.Id;
+
             PlayerList onlinePlayers = CallbackServiceManager.Instance.GetOnlinePlayers();
 
             if (onlinePlayers == null)
@@ -64,7 +68,7 @@ namespace WpfAdminPeritz
             }
 
             // Only show non-admin players in the opponent list
-            ComboOpponent.ItemsSource = onlinePlayers
+            var filteredPlayers = onlinePlayers
                 .Where(onlinePlayer => onlinePlayer != null &&
                                        onlinePlayer.Id > 0 &&
                                        onlinePlayer.Id != player.Id &&
@@ -72,7 +76,18 @@ namespace WpfAdminPeritz
                                         onlinePlayer.UserType.IndexOf("Admin", StringComparison.OrdinalIgnoreCase) < 0))
                 .ToList();
 
+            ComboOpponent.ItemsSource = filteredPlayers;
             ComboOpponent.DisplayMemberPath = "UserName";
+
+            // Restore the previously selected opponent if they're still online
+            if (selectedId.HasValue)
+            {
+                var stillOnline = filteredPlayers.FirstOrDefault(p => p.Id == selectedId.Value);
+                if (stillOnline != null)
+                {
+                    ComboOpponent.SelectedItem = stillOnline;
+                }
+            }
         }
 
         // Called when the other player accepts or declines an invitation
